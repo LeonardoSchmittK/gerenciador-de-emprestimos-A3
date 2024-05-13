@@ -19,7 +19,8 @@ public class FerramentaDAO {
             Class.forName(driver);
 
             String server = "localhost";
-              String database = "emprestimoFerramentas";
+            
+              String database = "emprestimoFerramentas"; // nome do database
             String url = "jdbc:mysql://" + server + ":3306/"
                     + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
