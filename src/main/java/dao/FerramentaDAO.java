@@ -19,11 +19,11 @@ public class FerramentaDAO {
             Class.forName(driver);
 
             String server = "localhost";
-            String database = "db_ferramentas";
+            String database = "emprestimoFerramentas";
             String url = "jdbc:mysql://" + server + ":3306/"
                     + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "Dgllm2024!";
+            String password = "Dgllm2024!"; // senha do banco de dados
 
             connection = DriverManager.getConnection(url, user, password);
 
