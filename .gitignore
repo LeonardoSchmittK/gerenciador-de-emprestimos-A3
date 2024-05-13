@@ -1,0 +1,28 @@
+# Maven specific
+target/
+dependency-reduced-pom.xml
+
+# IDE-specific
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+
+# Eclipse-specific
+.classpath
+.project
+.settings/
+
+# NetBeans-specific
+nb-configuration.xml
+
+# macOS specific
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
