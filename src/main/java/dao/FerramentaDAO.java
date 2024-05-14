@@ -2,8 +2,9 @@
 package dao;
 
 import java.sql.*;
-import model.Ferramenta;
 import java.util.ArrayList;
+import model.Ferramenta;
+
 
 
 public class FerramentaDAO {
@@ -22,7 +23,7 @@ public class FerramentaDAO {
                 String marca = res.getString("marca");
                 int custo = res.getInt("custo");
 
-                Ferramenta objeto = new Ferramenta(nome, marca, custo);
+                Ferramenta ObjetoFerramenta = new Ferramenta(nome, marca, custo);
 
                 FerramentaLista.add(objeto);
             }
