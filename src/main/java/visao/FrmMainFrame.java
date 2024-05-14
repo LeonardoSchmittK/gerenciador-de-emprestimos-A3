@@ -9,7 +9,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     
     FrmCadastroAmigosFrame JanelaCadastroAmigo = new FrmCadastroAmigosFrame();
     FrmCadastroFerramentaFrame JanelaCadastro = new FrmCadastroFerramentaFrame();
-    
+    FrmdadosFerramentas janelaFerramentas = new FrmdadosFerramentas();
     
     public FrmMainFrame() {
         
@@ -105,7 +105,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuCadastroAmigoActionPerformed
 
     private void MenuAcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAcoesActionPerformed
-
+        janelaFerramentas.setVisible(true);
     }//GEN-LAST:event_MenuAcoesActionPerformed
 
     /**
