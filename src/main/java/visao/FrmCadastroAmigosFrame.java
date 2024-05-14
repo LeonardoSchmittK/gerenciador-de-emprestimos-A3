@@ -15,12 +15,12 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CancelButton = new javax.swing.JButton();
-        CadastroButton1 = new javax.swing.JButton();
+        JBCancelar = new javax.swing.JButton();
+        JBCadastrar = new javax.swing.JButton();
         NomeText = new javax.swing.JLabel();
-        NomeInput = new javax.swing.JTextField();
+        JTFnome = new javax.swing.JTextField();
         Telefone = new javax.swing.JLabel();
-        TelefoneInput = new javax.swing.JTextField();
+        JTFtelefone = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuSair = new javax.swing.JMenuItem();
@@ -28,32 +28,32 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Cadastro para Amigos"); // NOI18N
 
-        CancelButton.setText("Cancelar");
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+        JBCancelar.setText("Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
+                JBCancelarActionPerformed(evt);
             }
         });
 
-        CadastroButton1.setText("Cadastrar");
-        CadastroButton1.addActionListener(new java.awt.event.ActionListener() {
+        JBCadastrar.setText("Cadastrar");
+        JBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadastroButton1ActionPerformed(evt);
+                JBCadastrarActionPerformed(evt);
             }
         });
 
         NomeText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         NomeText.setText("Nome:");
 
-        NomeInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTFnome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         Telefone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Telefone.setText("Telefone:");
 
-        TelefoneInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TelefoneInput.addActionListener(new java.awt.event.ActionListener() {
+        JTFtelefone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTFtelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelefoneInputActionPerformed(evt);
+                JTFtelefoneActionPerformed(evt);
             }
         });
 
@@ -79,13 +79,13 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Telefone)
-                    .addComponent(TelefoneInput)
+                    .addComponent(JTFtelefone)
                     .addComponent(NomeText)
-                    .addComponent(NomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTFnome, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CadastroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
@@ -96,41 +96,41 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(NomeText)
                         .addGap(18, 18, 18)
-                        .addComponent(NomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JTFnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Telefone)
                         .addGap(18, 18, 18)
-                        .addComponent(TelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(JTFtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CadastroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
-                        .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(239, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_CancelButtonActionPerformed
+    }//GEN-LAST:event_JBCancelarActionPerformed
 
-    private void CadastroButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroButton1ActionPerformed
+    private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
         try{
             String nome = "";
             String telefone = "";
             
-            if(this.NomeInput.getText().length() <= 2){
+            if(this.JTFnome.getText().length() <= 2){
                 throw new Mensagem("O nome deve ter mais de 2 caracteres!");
             }else{
-                nome = this.NomeInput.getText();
+                nome = this.JTFnome.getText();
             }
             
-            if(this.TelefoneInput.getText().length() < 8){
+            if(this.JTFtelefone.getText().length() < 8){
                 throw new Mensagem("Seu telefone deve ter mais de 7 número");
             }else{
-                telefone = this.TelefoneInput.getText();
+                telefone = this.JTFtelefone.getText();
             }
             
 //          LINHA DE CÓDIGO PARA QUANDO FIZERMOS O ARRAYLIST! DESCOMENTAR DEPOIS 
@@ -148,11 +148,11 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-    }//GEN-LAST:event_CadastroButton1ActionPerformed
+    }//GEN-LAST:event_JBCadastrarActionPerformed
 
-    private void TelefoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefoneInputActionPerformed
+    private void JTFtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFtelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TelefoneInputActionPerformed
+    }//GEN-LAST:event_JTFtelefoneActionPerformed
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
         // TODO add your handling code here:
@@ -196,13 +196,13 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CadastroButton1;
-    private javax.swing.JButton CancelButton;
+    private javax.swing.JButton JBCadastrar;
+    private javax.swing.JButton JBCancelar;
+    private javax.swing.JTextField JTFnome;
+    private javax.swing.JTextField JTFtelefone;
     private javax.swing.JMenuItem MenuSair;
-    private javax.swing.JTextField NomeInput;
     private javax.swing.JLabel NomeText;
     private javax.swing.JLabel Telefone;
-    private javax.swing.JTextField TelefoneInput;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables

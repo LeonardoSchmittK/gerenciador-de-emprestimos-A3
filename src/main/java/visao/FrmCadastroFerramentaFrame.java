@@ -18,13 +18,13 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         NomeFerramentaText = new javax.swing.JLabel();
-        NomeFerramentaInput = new javax.swing.JTextField();
+        JTFNomeFerramenta = new javax.swing.JTextField();
         MarcaText = new javax.swing.JLabel();
         CustoAquisicaoText = new javax.swing.JLabel();
-        MarcaInput = new javax.swing.JTextField();
-        CustoAquisicaoInput = new javax.swing.JTextField();
-        CancelButton = new javax.swing.JButton();
-        CadastroButton1 = new javax.swing.JButton();
+        JTFMarca = new javax.swing.JTextField();
+        JTFCustoAquisição = new javax.swing.JTextField();
+        JBCancelar = new javax.swing.JButton();
+        JBCadastrar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuSair = new javax.swing.JMenuItem();
@@ -35,7 +35,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
         NomeFerramentaText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         NomeFerramentaText.setText("Nome da Ferramenta:");
 
-        NomeFerramentaInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTFNomeFerramenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         MarcaText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         MarcaText.setText("Marca:");
@@ -43,26 +43,26 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
         CustoAquisicaoText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         CustoAquisicaoText.setText("Custo de aquisição:");
 
-        MarcaInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        MarcaInput.addActionListener(new java.awt.event.ActionListener() {
+        JTFMarca.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTFMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MarcaInputActionPerformed(evt);
+                JTFMarcaActionPerformed(evt);
             }
         });
 
-        CustoAquisicaoInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTFCustoAquisição.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        CancelButton.setText("Cancelar");
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+        JBCancelar.setText("Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
+                JBCancelarActionPerformed(evt);
             }
         });
 
-        CadastroButton1.setText("Cadastrar");
-        CadastroButton1.addActionListener(new java.awt.event.ActionListener() {
+        JBCadastrar.setText("Cadastrar");
+        JBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadastroButton1ActionPerformed(evt);
+                JBCadastrarActionPerformed(evt);
             }
         });
 
@@ -88,20 +88,20 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CustoAquisicaoInput, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CustoAquisicaoText)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(MarcaText)
-                                .addComponent(MarcaInput)
+                                .addComponent(JTFMarca)
                                 .addComponent(NomeFerramentaText)
-                                .addComponent(NomeFerramentaInput)))
+                                .addComponent(JTFNomeFerramenta)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CadastroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45))))
         );
         layout.setVerticalGroup(
@@ -110,57 +110,57 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
                 .addGap(108, 108, 108)
                 .addComponent(NomeFerramentaText)
                 .addGap(18, 18, 18)
-                .addComponent(NomeFerramentaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTFNomeFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(MarcaText)
                         .addGap(18, 18, 18)
-                        .addComponent(MarcaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(CustoAquisicaoText))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CadastroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
-                        .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CustoAquisicaoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(206, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MarcaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcaInputActionPerformed
+    private void JTFMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFMarcaActionPerformed
 
-    }//GEN-LAST:event_MarcaInputActionPerformed
+    }//GEN-LAST:event_JTFMarcaActionPerformed
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_CancelButtonActionPerformed
+    }//GEN-LAST:event_JBCancelarActionPerformed
 
-    private void CadastroButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroButton1ActionPerformed
+    private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
         try{
             String nomeferramenta = "";
             String marca = "";
             int custo = 0;
             
-            if(this.NomeFerramentaInput.getText().length() <= 2){
+            if(this.JTFNomeFerramenta.getText().length() <= 2){
                 throw new Mensagem("O nome deve ter mais de 2 caracteres!");
             }else{
-                nomeferramenta = this.NomeFerramentaInput.getText();
+                nomeferramenta = this.JTFNomeFerramenta.getText();
             }
             
-            if(this.MarcaInput.getText().length() <= 1){
+            if(this.JTFMarca.getText().length() <= 1){
                 throw new Mensagem("A marca deve ter mais de 1 caracteres!");
             }else{
-                marca = this.MarcaInput.getText();
+                marca = this.JTFMarca.getText();
             }
             
-            if(Integer.parseInt(this.CustoAquisicaoInput.getText()) <= 0){
+            if(Integer.parseInt(this.JTFCustoAquisição.getText()) <= 0){
                 throw new Mensagem("O valor de aquisição deve ser maior que 0!");
             }else{
-                custo = Integer.parseInt(this.CustoAquisicaoInput.getText());
+                custo = Integer.parseInt(this.JTFCustoAquisição.getText());
             }
             
 //          LINHA DE CÓDIGO PARA QUANDO FIZERMOS O ARRAYLIST! DESCOMENTAR DEPOIS 
@@ -181,7 +181,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Número inválido!");
         }
-    }//GEN-LAST:event_CadastroButton1ActionPerformed
+    }//GEN-LAST:event_JBCadastrarActionPerformed
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
         this.dispose();
@@ -226,14 +226,14 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CadastroButton1;
-    private javax.swing.JButton CancelButton;
-    private javax.swing.JTextField CustoAquisicaoInput;
     private javax.swing.JLabel CustoAquisicaoText;
-    private javax.swing.JTextField MarcaInput;
+    private javax.swing.JButton JBCadastrar;
+    private javax.swing.JButton JBCancelar;
+    private javax.swing.JTextField JTFCustoAquisição;
+    private javax.swing.JTextField JTFMarca;
+    private javax.swing.JTextField JTFNomeFerramenta;
     private javax.swing.JLabel MarcaText;
     private javax.swing.JMenuItem MenuSair;
-    private javax.swing.JTextField NomeFerramentaInput;
     private javax.swing.JLabel NomeFerramentaText;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
