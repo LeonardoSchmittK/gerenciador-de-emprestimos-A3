@@ -2,13 +2,13 @@ package frame;
 
 
 
-public class MainFrame extends javax.swing.JFrame {
+public class FrmMainFrame extends javax.swing.JFrame {
     
-    CadastroAmigosFrame JanelaCadastroAmigo = new CadastroAmigosFrame();
-    CadastroFerramentaFrame JanelaCadastro = new CadastroFerramentaFrame();
+    FrmCadastroAmigosFrame JanelaCadastroAmigo = new FrmCadastroAmigosFrame();
+    FrmCadastroFerramentaFrame JanelaCadastro = new FrmCadastroFerramentaFrame();
     
     
-    public MainFrame() {
+    public FrmMainFrame() {
         
         initComponents();
     }
@@ -122,20 +122,21 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new FrmMainFrame().setVisible(true);
             }
         });
     }
