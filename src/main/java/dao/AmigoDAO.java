@@ -1,18 +1,17 @@
-
 package dao;
 
 import java.sql.*;
-import model.Ferramenta;
 import java.util.ArrayList;
+import model.Amigo;
+import model.Ferramenta;
 
+public class AmigoDAO {
 
-public class FerramentaDAO {
-    
-    public ArrayList<Ferramenta> FerramentaLista = new ArrayList<>();
+    public ArrayList<Amigo> AmigoLista = new ArrayList<>();
 
-    public ArrayList<Ferramenta> getFerramentaLista(){
-        FerramentaLista.clear();
-        
+    public ArrayList<Amigo> getAmigoLista(){
+        AmigoLista.clear();
+
         try{
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
@@ -24,21 +23,19 @@ public class FerramentaDAO {
 
                 Ferramenta objeto = new Ferramenta(nome, marca, custo);
 
-                FerramentaLista.add(objeto);
+                AmigoLista.add(objeto);
             }
             stmt.close();
 
         }catch(SQLException Erro){
             System.out.println("Erro: " + Erro);
         }
-        return FerramentaLista;
+        return AmigoLista;
     }
     
     public void setFerramentaLista(){
-        this.FerramentaLista = FerramentaLista;
+        this.AmigoLista = AmigoLista;
     }
-    
-
 
     // conexao com banco de dados // senha "Dgllm2024!"
      public Connection getConexao() {
@@ -72,7 +69,4 @@ public class FerramentaDAO {
             System.out.println("Nao foi possivel conectar...");
             return null;
         }
-    }
-     
-    
-}
+        }
