@@ -1,9 +1,12 @@
 
 package principal;
 
+import visao.FrmMainFrame;
+
 
 public class Main {
     public static void main(String[]args){
-        System.out.println("Está funcionando!!");
+       FrmMainFrame objetotela = new FrmMainFrame();
+        objetotela.setVisible(true);
     }
 }
