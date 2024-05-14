@@ -1,44 +1,15 @@
-
 package dao;
 
-import java.sql.*;
-import model.Ferramenta;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.Emprestimo;
 
-public class FerramentaDAO {
+public class EmprestimoDAO {
     
-    public ArrayList<Ferramenta> FerramentaLista = new ArrayList<>();
-
-    public ArrayList<Ferramenta> getFerramentaLista(){
-        FerramentaLista.clear();
-        
-        try{
-            Statement stmt = this.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
-            while (res.next()) {
-
-                String nome = res.getString("nome");
-                String marca = res.getString("marca");
-                int custo = res.getInt("custo");
-
-                Ferramenta objeto = new Ferramenta(nome, marca, custo);
-
-                FerramentaLista.add(objeto);
-            }
-            stmt.close();
-
-        }catch(SQLException Erro){
-            System.out.println("Erro: " + Erro);
-        }
-        return FerramentaLista;
-    }
-    
-    public void setFerramentaLista(){
-        this.FerramentaLista = FerramentaLista;
-    }
-    
-
+    public ArrayList<Emprestimo> EmprestimoList = new ArrayList<>();
 
     // conexao com banco de dados // senha "Dgllm2024!"
      public Connection getConexao() {
@@ -73,6 +44,4 @@ public class FerramentaDAO {
             return null;
         }
     }
-     
-    
 }
