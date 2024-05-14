@@ -1,4 +1,7 @@
-package frame;
+package visao;
+
+import visao.FrmCadastroFerramentaFrame;
+import visao.FrmCadastroAmigosFrame;
 
 
 

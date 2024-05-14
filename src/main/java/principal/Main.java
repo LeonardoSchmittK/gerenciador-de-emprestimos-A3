@@ -1,7 +1,7 @@
 
 package principal;
 
-import frame.FrmMainFrame;
+import visao.FrmMainFrame;
 
 
 public class Main {

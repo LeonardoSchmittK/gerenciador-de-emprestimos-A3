@@ -1,4 +1,4 @@
-package frame;
+package visao;
 
 import javax.swing.JOptionPane;
 import model.Ferramenta;
