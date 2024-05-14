@@ -3,6 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import model.Emprestimo;
+import model.Ferramenta;
 
 
 public class EmprestimoDAO {
@@ -21,9 +22,9 @@ public class EmprestimoDAO {
                 String marca = res.getString("marca");
                 int custo = res.getInt("custo");
 
-                Emprestimo objeto = new Emprestimo(nome, marca, custo);
+                Emprestimo ObjetoEmprestimo = new Emprestimo(nome, marca, custo);
 
-                EmprestimoLista.add(objeto);
+                EmprestimoLista.add(ObjetoEmprestimo);
             }
             stmt.close();
 
@@ -33,7 +34,7 @@ public class EmprestimoDAO {
         return EmprestimoLista;
     }
     
-    public void setEmprestimoLista(){
+    public void setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista){
         this.EmprestimoLista = EmprestimoLista;
     }
 

@@ -25,7 +25,7 @@ public class FerramentaDAO {
 
                 Ferramenta ObjetoFerramenta = new Ferramenta(nome, marca, custo);
 
-                FerramentaLista.add(objeto);
+                FerramentaLista.add(ObjetoFerramenta);
             }
             stmt.close();
 
@@ -35,7 +35,7 @@ public class FerramentaDAO {
         return FerramentaLista;
     }
     
-    public void setFerramentaLista(){
+    public void setFerramentaLista(ArrayList<Ferramenta> FerramentaLista){
         this.FerramentaLista = FerramentaLista;
     }
     
