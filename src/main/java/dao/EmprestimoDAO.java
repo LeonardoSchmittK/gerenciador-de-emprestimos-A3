@@ -1,15 +1,41 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-
 import model.Emprestimo;
+
 
 public class EmprestimoDAO {
     
-    public ArrayList<Emprestimo> EmprestimoList = new ArrayList<>();
+    public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
+
+    public ArrayList<Emprestimo> getEmprestimoLista(){
+        EmprestimoLista.clear();
+
+        try{
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
+            while (res.next()) {
+
+                String nome = res.getString("nome");
+                String marca = res.getString("marca");
+                int custo = res.getInt("custo");
+
+                Emprestimo objeto = new Emprestimo(nome, marca, custo);
+
+                EmprestimoLista.add(objeto);
+            }
+            stmt.close();
+
+        }catch(SQLException Erro){
+            System.out.println("Erro: " + Erro);
+        }
+        return EmprestimoLista;
+    }
+    
+    public void setEmprestimoLista(){
+        this.EmprestimoLista = EmprestimoLista;
+    }
 
     // conexao com banco de dados // senha "Dgllm2024!"
      public Connection getConexao() {

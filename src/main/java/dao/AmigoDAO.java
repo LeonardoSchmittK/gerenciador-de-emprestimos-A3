@@ -3,7 +3,6 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import model.Amigo;
-import model.Ferramenta;
 
 public class AmigoDAO {
 
@@ -18,10 +17,9 @@ public class AmigoDAO {
             while (res.next()) {
 
                 String nome = res.getString("nome");
-                String marca = res.getString("marca");
-                int custo = res.getInt("custo");
+                int telefone = res.getInt("marca");
 
-                Ferramenta objeto = new Ferramenta(nome, marca, custo);
+                Amigo ObjetoAmigo = new Amigo(nome, telefone);
 
                 AmigoLista.add(objeto);
             }
@@ -33,7 +31,7 @@ public class AmigoDAO {
         return AmigoLista;
     }
     
-    public void setFerramentaLista(){
+    public void setAmigoLista(){
         this.AmigoLista = AmigoLista;
     }
 
@@ -69,4 +67,5 @@ public class AmigoDAO {
             System.out.println("Nao foi possivel conectar...");
             return null;
         }
-        }
+    }
+}
