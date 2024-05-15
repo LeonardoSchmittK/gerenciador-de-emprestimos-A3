@@ -1,44 +1,39 @@
-
 package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
-import model.Ferramenta;
+import model.Amigo;
 
+public class AmigoDAO {
 
-public class FerramentaDAO {
-    
-    public ArrayList<Ferramenta> FerramentaLista = new ArrayList<>();
+    public ArrayList<Amigo> AmigoLista = new ArrayList<>();
 
-    public ArrayList<Ferramenta> getFerramentaLista(){
-        FerramentaLista.clear();
-        
+    public ArrayList<Amigo> getAmigoLista(){
+        AmigoLista.clear();
+
         try{
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
             while (res.next()) {
 
                 String nome = res.getString("nome");
-                String marca = res.getString("marca");
-                int custo = res.getInt("custo");
+                int telefone = res.getInt("marca");
 
-                Ferramenta ObjetoFerramenta = new Ferramenta(nome, marca, custo);
+                Amigo ObjetoAmigo = new Amigo(nome, telefone);
 
-                FerramentaLista.add(ObjetoFerramenta);
+                AmigoLista.add(ObjetoAmigo);
             }
             stmt.close();
 
         }catch(SQLException Erro){
             System.out.println("Erro: " + Erro);
         }
-        return FerramentaLista;
+        return AmigoLista;
     }
     
-    public void setFerramentaLista(ArrayList<Ferramenta> FerramentaLista){
-        this.FerramentaLista = FerramentaLista;
+    public void setAmigoLista(ArrayList<Amigo> AmigoLista){
+        this.AmigoLista = AmigoLista;
     }
-    
-
 
     // conexao com banco de dados // senha "Dgllm2024!"
      public Connection getConexao() {
@@ -73,6 +68,4 @@ public class FerramentaDAO {
             return null;
         }
     }
-     
-    
 }

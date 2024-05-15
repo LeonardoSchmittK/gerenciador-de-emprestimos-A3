@@ -1,4 +1,4 @@
-package frame;
+package visao;
 
 public class Mensagem extends Exception{
     
