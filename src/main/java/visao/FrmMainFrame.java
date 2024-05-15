@@ -93,7 +93,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JSairActionPerformed
 
     private void JMenuDadosFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuDadosFerramentaActionPerformed
-
+      janelaFerramentas.setVisible(true);
     }//GEN-LAST:event_JMenuDadosFerramentaActionPerformed
 
     private void JMenuCadFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadFerramentaActionPerformed
