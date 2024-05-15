@@ -21,7 +21,7 @@ public class AmigoDAO {
 
                 Amigo ObjetoAmigo = new Amigo(nome, telefone);
 
-                AmigoLista.add(objeto);
+                AmigoLista.add(ObjetoAmigo);
             }
             stmt.close();
 
@@ -31,7 +31,7 @@ public class AmigoDAO {
         return AmigoLista;
     }
     
-    public void setAmigoLista(){
+    public void setAmigoLista(ArrayList<Amigo> AmigoLista){
         this.AmigoLista = AmigoLista;
     }
 
