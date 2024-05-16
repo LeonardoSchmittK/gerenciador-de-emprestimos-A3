@@ -29,3 +29,5 @@ nb-configuration.xml
 
 # vscode
 .vscode
+./.vscode
+.vscode/
