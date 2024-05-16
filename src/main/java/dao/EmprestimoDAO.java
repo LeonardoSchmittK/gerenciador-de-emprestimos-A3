@@ -1,10 +1,13 @@
 package dao;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import model.Emprestimo;
-import model.Ferramenta;
 
+import model.Emprestimo;
 
 public class EmprestimoDAO {
     
@@ -17,12 +20,14 @@ public class EmprestimoDAO {
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
             while (res.next()) {
-
+                //To do
+                /*
                 String nome = res.getString("nome");
                 String marca = res.getString("marca");
                 int custo = res.getInt("custo");
+                 */
 
-                Emprestimo ObjetoEmprestimo = new Emprestimo(nome, marca, custo);
+                Emprestimo ObjetoEmprestimo = new Emprestimo();
 
                 EmprestimoLista.add(ObjetoEmprestimo);
             }
