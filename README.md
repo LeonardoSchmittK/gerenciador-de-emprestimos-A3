@@ -2,6 +2,8 @@
 [![NPM License](https://img.shields.io/npm/l/license)](https://github.com/LeonardoSchmittK/a3prog-crud-ferramentas/blob/main/LICENSE)
 
 # Sobre o projeto
+O projeto visa a criação de um software que cadaste nome, marca e os custos de aquisição de ferramentas e de cadastrar amigos do cliente (Tio-Avo), o software serve para registrar os empréstimos de uma ou mais ferramentas a um determinado amigo, marcando a data que ocorreu e também a data de devolução. 
+
 
 
 # Requisitos Funcionais
