@@ -24,7 +24,8 @@ tendo antes devolvido uma ferramenta;
 
 ● 008RF - O sistema deve ser integrado com o Google Agenda para registro de
 evento, recebendo por e-mail um lembrete do evento;
-#Requisitos não Funcionais
+
+# Requisitos não Funcionais
 ● 001RNF - O sistema deve funcionar localmente na máquina do cliente (tio);
 
 ● 002RNF - O sistema deve dispor de uma interface gráfica limpa e minimalista;
