@@ -5,7 +5,7 @@
 
 
 # Requisitos Funcionais
-001RF - O sistema deve poder cadastrar ferramentas emprestadas;
+● 001RF - O sistema deve poder cadastrar ferramentas emprestadas;
 
 ● 002RF - O sistema deve poder cadastrar amigos (pessoas querendo empréstimo);
 
@@ -24,4 +24,31 @@ tendo antes devolvido uma ferramenta;
 
 ● 008RF - O sistema deve ser integrado com o Google Agenda para registro de
 evento, recebendo por e-mail um lembrete do evento;
+#Requisitos não Funcionais
+● 001RNF - O sistema deve funcionar localmente na máquina do cliente (tio);
+
+● 002RNF - O sistema deve dispor de uma interface gráfica limpa e minimalista;
+
+● 003RNF - O sistema deve sempre lançar o lembrete do Google Agenda 2 dia antes
+do evento;
+
+● 004RNF - O sistema deve ser programado em Java;
+
+● 005RNF - O sistema deve fornecer os relatórios de empréstimos com opções de filtro
+por data e nome;
+
+● 006RNF - O sistema não deve demorar mais que 1 segundo para cadastrar um
+empréstimo, nem para fornecer os relatórios;
+
+● 007RNF - O sistema deve considerar dias próximos como dias da semana. Caso
+hoje seja segunda-feira dia 12 e o empréstimo acabe dia 15, o sistema deve mostrar
+quinta-feira;
+
+● 008RNF - O sistema deve possuir cores sólidas e fontes firmes para facilitar leitura;
+
+● 009RNF - O sistema deve possuir cores de destaque (vermelho, laranja) para os
+alertas. Caso um amigo já não tenha devolvido uma ferramenta, que mostre
+visualmente em destaque antes de efetuar próximo empréstimo;
+
+● 010RNF - O sistema deve possuir uma interface de fácil documentação;
 
