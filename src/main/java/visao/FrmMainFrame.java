@@ -10,6 +10,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     FrmCadastroAmigosFrame JanelaCadastroAmigo = new FrmCadastroAmigosFrame();
     FrmCadastroFerramentaFrame JanelaCadastro = new FrmCadastroFerramentaFrame();
     FrmdadosFerramentas janelaFerramentas = new FrmdadosFerramentas();
+    FrmCadastrarEmprestimoFrame janelaCadastroEmprestimo = new FrmCadastrarEmprestimoFrame();
     
     public FrmMainFrame() {
         
@@ -28,6 +29,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         JMenuCadFerramenta = new javax.swing.JMenuItem();
         JMenuCadastroAmigo = new javax.swing.JMenuItem();
         JMenuDadosFerramenta = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         JSair = new javax.swing.JMenuItem();
 
         jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
@@ -77,6 +79,14 @@ public class FrmMainFrame extends javax.swing.JFrame {
             }
         });
         MenuAcoes.add(JMenuDadosFerramenta);
+
+        jMenuItem1.setText("Cadastrar Empréstimo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MenuAcoes.add(jMenuItem1);
 
         JSair.setText("Sair");
         JSair.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +145,11 @@ public class FrmMainFrame extends javax.swing.JFrame {
         janelaFerramentas.setVisible(true);
     }//GEN-LAST:event_MenuAcoesActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        janelaCadastroEmprestimo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,6 +195,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
