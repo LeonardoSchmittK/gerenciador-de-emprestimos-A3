@@ -8,10 +8,8 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
     private Ferramenta objetoFerramenta;
 
     public FrmCadastroFerramentaFrame() {
-
         initComponents();
         this.objetoFerramenta = new Ferramenta();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -26,6 +24,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
         JTFCustoAquisição = new javax.swing.JTextField();
         JBCancelar = new javax.swing.JButton();
         JBCadastrar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuSair = new javax.swing.JMenuItem();
@@ -33,15 +32,15 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Cadastro de Ferramentas"); // NOI18N
 
-        NomeFerramentaText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        NomeFerramentaText.setText("Nome da Ferramenta:");
+        NomeFerramentaText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        NomeFerramentaText.setText("Nome:");
 
         JTFNomeFerramenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        MarcaText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        MarcaText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MarcaText.setText("Marca:");
 
-        CustoAquisicaoText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CustoAquisicaoText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CustoAquisicaoText.setText("Custo de aquisição:");
 
         JTFMarca.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -53,6 +52,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
 
         JTFCustoAquisição.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        JBCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JBCancelar.setText("Cancelar");
         JBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,12 +60,16 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
             }
         });
 
+        JBCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JBCadastrar.setText("Cadastrar");
         JBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBCadastrarActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("CADASTRAR NOVA FERRAMENTA");
 
         jMenu1.setText("Ações");
 
@@ -89,44 +93,44 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CustoAquisicaoText)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(MarcaText)
-                                .addComponent(JTFMarca)
-                                .addComponent(NomeFerramentaText)
-                                .addComponent(JTFNomeFerramenta)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45))))
+                            .addComponent(MarcaText)
+                            .addComponent(NomeFerramentaText)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(JTFMarca, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(JTFNomeFerramenta, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
+                        .addGap(0, 50, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(NomeFerramentaText)
-                .addGap(18, 18, 18)
-                .addComponent(JTFNomeFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(MarcaText)
-                        .addGap(18, 18, 18)
-                        .addComponent(JTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(CustoAquisicaoText))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addComponent(JTFNomeFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(MarcaText)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(CustoAquisicaoText)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -235,6 +239,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
     private javax.swing.JLabel MarcaText;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel NomeFerramentaText;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
