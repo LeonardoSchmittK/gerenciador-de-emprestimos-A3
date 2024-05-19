@@ -1,5 +1,7 @@
 package model;
 
+import dao.FerramentaDAO;
+
 /**
  * A classe Ferramenta representa uma ferramenta genérica com nome, marca e custo.
  * 
@@ -7,12 +9,16 @@ package model;
  * @version 1.0
  */
 public class Ferramenta {
+     int id;
     String nome;
     String marca;
     double custo;
+    FerramentaDAO dao;
     
-    public Ferramenta() {
-        this("", "", 0.0);
+   public Ferramenta() {
+        this(0,"", "", 0.0);
+        dao = new FerramentaDAO();
+        
     }
     /**
      * Construtor que inicializa uma ferramenta com os valores especificados.
@@ -21,11 +27,39 @@ public class Ferramenta {
      * @param marca A marca da ferramenta.
      * @param custo O custo da ferramenta.
      */
-    public Ferramenta(String nome, String marca, double custo) {
+    public Ferramenta(int id,String nome, String marca, double custo) {
+        this.id = id;
         this.nome = nome;
         this.marca = marca;
         this.custo = custo;
     }
+    
+    
+    
+    
+    
+    public boolean insertFerramentaDb(String nome, String marca, double custo){
+        int id = this.dao.maiorID() + 1;
+        Ferramenta objeto = new Ferramenta(id,nome,marca,custo);
+
+        dao.insertFerramentaDb(objeto);
+        
+        return true;
+    }
+    
+     public void setId(int id) {
+        this.id = id;
+    }
+     
+     public int getId(){
+         return this.id;
+     }
+    
+    
+     public int maiorID(){
+        return dao.maiorID();
+    }  
+     
     /**
      * Obtém o nome da ferramenta.
      * 

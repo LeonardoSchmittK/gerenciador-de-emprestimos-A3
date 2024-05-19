@@ -4,13 +4,14 @@ import javax.swing.JOptionPane;
 import model.Ferramenta;
 
 public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
-   
-    Ferramenta ObjFerramenta = new Ferramenta();
-    
+
+    private Ferramenta objetoFerramenta;
+
     public FrmCadastroFerramentaFrame() {
-        
+
         initComponents();
-       
+        this.objetoFerramenta = new Ferramenta();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -140,47 +141,46 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
-        try{
+        try {
             String nomeferramenta = "";
             String marca = "";
             int custo = 0;
-            
-            if(this.JTFNomeFerramenta.getText().length() <= 2){
+
+            if (this.JTFNomeFerramenta.getText().length() <= 2) {
                 throw new Mensagem("O nome deve ter mais de 2 caracteres!");
-            }else{
+            } else {
                 nomeferramenta = this.JTFNomeFerramenta.getText();
             }
-            
-            if(this.JTFMarca.getText().length() <= 1){
+
+            if (this.JTFMarca.getText().length() <= 1) {
                 throw new Mensagem("A marca deve ter mais de 1 caracteres!");
-            }else{
+            } else {
                 marca = this.JTFMarca.getText();
             }
-            
-            if(Integer.parseInt(this.JTFCustoAquisição.getText()) <= 0){
+
+            if (Integer.parseInt(this.JTFCustoAquisição.getText()) <= 0) {
                 throw new Mensagem("O valor de aquisição deve ser maior que 0!");
-            }else{
+            } else {
                 custo = Integer.parseInt(this.JTFCustoAquisição.getText());
             }
-            
-//          LINHA DE CÓDIGO PARA QUANDO FIZERMOS O ARRAYLIST! DESCOMENTAR DEPOIS 
-//            if(this.ObjFerramenta.InserirDadosArray(nomeferramenta, marca, custo)){
-//                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-//                
-//                this.NomeFerramentaInput.setText("");
-//                this.MarcaInput.setText("");
-//                this.CustoAquisicaoInput.setText("");
-//            }
-//            
-//            System.out.println(this.ObjFerramenta.getListaArray().toString());
-            
-        }catch(Mensagem erro){
-            
+
+            if (this.objetoFerramenta.insertFerramentaDb(nomeferramenta, marca, custo)) {
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!");
+                // limpa campos da interface
+                this.JTFNomeFerramenta.setText("");
+                this.JTFMarca.setText("");
+                this.JTFCustoAquisição.setText("");
+
+            }
+
+        } catch (Mensagem erro) {
+
             JOptionPane.showMessageDialog(null, erro.getMessage());
-        }catch(NumberFormatException erronumb){
-            
+        } catch (NumberFormatException erronumb) {
+
             JOptionPane.showMessageDialog(null, "Número inválido!");
         }
+
     }//GEN-LAST:event_JBCadastrarActionPerformed
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
