@@ -39,6 +39,11 @@ public class Ferramenta {
         return dao.getFerramentaLista();
     }
     
+     public boolean deleteFerramentaDb(int id) {
+        dao.deleteFerramentaBd(id);
+        return true;
+    }
+    
     public boolean insertFerramentaDb(String nome, String marca, double custo){
         int id = this.dao.maiorID() + 1;
         Ferramenta objeto = new Ferramenta(id,nome,marca,custo);

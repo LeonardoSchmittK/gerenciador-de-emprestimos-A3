@@ -53,6 +53,17 @@ public class FerramentaDAO {
     public void setFerramentaLista(ArrayList<Ferramenta> FerramentaLista) {
         this.FerramentaLista = FerramentaLista;
     }
+    
+    public boolean deleteFerramentaBd(int id) {
+        try {
+            Statement stmt = ConexaoDao.getConexao().createStatement();
+            stmt.executeUpdate("DELETE FROM tb_ferramenta WHERE id = " + id);
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro ao remover ferramenta: " + erro);
+        }
+        return true;
+    }
 
     public boolean insertFerramentaDb(Ferramenta objeto) {
         String sql = "INSERT INTO tb_ferramenta(id,nome,marca,custo) VALUES(?,?,?,?)";

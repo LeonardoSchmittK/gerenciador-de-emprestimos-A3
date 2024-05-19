@@ -5,6 +5,7 @@
 package visao;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Ferramenta;
 
@@ -73,20 +74,41 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
 
         jTabelaFerramentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "Marca", "Custo "
+                "id", "Nome", "Marca", "Custo "
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTabelaFerramentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabelaFerramentasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTabelaFerramentas);
+        if (jTabelaFerramentas.getColumnModel().getColumnCount() > 0) {
+            jTabelaFerramentas.getColumnModel().getColumn(0).setMaxWidth(40);
+        }
 
         JBAlterar.setText("alterar");
 
         JBApagar.setText("apagar");
+        JBApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBApagarActionPerformed(evt);
+            }
+        });
 
         JTFMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +241,56 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowActivated
 
+    private void jTabelaFerramentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaFerramentasMouseClicked
+        // TODO add your handling code here:
+        
+         if (this.jTabelaFerramentas.getSelectedRow() != -1) {
+            String nome = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 1).toString();
+            String marca = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 2).toString();
+            String custo = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 3).toString();
+
+            this.JTFNome.setText(nome);
+            this.JTFMarca.setText(marca);
+            this.JTFCusto.setText(custo);
+
+        }
+    }//GEN-LAST:event_jTabelaFerramentasMouseClicked
+
+    private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            // validando dados da interface gráfica.
+            int id = 0;
+            if (this.jTabelaFerramentas.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione uma ferramenta para apagar");
+            } else {
+                id = Integer.parseInt(this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 0).toString());
+            }
+
+            // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta ferramenta ?");
+
+            if (respostaUsuario == 0) {// clicou em SIM
+                // envia os dados para o Aluno processar
+                if (this.objetoFerramenta.deleteFerramentaDb(id)) {
+                    // limpa os campos
+                    this.clearFields();
+                    JOptionPane.showMessageDialog(rootPane, "Ferramenta excluída com Sucesso!");
+                }
+            }
+
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            // atualiza a tabela.
+            this.imprimirTabela();
+
+        }
+    }//GEN-LAST:event_JBApagarActionPerformed
+
+    
+    
     public void clearFields() {
         this.JTFNome.setText("");
         this.JTFMarca.setText("");
