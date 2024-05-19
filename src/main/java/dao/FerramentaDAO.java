@@ -98,5 +98,22 @@ public class FerramentaDAO {
 
         return maiorID;
     }
+    
+     public boolean updateFerramentaBd(Ferramenta objeto) {
+        String sql = "UPDATE tb_ferramenta set nome = ? ,marca = ? ,custo= ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
+            stmt.setString(1, objeto.getNome());
+            stmt.setString(2, objeto.getMarca());
+            stmt.setDouble(3, objeto.getCusto());
+            stmt.setInt(4, objeto.getId());
+            stmt.execute();
+            stmt.close();
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
 
 }

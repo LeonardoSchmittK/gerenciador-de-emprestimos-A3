@@ -53,6 +53,25 @@ public class Ferramenta {
         return true;
     }
     
+          // Edita um aluno especÍfico pelo seu campo ID
+    public boolean updateFerramentaBd(int id, String nome, String marca, double custo) {
+        Ferramenta objeto = new Ferramenta(id, nome, marca, custo);
+        int indice = this.procuraIndice(id);
+        dao.updateFerramentaBd(objeto);
+        return true;
+    }
+
+    // procura o INDICE de objeto da MinhaLista que contem o ID enviado.
+    private int procuraIndice(int id) {
+        int indice = -1;
+        for (int i = 0; i < dao.getFerramentaLista().size(); i++) {
+            if (dao.getFerramentaLista().get(i).getId() == id) {
+                indice = i;
+            }
+        }
+        return indice;
+    }
+    
      public void setId(int id) {
         this.id = id;
     }

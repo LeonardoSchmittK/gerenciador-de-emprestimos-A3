@@ -102,6 +102,11 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
         }
 
         JBAlterar.setText("alterar");
+        JBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAlterarActionPerformed(evt);
+            }
+        });
 
         JBApagar.setText("apagar");
         JBApagar.addActionListener(new java.awt.event.ActionListener() {
@@ -269,7 +274,7 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
             }
 
             // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta ferramenta ?");
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta ferramenta?");
 
             if (respostaUsuario == 0) {// clicou em SIM
                 // envia os dados para o Aluno processar
@@ -288,6 +293,62 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_JBApagarActionPerformed
+
+    private void JBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarActionPerformed
+        try {
+            // recebendo e validando dados da interface gráfica.
+            int id = 0;
+            String nome = "";
+            String marca = "";
+            double custo = 0;
+
+            if (this.JTFNome.getText().length() < 2) {
+                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+
+            } else {
+                nome = this.JTFNome.getText();
+            }
+
+            if (this.JTFMarca.getText().length() < 2) {
+                throw new Mensagem("A marca deve conter ao menos 2 caracteres.");
+
+            } else {
+
+                marca = this.JTFMarca.getText();
+            }
+
+            if (this.JTFCusto.getText().length() <= 0) {
+                throw new Mensagem("Custo deve ser número e maior que zero.");
+
+            } else {
+                custo = Double.parseDouble(this.JTFCusto.getText());
+            }
+
+            if (this.jTabelaFerramentas.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro Selecione uma ferramenta para alterar");
+
+            } else {
+                id = Integer.parseInt(this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 0).toString());
+            }
+
+            // envia os dados para o Aluno processar
+            if (this.objetoFerramenta.updateFerramentaBd(id, nome, marca, custo)) {
+                // limpa os campos
+                this.clearFields();
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta Alterado com Sucesso!");
+
+            }
+            //Exibe no console o aluno cadastrado
+            System.out.println(this.objetoFerramenta.getListaFerramentas().toString());
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+        } finally {
+            // atualiza a tabela.
+            this.imprimirTabela();
+        }
+    }//GEN-LAST:event_JBAlterarActionPerformed
 
     
     
