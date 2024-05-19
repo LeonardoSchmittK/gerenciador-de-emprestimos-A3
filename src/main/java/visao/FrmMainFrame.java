@@ -94,6 +94,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void JMenuDadosFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuDadosFerramentaActionPerformed
       janelaFerramentas.setVisible(true);
+      janelaFerramentas.imprimirTabela();
     }//GEN-LAST:event_JMenuDadosFerramentaActionPerformed
 
     private void JMenuCadFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadFerramentaActionPerformed

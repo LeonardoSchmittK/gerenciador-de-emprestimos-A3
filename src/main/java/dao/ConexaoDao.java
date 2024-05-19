@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class ConexaoDao {
     
     // conexao com o banco de dados cujo schema é emprestimoFerramentas e senha workbench é "Dgllm2024!"
+    // é estático para ser usado nas outras classes deste pacote sem o uso de new()
     public static Connection getConexao() {
         Connection connection = null; //instância da conexão
         try {
