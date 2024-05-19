@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <exec.mainClass>main.a3prog.crud.ferramentas.A3progCrudFerramentas</exec.mainClass>
+        <exec.mainClass>principal.a3prog.crud.ferramentas.A3progCrudFerramentas</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>

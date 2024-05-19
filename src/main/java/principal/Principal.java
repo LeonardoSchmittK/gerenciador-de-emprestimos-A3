@@ -5,7 +5,7 @@ package principal;
 
 import visao.FrmMainFrame;
 
-public class Main {/**
+public class Principal {/**
      * O método principal da aplicação, que inicia a execução do programa.
      * Cria uma instância da classe FrmMainFrame e torna a janela visível.
      * 
