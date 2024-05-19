@@ -23,6 +23,7 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
     public FrmdadosFerramentas() {
         initComponents();
         this.objetoFerramenta = new Ferramenta();
+        this.imprimirTabela();
     }
 
     /**
@@ -225,24 +226,20 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
-        this.imprimirTabela();
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-     //   this.imprimirTabela();
 
     }//GEN-LAST:event_formComponentShown
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        this.imprimirTabela();
 
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-      //  this.imprimirTabela();
 
     }//GEN-LAST:event_formWindowActivated
 
