@@ -1,6 +1,7 @@
 package model;
 
 import dao.FerramentaDAO;
+import java.util.ArrayList;
 
 /**
  * A classe Ferramenta representa uma ferramenta genérica com nome, marca e custo.
@@ -34,9 +35,9 @@ public class Ferramenta {
         this.custo = custo;
     }
     
-    
-    
-    
+    public ArrayList getListaFerramentas() {
+        return dao.getFerramentaLista();
+    }
     
     public boolean insertFerramentaDb(String nome, String marca, double custo){
         int id = this.dao.maiorID() + 1;
