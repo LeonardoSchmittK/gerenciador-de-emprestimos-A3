@@ -19,11 +19,11 @@ public class AmigoDAO {
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
             while (res.next()) {
 
-                int id = res.getInt("id")
+                int id = res.getInt("id");
                 String nome = res.getString("nome");
                 int telefone = res.getInt("telefone");
 
-                Amigo ObjetoAmigo = new Amigo(nome, telefone);
+                Amigo ObjetoAmigo = new Amigo(id, nome, telefone);
 
                 AmigoLista.add(ObjetoAmigo);
             }
