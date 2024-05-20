@@ -19,6 +19,7 @@ public class AmigoDAO {
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
             while (res.next()) {
 
+                int id = res.getInt("id")
                 String nome = res.getString("nome");
                 int telefone = res.getInt("telefone");
 
@@ -39,11 +40,12 @@ public class AmigoDAO {
     }
 
     public boolean insertAmigoDb(Amigo objeto) {
-        String sql = "INSERT INTO tb_amigo(nome, telefone) VALUES(?,?)";
+        String sql = "INSERT INTO tb_amigo(id, nome, telefone) VALUES(?,?,?)";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
+            stmt.setInt(1, objeto.getId())
             stmt.setString(2, objeto.getNome());
-            stmt.setInt(1, objeto.getTelefone());
+            stmt.setInt(3, objeto.getTelefone());
 
             stmt.execute();
             stmt.close();
@@ -85,8 +87,9 @@ public class AmigoDAO {
         String sql = "UPDATE tb_amigo set nome = ?, telefone = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-            stmt.setString(1, objeto.getNome());
-            stmt.setInt(2, objeto.getTelefone());
+            stmt.setInt(1, objeto.getId())
+            stmt.setString(2, objeto.getNome());
+            stmt.setInt(3, objeto.getTelefone());
             stmt.execute();
             stmt.close();
             return true;
