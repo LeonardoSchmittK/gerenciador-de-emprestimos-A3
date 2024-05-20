@@ -1,11 +1,12 @@
 package visao;
 
 import javax.swing.JOptionPane;
-
+import model.Amigo;
 public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
-
+    private Amigo ObjetoAmigo;
     public FrmCadastroAmigosFrame() {
         initComponents();
+        this.ObjetoAmigo = new Amigo();
     }
 
     @SuppressWarnings("unchecked")
@@ -15,9 +16,9 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
         JBCancelar = new javax.swing.JButton();
         JBCadastrar = new javax.swing.JButton();
         NomeText = new javax.swing.JLabel();
-        JTFnome = new javax.swing.JTextField();
+        JTFnomeInput = new javax.swing.JTextField();
         Telefone = new javax.swing.JLabel();
-        JTFtelefone = new javax.swing.JTextField();
+        JTFtelefoneInput = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -45,15 +46,15 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
         NomeText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NomeText.setText("Nome:");
 
-        JTFnome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTFnomeInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         Telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Telefone.setText("Telefone:");
 
-        JTFtelefone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        JTFtelefone.addActionListener(new java.awt.event.ActionListener() {
+        JTFtelefoneInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTFtelefoneInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFtelefoneActionPerformed(evt);
+                JTFtelefoneInputActionPerformed(evt);
             }
         });
 
@@ -81,13 +82,13 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JTFtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Telefone)
-                    .addComponent(JTFnome, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTFnomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NomeText)
                     .addComponent(jLabel2))
                 .addContainerGap(66, Short.MAX_VALUE))
@@ -100,11 +101,11 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(NomeText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFnome, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTFnomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Telefone)
                 .addGap(12, 12, 12)
-                .addComponent(JTFtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,42 +122,43 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
-        try{
+       try{
             String nome = "";
             String telefone = "";
             
-            if(this.JTFnome.getText().length() <= 2){
+            if(this.JTFnomeInput.getText().length() <= 2){
                 throw new Mensagem("O nome deve ter mais de 2 caracteres!");
             }else{
-                nome = this.JTFnome.getText();
+                nome = this.JTFnomeInput.getText();
             }
             
-            if(this.JTFtelefone.getText().length() < 8){
+            if(this.JTFtelefoneInput.getText().length() < 8){
                 throw new Mensagem("Seu telefone deve ter mais de 7 número");
             }else{
-                telefone = this.JTFtelefone.getText();
+                telefone = this.JTFtelefoneInput.getText();
             }
             
-//          LINHA DE CÓDIGO PARA QUANDO FIZERMOS O ARRAYLIST! DESCOMENTAR DEPOIS 
-//            if(this.ObjFerramenta.InserirDadosArray(nomeferramenta, marca, custo)){
-//                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-//                
-//                this.NomeFerramentaInput.setText("");
-//                this.MarcaInput.setText("");
-//                this.CustoAquisicaoInput.setText("");
-//            }
-//            
-//            System.out.println(this.ObjFerramenta.getListaArray().toString());
+      
+           if(this.ObjetoAmigo.InserirDadosArray(nome,telefone)){
+               JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+               
+               this.JTFnomeInput.setText("");
+               this.JTFtelefoneInput.setText("");
+            
+           }
+           
+            System.out.println(this.ObjetoAmigo.getListaArray().toString());
             
         }catch(Mensagem erro){
             
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
+                                               
     }//GEN-LAST:event_JBCadastrarActionPerformed
 
-    private void JTFtelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFtelefoneActionPerformed
+    private void JTFtelefoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFtelefoneInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTFtelefoneActionPerformed
+    }//GEN-LAST:event_JTFtelefoneInputActionPerformed
 
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
         // TODO add your handling code here:
@@ -202,8 +204,8 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCadastrar;
     private javax.swing.JButton JBCancelar;
-    private javax.swing.JTextField JTFnome;
-    private javax.swing.JTextField JTFtelefone;
+    private javax.swing.JTextField JTFnomeInput;
+    private javax.swing.JTextField JTFtelefoneInput;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel NomeText;
     private javax.swing.JLabel Telefone;
