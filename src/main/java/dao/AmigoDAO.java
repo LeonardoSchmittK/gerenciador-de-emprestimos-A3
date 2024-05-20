@@ -43,7 +43,7 @@ public class AmigoDAO {
         String sql = "INSERT INTO tb_amigo(id, nome, telefone) VALUES(?,?,?)";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-            stmt.setInt(1, objeto.getId())
+            stmt.setInt(1, objeto.getId());
             stmt.setString(2, objeto.getNome());
             stmt.setInt(3, objeto.getTelefone());
 
@@ -87,7 +87,7 @@ public class AmigoDAO {
         String sql = "UPDATE tb_amigo set nome = ?, telefone = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-            stmt.setInt(1, objeto.getId())
+            stmt.setInt(1, objeto.getId());
             stmt.setString(2, objeto.getNome());
             stmt.setInt(3, objeto.getTelefone());
             stmt.execute();
