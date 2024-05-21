@@ -21,7 +21,7 @@ public class EmprestimoDAO {
             while (res.next()) {
 
                 int idAmigo = res.getInt("id do amigo");
-                int idFerramenta = res.getInt("id da ferramenta")
+                int idFerramenta = res.getInt("id da ferramenta");
                 String nomeAmigo = res.getString("nome do amigo");
                 String nomeFerramenta = res.getString("nome da ferramenta");
                 int id = res.getInt("id");

@@ -2,7 +2,7 @@ package visao;
 
 public class FrmMainFrame extends javax.swing.JFrame {
 
-    FrmdadosAmigos janelaAmigos = new FrmdadosAmigos();
+    FrmDadosAmigos janelaAmigos = new FrmDadosAmigos();
 
     public FrmMainFrame() {
         initComponents();
@@ -129,7 +129,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JSairActionPerformed
 
     private void JMenuDadosFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuDadosFerramentaActionPerformed
-       FrmdadosFerramentas janelaFerramentas = new FrmdadosFerramentas();
+       FrmDadosFerramentas janelaFerramentas = new FrmDadosFerramentas();
         janelaFerramentas.setVisible(true);
         
     }//GEN-LAST:event_JMenuDadosFerramentaActionPerformed
