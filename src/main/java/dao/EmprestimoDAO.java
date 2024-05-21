@@ -17,16 +17,16 @@ public class EmprestimoDAO {
 
         try{
             Statement stmt = ConexaoDao.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_emprestimo");
             while (res.next()) {
-                //To do
-                /*
-                String nome = res.getString("nome");
-                String marca = res.getString("marca");
-                int custo = res.getInt("custo");
-                 */
 
-                Emprestimo ObjetoEmprestimo = new Emprestimo();
+                int idAmigo = res.getInt("id do amigo");
+                int idFerramenta = res.getInt("id da ferramenta")
+                String nomeAmigo = res.getString("nome do amigo");
+                String nomeFerramenta = res.getString("nome da ferramenta");
+                int id = res.getInt("id");
+
+                Emprestimo ObjetoEmprestimo = new Emprestimo(nomeAmigo, nomeFerramenta, idAmigo, idFerramenta, id);
 
                 EmprestimoLista.add(ObjetoEmprestimo);
             }
@@ -45,11 +45,14 @@ public class EmprestimoDAO {
     // id e nome
 
     public boolean InsertEmprestimoDb(Emprestimo objeto){
-        String sql = "INSERT INTO tb_emprestimo(id, nome) VALUES(?, ?)";
+        String sql = "INSERT INTO tb_emprestimo(id, nomeAmigo, nomeFerramenta, idAmigo, idFerramenta) VALUES(?, ?, ?, ?, ?)";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
             stmt.setInt(1, objeto.getId());
-            stmt.setString(2, objeto.getNome());
+            stmt.setString(2, objeto.getNomeAmigo());
+            stmt.setString(3, objeto.getNomeFerramenta());
+            stmt.setInt(4, objeto.getIdAmigo());
+            stmt.setInt(5, objeto.getIdFerramenta());
 
             stmt.execute();
             stmt.close();
@@ -91,8 +94,11 @@ public class EmprestimoDAO {
         String sql = "UPDATE tb_emprestimo set nome = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-            stmt.setString(1, objeto.getNome());
-            stmt.setInt(3, objeto.getId());
+            stmt.setInt(1, objeto.getId());
+            stmt.setString(2, objeto.getNomeAmigo());
+            stmt.setString(3, objeto.getNomeFerramenta());
+            stmt.setInt(4, objeto.getIdAmigo());
+            stmt.setInt(5, objeto.getIdFerramenta());
             stmt.execute();
             stmt.close();
             return true;
