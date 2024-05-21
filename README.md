@@ -1,6 +1,6 @@
 ![](https://github.com/LeonardoSchmittK/a3prog-crud-ferramentas/blob/main/a3%20logo.jpeg)
 
-# a3prog-crud-ferramentas / Empréstimo de ferramentas tio joão
+# Empréstimo de ferramentas tio joão
 [![NPM License](https://img.shields.io/npm/l/license)](https://github.com/LeonardoSchmittK/a3prog-crud-ferramentas/blob/main/LICENSE)
 # Integrantes
 
@@ -52,7 +52,7 @@ evento, recebendo por e-mail um lembrete do evento;
 ● 003RNF - O sistema deve sempre lançar o lembrete do Google Agenda 2 dia antes
 do evento;
 
-● 004RNF - O sistema deve ser programado em Java;
+● 004RNF - O sistema deve ser programado em Java na versão 18, windows 11 e Mysql na versão 8.3;
 
 ● 005RNF - O sistema deve fornecer os relatórios de empréstimos com opções de filtro
 por data e nome;
