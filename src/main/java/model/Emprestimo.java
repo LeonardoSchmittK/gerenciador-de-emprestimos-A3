@@ -1,22 +1,74 @@
 package model;
 
-import dao.FerramentaDAO;
+import java.util.ArrayList;
+import dao.EmprestimoDAO;
 
 public class Emprestimo {
-    String nomeAmigo, nomeFerramenta;
-    int idAmigo, idFerramenta, id;
+    private String nomeAmigo, nomeFerramenta;
+    private int idAmigo, idFerramenta, id;
+    EmprestimoDAO dao;
     
-    Emprestimo(){
+    public Emprestimo(){
         this("", "", 0, 0, 0);
     }   
     
-    Emprestimo(String nomeAmigo, String nomeFerramenta, int idAmigo, int idFerramenta, int id){
-        this.nomeAmigo = nomeAmigo;
-        this.nomeFerramenta = nomeFerramenta;
-        this.idAmigo = idAmigo;
-        this.idFerramenta = idFerramenta;
-        this.id = id; 
+    public Emprestimo(String nomeAmigo, String nomeFerramenta, int idAmigo, int idFerramenta, int id){
+        this.setNomeAmigo(nomeAmigo);;
+        this.setNomeFerramenta(nomeFerramenta);;
+        this.setIdAmigo(idAmigo);;
+        this.setIdFerramenta(idFerramenta); 
+        this.setId(id);
     }
+
+    public ArrayList getEmprestimoList() {
+        return dao.getEmprestimoLista();
+    }
+    
+     public boolean deleteEmprestimoDb(int id) {
+        dao.deleteEmprestimoBd(id);
+        return true;
+    }
+    
+    public boolean insertEmprestimoaDb(String nomeFerramenta,String nomeAmigo,  int idAmigo, int idFerramenta){
+        int id = this.dao.maiorID() + 1;
+        Emprestimo objeto = new Emprestimo(nomeFerramenta,nomeAmigo, idAmigo, idFerramenta, id);
+
+        dao.InsertEmprestimoDb(objeto);
+        
+        return true;
+    }
+    
+          // Edita uma ferramenta especÍfico pelo seu campo ID
+    public boolean updateEmprestimoBd(String nomeFerramenta,String nomeAmigo,  int idAmigo, int idFerramenta, int id) {
+        Emprestimo objeto = new Emprestimo(nomeFerramenta,nomeAmigo, idAmigo, idFerramenta, id);
+        int indice = this.procuraIndice(id);
+        dao.updateEmprestimoBd(objeto);
+        return true;
+    }
+
+    // procura o id de objeto da lista que contem o ID enviado.
+    private int procuraIndice(int id) {
+        int indice = -1;
+        for (int i = 0; i < dao.getEmprestimoLista().size(); i++) {
+            if (dao.getEmprestimoLista().get(i).getId() == id) {
+                indice = i;
+            }
+        }
+        return indice;
+    }
+    
+     public void setId(int id) {
+        this.id = id;
+    }
+     
+     public int getId(){
+         return this.id;
+     }
+    
+    
+     public int maiorID(){
+        return dao.maiorID();
+    }  
 
     public String getNomeAmigo() {
         return nomeAmigo;
@@ -49,14 +101,5 @@ public class Emprestimo {
     public void setIdFerramenta(int idFerramenta) {
         this.idFerramenta = idFerramenta;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     
 }
