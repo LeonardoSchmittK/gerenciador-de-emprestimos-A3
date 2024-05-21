@@ -348,7 +348,7 @@ public class FrmdadosFerramentas extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Ferramenta Alterado com Sucesso!");
 
             }
-            //Exibe no console o aluno cadastrado
+            //Exibe no console a ferramenta cadastrado
             System.out.println(this.objetoFerramenta.getListaFerramentas().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());

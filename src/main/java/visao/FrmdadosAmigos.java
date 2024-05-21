@@ -37,7 +37,7 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
 
         JBAlterar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTotalFerramentasTitulo = new javax.swing.JLabel();
+        jTotalAmigosTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabelaAmigo = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -58,9 +58,9 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("RELATÓRIO FERRAMENTAS");
+        jLabel4.setText("RELATÓRIO AMIGOS");
 
-        jTotalFerramentasTitulo.setText("Total ferramentas:");
+        jTotalAmigosTitulo.setText("Total amigos:");
 
         jTabelaAmigo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,9 +73,16 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
                 "id", "Nome", "Telefone"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -87,6 +94,9 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTabelaAmigo);
+        if (jTabelaAmigo.getColumnModel().getColumnCount() > 0) {
+            jTabelaAmigo.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         jLabel1.setText("Nome");
 
@@ -139,29 +149,29 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JBCancelar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTotalFerramentasTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTotalAmigosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTotalFerramentasTitulo)
+                        .addComponent(jTotalAmigosTitulo)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162))
+                        .addGap(117, 117, 117))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -169,13 +179,13 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(63, 63, 63)))
+                            .addComponent(jLabel2))))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCancelar)
                     .addComponent(JBAlterar)
                     .addComponent(JBApagar))
-                .addGap(34, 34, 34))
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -210,14 +220,14 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
                 id = Integer.parseInt(this.jTabelaAmigo.getValueAt(this.jTabelaAmigo.getSelectedRow(), 0).toString());
             }
 
-            // envia os dados para o Aluno processar
+            // envia os dados para o amigo processar
             if (this.objetoAmigo.updateAmigoBd(id, nome,telefone)) {
                 // limpa os campos
                 this.clearFields();
-                JOptionPane.showMessageDialog(rootPane, "Ferramenta Alterado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!");
                 
             }
-            //Exibe no console o aluno cadastrado
+            //Exibe no console o amigo cadastrado
             System.out.println(this.objetoAmigo.getListaAmigo().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -240,7 +250,8 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         //Carrega a lista de objetos aluno
         ArrayList<Amigo> minhalista = this.objetoAmigo.getListaAmigo();
-        
+                jTotalAmigosTitulo.setText(minhalista.size() + " amigos");
+
         for (Amigo a : minhalista) {
             System.out.println("NOME " + a.getNome());
             modelo.addRow(new Object[]{
@@ -352,6 +363,6 @@ public class FrmdadosAmigos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabelaAmigo;
-    private javax.swing.JLabel jTotalFerramentasTitulo;
+    private javax.swing.JLabel jTotalAmigosTitulo;
     // End of variables declaration//GEN-END:variables
 }

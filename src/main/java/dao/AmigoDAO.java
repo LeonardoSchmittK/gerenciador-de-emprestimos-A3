@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,7 +17,7 @@ public class AmigoDAO {
 
         try{
             Statement stmt = ConexaoDao.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM tb_alunos");
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_amigo");
             while (res.next()) {
 
                 int id = res.getInt("id");
@@ -77,24 +78,24 @@ public class AmigoDAO {
 
             stmt.close();
         } catch (SQLException ex) {
-            System.out.println("Erro ao resgatar maior id: " + ex);
+            System.out.println("Erro ao resgatar maior id de amigo: " + ex);
         }
 
         return maiorID;
     }
 
     public boolean updateAmigoBd(Amigo objeto) {
-        String sql = "UPDATE tb_amigo set nome = ?, telefone = ? WHERE id = ?";
+        String sql = "UPDATE tb_amigo set nome = ? ,telefone = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-            stmt.setInt(1, objeto.getId());
-            stmt.setString(2, objeto.getNome());
-            stmt.setInt(3, objeto.getTelefone());
+             stmt.setString(1, objeto.getNome());
+            stmt.setInt(2, objeto.getTelefone());
+            stmt.setInt(3, objeto.getId());
             stmt.execute();
             stmt.close();
             return true;
         } catch (SQLException erro) {
-            System.out.println("Erro:" + erro);
+            System.out.println("Erro ao atualizar amigo:" + erro);
             throw new RuntimeException(erro);
         }
     }

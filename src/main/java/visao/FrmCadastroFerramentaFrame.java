@@ -35,22 +35,17 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
         NomeFerramentaText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NomeFerramentaText.setText("Nome:");
 
-        JTFNomeFerramenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
         MarcaText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         MarcaText.setText("Marca:");
 
         CustoAquisicaoText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CustoAquisicaoText.setText("Custo de aquisição:");
 
-        JTFMarca.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JTFMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFMarcaActionPerformed(evt);
             }
         });
-
-        JTFCustoAquisição.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         JBCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JBCancelar.setText("Cancelar");

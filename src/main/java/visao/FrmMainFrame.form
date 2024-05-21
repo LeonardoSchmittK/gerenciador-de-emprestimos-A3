@@ -26,7 +26,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuCadFerramenta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastrar Ferramenta"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar ferramenta"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuCadFerramentaActionPerformed"/>
@@ -34,26 +34,34 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuCadastroAmigo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastro para Amigos"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar amigo"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuCadastroAmigoActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastrar empr&#xe9;stimo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuDadosFerramenta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dados Ferramentas"/>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio ferramentas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuDadosFerramentaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastrar Empr&#xe9;stimo"/>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio amigos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JSair">

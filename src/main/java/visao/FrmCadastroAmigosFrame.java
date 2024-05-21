@@ -2,11 +2,13 @@ package visao;
 
 import javax.swing.JOptionPane;
 import model.Amigo;
+
 public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
-    private Amigo ObjetoAmigo;
+    private Amigo objetoAmigo;
+    
     public FrmCadastroAmigosFrame() {
         initComponents();
-        this.ObjetoAmigo = new Amigo();
+        this.objetoAmigo = new Amigo();
     }
 
     @SuppressWarnings("unchecked")
@@ -46,12 +48,9 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
         NomeText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NomeText.setText("Nome:");
 
-        JTFnomeInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
         Telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Telefone.setText("Telefone:");
 
-        JTFtelefoneInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JTFtelefoneInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFtelefoneInputActionPerformed(evt);
@@ -124,7 +123,7 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
        try{
             String nome = "";
-            String telefone = "";
+            int telefone = 0;
             
             if(this.JTFnomeInput.getText().length() <= 2){
                 throw new Mensagem("O nome deve ter mais de 2 caracteres!");
@@ -135,11 +134,11 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             if(this.JTFtelefoneInput.getText().length() < 8){
                 throw new Mensagem("Seu telefone deve ter mais de 7 número");
             }else{
-                telefone = this.JTFtelefoneInput.getText();
+                telefone = Integer.parseInt(this.JTFtelefoneInput.getText());
             }
             
       
-           if(this.ObjetoAmigo.InserirDadosArray(nome,telefone)){
+           if(this.objetoAmigo.insertAmigoDb(nome,telefone)){
                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
                
                this.JTFnomeInput.setText("");
@@ -147,7 +146,7 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             
            }
            
-            System.out.println(this.ObjetoAmigo.getListaArray().toString());
+            System.out.println(this.objetoAmigo.getListaAmigo().toString());
             
         }catch(Mensagem erro){
             

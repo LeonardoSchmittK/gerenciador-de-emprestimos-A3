@@ -43,7 +43,7 @@ import dao.AmigoDAO;
         return true;
     }
     
-    public boolean insertAmigoDb(int id, String nome, int telefone){
+    public boolean insertAmigoDb(String nome, int telefone){
         id = this.dao.maiorID() + 1;
         Amigo objeto = new Amigo(id,nome,telefone);
 
