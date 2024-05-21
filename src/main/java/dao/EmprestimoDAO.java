@@ -90,7 +90,7 @@ public class EmprestimoDAO {
         return maiorID;
     }
 
-    public boolean updateAmigoBd(Emprestimo objeto) {
+    public boolean updateEmprestimoBd(Emprestimo objeto) {
         String sql = "UPDATE tb_emprestimo set nome = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
