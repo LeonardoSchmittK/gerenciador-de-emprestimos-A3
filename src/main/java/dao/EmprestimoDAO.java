@@ -42,8 +42,6 @@ public class EmprestimoDAO {
         this.EmprestimoLista = EmprestimoLista;
     }
 
-    // id e nome
-
     public boolean InsertEmprestimoDb(Emprestimo objeto){
         String sql = "INSERT INTO tb_emprestimo(id, nomeAmigo, nomeFerramenta, idAmigo, idFerramenta) VALUES(?, ?, ?, ?, ?)";
         try {
