@@ -2,7 +2,7 @@ package visao;
 
 public class FrmMainFrame extends javax.swing.JFrame {
 
-    FrmDadosAmigos janelaAmigos = new FrmDadosAmigos();
+    
 
     public FrmMainFrame() {
         initComponents();
@@ -22,6 +22,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         JMenuDadosFerramenta = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jRelatorioEmprestimosAtivos = new javax.swing.JMenuItem();
         JSair = new javax.swing.JMenuItem();
 
         jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
@@ -87,6 +88,14 @@ public class FrmMainFrame extends javax.swing.JFrame {
             }
         });
         MenuAcoes.add(jMenuItem2);
+
+        jRelatorioEmprestimosAtivos.setText("Relatório empréstimos ativos");
+        jRelatorioEmprestimosAtivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRelatorioEmprestimosAtivosActionPerformed(evt);
+            }
+        });
+        MenuAcoes.add(jRelatorioEmprestimosAtivos);
 
         JSair.setText("Sair");
         JSair.addActionListener(new java.awt.event.ActionListener() {
@@ -157,10 +166,17 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        FrmDadosAmigos janelaAmigos = new FrmDadosAmigos();
         janelaAmigos.setVisible(true);
-        janelaAmigos.imprimirTabela();
+        
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jRelatorioEmprestimosAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioEmprestimosAtivosActionPerformed
+        // TODO add your handling code here:
+        FrmDadosEmprestimoAtivos janelaEmprestimosAtivos = new FrmDadosEmprestimoAtivos();
+        janelaEmprestimosAtivos.setVisible(true);
+    }//GEN-LAST:event_jRelatorioEmprestimosAtivosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +225,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jRelatorioEmprestimosAtivos;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

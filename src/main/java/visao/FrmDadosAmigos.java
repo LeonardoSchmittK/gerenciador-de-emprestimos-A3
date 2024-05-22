@@ -23,6 +23,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
     public FrmDadosAmigos() {
         initComponents();
         this.objetoAmigo = new Amigo();
+        this.imprimirTabela();
     }
 
     /**

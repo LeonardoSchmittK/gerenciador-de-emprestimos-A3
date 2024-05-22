@@ -64,6 +64,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jRelatorioEmprestimosAtivos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio empr&#xe9;stimos ativos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRelatorioEmprestimosAtivosActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JSair">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sair"/>

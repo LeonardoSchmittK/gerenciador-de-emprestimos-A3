@@ -56,7 +56,7 @@ public class Emprestimo {
         return dao.getEmprestimoLista();
     }
 
-     public boolean deleteFerramentaDb(int id) {
+     public boolean deleteEmprestimoDb(int id) {
         dao.deleteEmprestimoBd(id);
         return true;
     }
