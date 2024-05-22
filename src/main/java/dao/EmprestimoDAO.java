@@ -1,3 +1,17 @@
+/*
+ EmprestimoDAO
+    
+ Esta classe representa o Objeto de Acesso a Dados (DAO) para lidar
+ com operações relacionadas à entidade Emprestimo no banco de dados.
+
+ Atributos:
+ - EmprestimoLista: Um ArrayList para armazenar objetos Emprestimo.
+
+ Métodos:
+  - getEmprestimoLista(): Recupera uma lista de objetos Emprestimo do banco de dados.
+  - setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista): Define a lista de Emprestimo.
+
+*/
 package dao;
 
 import java.sql.ResultSet;
@@ -8,9 +22,13 @@ import java.util.ArrayList;
 import model.Emprestimo;
 
 public class EmprestimoDAO {
-    
+    // ArrayList para armazenar objetos Emprestimo
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
-
+    /**
+     * Recupera uma lista de objetos Emprestimo do banco de dados.
+     * 
+     * @return ArrayList<Emprestimo> A lista de objetos Emprestimo recuperados do banco de dados.
+     */
     public ArrayList<Emprestimo> getEmprestimoLista(){
         EmprestimoLista.clear();
 
@@ -36,7 +54,11 @@ public class EmprestimoDAO {
         }
         return EmprestimoLista;
     }
-    
+    /**
+     * Define a lista de Emprestimo.
+     * 
+     * @param EmprestimoLista A lista de objetos Emprestimo a ser definida.
+     */
     public void setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista){
         this.EmprestimoLista = EmprestimoLista;
     }
