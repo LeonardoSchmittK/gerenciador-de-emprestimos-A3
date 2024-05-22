@@ -5,24 +5,35 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Amigo;
+import model.Emprestimo;
 import model.Ferramenta;
 
 public class FrmCadastrarEmprestimoFrame extends javax.swing.JFrame {
 
     private Ferramenta objetoFerramenta;
-    private Amigo objetoAmigo;
+    private Amigo objetoAmigo;    
+    private Emprestimo objetoEmprestimo;
+
     private boolean temAmigo;
     private boolean temFerramenta;
     private String nomeEscolhido;
     private String ferramentaEscolhida;
+    public ArrayList<Ferramenta> FerramentaLista = new ArrayList<>();
+    public ArrayList<Amigo> AmigoLista = new ArrayList<>();
+    
 
     public FrmCadastrarEmprestimoFrame() {
         initComponents();
         this.setTemAmigo(false);
         this.setTemFerramenta(false);
-
+        this.objetoEmprestimo = new Emprestimo();
         this.objetoFerramenta = new Ferramenta();
         this.objetoAmigo = new Amigo();
+        
+        this.FerramentaLista = objetoFerramenta.getListaFerramentas();       
+        this.AmigoLista = objetoAmigo.getListaAmigo();
+
+        
         this.imprimirFerramentas();
         this.imprimirAmigos();
         this.imprimirValidadeEmprestimo();
@@ -221,10 +232,35 @@ public class FrmCadastrarEmprestimoFrame extends javax.swing.JFrame {
         if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0 || jComboBoxSelecionarAmigo.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Escolha as opções corretamente!");
 
+        } else {
+            int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
+            int idxEscolhidoAmigo = jComboBoxSelecionarAmigo.getSelectedIndex();
+
+            Ferramenta ferramentaEscolhida = this.FerramentaLista.get(idxEscolhidoFerramenta-1);
+            Amigo amigoEscolhido = this.AmigoLista.get(idxEscolhidoAmigo-1);
+
+            int idFerramenta = ferramentaEscolhida.getId();
+            String nomeFerramenta = ferramentaEscolhida.getNome();
+            int idAmigo = amigoEscolhido.getId();
+            String nomeAmigo = amigoEscolhido.getNome();
+            
+
+            if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo))  {
+                JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
+                // limpa campos da interface
+                jComboBoxSelecionarFerramenta.setSelectedIndex(0);
+                jComboBoxSelecionarAmigo.setSelectedIndex(0);
+
+            }
         }
 
-
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+
+    
+
+    
 
     public void imprimirEmprestimoCoibido() {
         if (!this.isTemAmigo() || !this.isTemFerramenta()) {

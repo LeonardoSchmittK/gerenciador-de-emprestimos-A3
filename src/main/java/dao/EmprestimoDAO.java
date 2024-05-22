@@ -9,56 +9,32 @@ import java.util.ArrayList;
 import model.Emprestimo;
 
 public class EmprestimoDAO {
-    
+
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
 
-    public ArrayList<Emprestimo> getEmprestimoLista(){
+    public ArrayList<Emprestimo> getEmprestimoLista() {
         EmprestimoLista.clear();
 
-        try{
+        try {
             Statement stmt = ConexaoDao.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_emprestimo");
             while (res.next()) {
-
-                int idAmigo = res.getInt("id do amigo");
-                int idFerramenta = res.getInt("id da ferramenta");
-                String nomeAmigo = res.getString("nome do amigo");
-                String nomeFerramenta = res.getString("nome da ferramenta");
                 int id = res.getInt("id");
+                int ferramentaId = res.getInt("ferramentaId");
+                String nomeFerramenta = res.getString("nomeFerramenta");
+                int amigoId = res.getInt("amigoId");
+                String nomeAmigo = res.getString("nomeAmigo");
 
-                Emprestimo ObjetoEmprestimo = new Emprestimo(nomeAmigo, nomeFerramenta, idAmigo, idFerramenta, id);
+                Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo);
 
-                EmprestimoLista.add(ObjetoEmprestimo);
+                EmprestimoLista.add(objetoEmprestimo);
             }
             stmt.close();
 
-        }catch(SQLException Erro){
+        } catch (SQLException Erro) {
             System.out.println("Erro: " + Erro);
         }
         return EmprestimoLista;
-    }
-    
-    public void setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista){
-        this.EmprestimoLista = EmprestimoLista;
-    }
-
-    public boolean InsertEmprestimoDb(Emprestimo objeto){
-        String sql = "INSERT INTO tb_emprestimo(id, nomeAmigo, nomeFerramenta, idAmigo, idFerramenta) VALUES(?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-            stmt.setInt(1, objeto.getId());
-            stmt.setString(2, objeto.getNomeAmigo());
-            stmt.setString(3, objeto.getNomeFerramenta());
-            stmt.setInt(4, objeto.getIdAmigo());
-            stmt.setInt(5, objeto.getIdFerramenta());
-
-            stmt.execute();
-            stmt.close();
-            return true;
-        } catch (SQLException erro) {
-            System.out.println("Erro ao inserir emprestimo no banco de dados:" + erro);
-            throw new RuntimeException(erro);
-        }
     }
 
     public boolean deleteEmprestimoBd(int id) {
@@ -70,6 +46,30 @@ public class EmprestimoDAO {
             System.out.println("Erro ao remover emprestimo: " + erro);
         }
         return true;
+    }
+
+    public boolean insertEmprestimoDb(Emprestimo objeto) {
+        String sql = "INSERT INTO tb_emprestimo(id,nomeFerramenta,ferramentaId,nomeAmigo,amigoId) VALUES(?,?,?,?,?)";
+        
+        try {
+            PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
+            stmt.setInt(1, objeto.getId());
+            stmt.setString(2, objeto.getNomeFerramenta());
+            stmt.setInt(3, objeto.getFerramentaId());
+            stmt.setString(4, objeto.getNomeAmigo());
+            stmt.setInt(5, objeto.getAmigoId());
+
+            stmt.execute();
+            stmt.close();
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("Erro ao inserir ferramenta no banco de dados:" + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+
+    public void setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista) {
+        this.EmprestimoLista = EmprestimoLista;
     }
 
     public int maiorID() {
@@ -89,19 +89,18 @@ public class EmprestimoDAO {
     }
 
     public boolean updateEmprestimoBd(Emprestimo objeto) {
-        String sql = "UPDATE tb_emprestimo set nome = ? WHERE id = ?";
+        String sql = "UPDATE tb_emprestimo set nomeFerramenta = ? ,ferramentaId = ? ,nomeAmigo= ?,amigoId = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-            stmt.setInt(1, objeto.getId());
-            stmt.setString(2, objeto.getNomeAmigo());
-            stmt.setString(3, objeto.getNomeFerramenta());
-            stmt.setInt(4, objeto.getIdAmigo());
-            stmt.setInt(5, objeto.getIdFerramenta());
+            stmt.setString(1, objeto.getNomeFerramenta());
+            stmt.setInt(2, objeto.getFerramentaId());
+            stmt.setString(3, objeto.getNomeAmigo());
+            stmt.setInt(4, objeto.getAmigoId());
             stmt.execute();
             stmt.close();
             return true;
         } catch (SQLException erro) {
-            System.out.println("Erro ao atualizar emprestimo:" + erro);
+            System.out.println("Erro ao dar update emprestimo:" + erro);
             throw new RuntimeException(erro);
         }
     }
