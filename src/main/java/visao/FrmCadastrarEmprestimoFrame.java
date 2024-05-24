@@ -243,8 +243,11 @@ public class FrmCadastrarEmprestimoFrame extends javax.swing.JFrame {
             String nomeFerramenta = ferramentaEscolhida.getNome();
             int idAmigo = amigoEscolhido.getId();
             String nomeAmigo = amigoEscolhido.getNome();
+                
+            if(this.objetoEmprestimo.estaAmigoDevendo(idAmigo)){
+                JOptionPane.showMessageDialog(rootPane,  nomeAmigo + " tem empréstimos não devolvidos!");
+            }
             
-
             if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo))  {
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
                 // limpa campos da interface

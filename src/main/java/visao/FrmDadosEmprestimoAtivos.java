@@ -19,11 +19,11 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
     /**
      * Creates new form FrmDadosEmprestimoAtivos
      */
-    private Emprestimo objetoEmprestimo;
+    private Emprestimo objetoEmprestimoAtivos;
 
     public FrmDadosEmprestimoAtivos() {
         initComponents();
-        this.objetoEmprestimo = new Emprestimo();
+        this.objetoEmprestimoAtivos = new Emprestimo();
         this.imprimirTabela();
         this.imprimirMaiorDevedor();
         this.imprimirTotalEmprestimos();
@@ -66,28 +66,30 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
 
         jTabelaEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "id amigo", "amigo", "ferramenta", "tempo de emprestimo"
+                "id", "id amigo", "amigo", "ferramenta", "ferramentaId"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        });
+        jTabelaEmprestimo.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTabelaEmprestimoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jTabelaEmprestimo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,21 +143,18 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JBRecebido, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JBApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jMaiorDevedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTotalEmprestimosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jMaiorDevedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTotalEmprestimosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,10 +168,9 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JBApagar)
-                        .addComponent(JBRecebido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBApagar)
+                    .addComponent(JBRecebido)
                     .addComponent(JBCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(97, 97, 97))
         );
@@ -181,61 +179,46 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTabelaEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaEmprestimoMouseClicked
-        // TODO add your handling code here:
+
 
     }//GEN-LAST:event_jTabelaEmprestimoMouseClicked
 
     private void JBRecebidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRecebidoActionPerformed
-        try {
-            // recebendo e validando dados da interface gráfica.
-            int id = 0;
-            String nomeAmigo = "";
-            String ferramenta = "";
-            int tempoEmprestimo = 0;
+        if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
+            int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
-            if (this.jTabelaEmprestimo.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro Selecione um amigo para concluir o emprestimo");
-
-            } else {
-                id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
-            }
-
-            // envia os dados para o amigo processar
-            {
-                // limpa os campos
-
-                JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!");
+            if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false)) {
+                JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído!");
+                this.imprimirTabela();
+                this.imprimirMaiorDevedor();
+                this.imprimirTotalEmprestimos();
 
             }
-            //Exibe no console o amigo cadastrado
-            System.out.println(this.objetoEmprestimo.getListaEmprestimos().toString());
-        } catch (Mensagem erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
-        } catch (NumberFormatException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um número válido.");
-        } finally {
-            // atualiza a tabela.
-            this.imprimirTabela();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!");
+
         }
     }
 
     public void imprimirTabela() {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaEmprestimo.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
-        ArrayList<Emprestimo> minhalista = this.objetoEmprestimo.getListaEmprestimos();
+        ArrayList<Emprestimo> minhalista = this.objetoEmprestimoAtivos.getEmprestimoQuery(true);
 
         for (Emprestimo a : minhalista) {
             modelo.addRow(new Object[]{
                 a.getId(),
+                a.getAmigoId(),
+                a.getNomeAmigo(),
                 a.getNomeFerramenta(),
-                a.getNomeAmigo()
-            });
+                a.getFerramentaId(),});
         }
 
     }//GEN-LAST:event_JBRecebidoActionPerformed
 
     private void imprimirTotalEmprestimos() {
-        ArrayList<Emprestimo> EmprestimoLista = new Emprestimo().getListaEmprestimos();
+        ArrayList<Emprestimo> EmprestimoLista = new Emprestimo().getEmprestimoQuery(true);
+
         int totalEmprestimos = EmprestimoLista.size();
 
         jTotalEmprestimosTitulo.setText("Total: " + totalEmprestimos + " empréstimos");
@@ -245,10 +228,11 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
         int emprestimosNumero = 0;
         int idMaiorDevedor = 0;
         ArrayList<Amigo> AmigoLista = new Amigo().getListaAmigo();
-        ArrayList<Emprestimo> EmprestimoLista = new Emprestimo().getListaEmprestimos();
+        ArrayList<Emprestimo> EmprestimoLista = new Emprestimo().getEmprestimoQuery(true);
         int counter = 0;
         String nomeMaiorDevedor = "";
 
+        // pegar Amigo com maior número de empréstimos
         for (Amigo amigo : AmigoLista) {
             int idToSearch = amigo.getId();
             for (Emprestimo emprestimo : EmprestimoLista) {
@@ -267,41 +251,10 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
         }
 
         if (emprestimosNumero > 0) {
-            jMaiorDevedorTitulo.setText("Maior devedor: " + nomeMaiorDevedor + " (" + emprestimosNumero + " emprestimos)");
+            jMaiorDevedorTitulo.setText("Maior devedor: " + nomeMaiorDevedor + " (" + emprestimosNumero + " empréstimos ativos)");
         }
 
     }
-
-    private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
-        try {
-            // validando dados da interface gráfica.
-            int id = 0;
-            if (this.jTabelaEmprestimo.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro selecione um Emprestimo para apagar");
-            } else {
-                id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
-            }
-
-            // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este Emprestimo?");
-
-            if (respostaUsuario == 0) {// clicou em SIM
-
-                if (this.objetoEmprestimo.deleteEmprestimoDb(id)) {
-                    // limpa os campos
-
-                    JOptionPane.showMessageDialog(rootPane, "Amigo excluída com Sucesso!");
-                }
-            }
-
-        } catch (Mensagem erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
-        } finally {
-            // atualiza a tabela.
-            this.imprimirTabela();
-
-        }
-    }//GEN-LAST:event_JBApagarActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
         this.dispose();// TODO add your handling code here:
@@ -314,6 +267,35 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
     private void jMaiorDevedorTituloAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jMaiorDevedorTituloAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jMaiorDevedorTituloAncestorAdded
+
+    private void jTabelaEmprestimoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTabelaEmprestimoAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabelaEmprestimoAncestorAdded
+
+    private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
+        try {
+            if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
+                int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
+
+                if (this.objetoEmprestimoAtivos.deleteEmprestimoDb(id)) {
+
+                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!");
+                throw new Mensagem("Selecione um emprestimo na tabela!");
+            }
+
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(rootPane, erro.getMessage());
+        } finally {
+            this.imprimirTabela();
+            this.imprimirMaiorDevedor();
+            this.imprimirTotalEmprestimos();
+
+        }
+    }//GEN-LAST:event_JBApagarActionPerformed
 
     /**
      * @param args the command line arguments

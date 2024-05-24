@@ -23,6 +23,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         JMenuDadosFerramenta = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jRelatorioEmprestimosAtivos = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         JSair = new javax.swing.JMenuItem();
 
         jToggleButton1.setBackground(new java.awt.Color(204, 204, 204));
@@ -96,6 +97,14 @@ public class FrmMainFrame extends javax.swing.JFrame {
             }
         });
         MenuAcoes.add(jRelatorioEmprestimosAtivos);
+
+        jMenuItem3.setText("Relatório empréstimos recebidos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        MenuAcoes.add(jMenuItem3);
 
         JSair.setText("Sair");
         JSair.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +187,12 @@ public class FrmMainFrame extends javax.swing.JFrame {
         janelaEmprestimosAtivos.setVisible(true);
     }//GEN-LAST:event_jRelatorioEmprestimosAtivosActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        FrmDadosEmprestimosFeitos janelaEmprestimosFeitos = new FrmDadosEmprestimosFeitos();
+        janelaEmprestimosFeitos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,6 +240,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jRelatorioEmprestimosAtivos;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
