@@ -10,6 +10,8 @@ public class Emprestimo {
     String nomeFerramenta;
     int amigoId;
     String nomeAmigo;
+    String dataInicio;
+    String dataFinal;
     EmprestimoDAO dao;
 
     public Emprestimo() {
@@ -31,6 +33,8 @@ public class Emprestimo {
 
     public boolean insertEmprestimoDb(int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo) {
         int id = this.dao.maiorID() + 1;
+        
+        
         Emprestimo objeto = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo);
 
         dao.insertEmprestimoDb(objeto);

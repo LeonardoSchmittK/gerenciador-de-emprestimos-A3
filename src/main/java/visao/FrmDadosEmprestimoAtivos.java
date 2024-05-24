@@ -4,6 +4,7 @@
  */
 package visao;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -66,17 +67,17 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
 
         jTabelaEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "id amigo", "amigo", "ferramenta", "ferramentaId"
+                "id", "id amigo", "amigo", "ferramenta", "ferramentaId", "Início", "Término"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -153,8 +154,8 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jMaiorDevedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTotalEmprestimosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,14 +205,20 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaEmprestimo.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         ArrayList<Emprestimo> minhalista = this.objetoEmprestimoAtivos.getEmprestimoQuery(true);
-
+       
+      
+       
+        
         for (Emprestimo a : minhalista) {
+            
             modelo.addRow(new Object[]{
                 a.getId(),
                 a.getAmigoId(),
                 a.getNomeAmigo(),
                 a.getNomeFerramenta(),
-                a.getFerramentaId(),});
+                a.getFerramentaId(),
+                
+            });
         }
 
     }//GEN-LAST:event_JBRecebidoActionPerformed

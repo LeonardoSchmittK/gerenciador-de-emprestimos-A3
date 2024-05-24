@@ -6,6 +6,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     public FrmMainFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

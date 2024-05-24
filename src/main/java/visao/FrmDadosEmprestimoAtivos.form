@@ -41,9 +41,9 @@
                           <Component id="jTotalEmprestimosTitulo" min="-2" pref="375" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="533" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,16 +96,28 @@
         <Component class="javax.swing.JTable" name="jTabelaEmprestimo">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="4">
+              <Table columnCount="7" rowCount="4">
                 <Column editable="true" title="id" type="java.lang.Integer"/>
                 <Column editable="true" title="id amigo" type="java.lang.Integer"/>
                 <Column editable="true" title="amigo" type="java.lang.String"/>
                 <Column editable="true" title="ferramenta" type="java.lang.String"/>
                 <Column editable="true" title="ferramentaId" type="java.lang.Integer"/>
+                <Column editable="true" title="In&#xed;cio" type="java.lang.String"/>
+                <Column editable="true" title="T&#xe9;rmino" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

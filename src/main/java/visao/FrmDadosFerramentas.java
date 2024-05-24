@@ -4,7 +4,9 @@
  */
 package visao;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Ferramenta;
@@ -49,6 +51,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
         JBCancelar = new javax.swing.JButton();
         jTotalFerramentasTitulo = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jTotalGastoTitulo = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -145,61 +148,65 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             }
         });
 
-        jTotalFerramentasTitulo.setText("Total ferramentas:");
+        jTotalFerramentasTitulo.setText("Total de ferramentas:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("RELATÓRIO FERRAMENTAS");
+
+        jTotalGastoTitulo.setText("Total gasto:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(JTFCusto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(JTFMarca)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(JBAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JBApagar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JBCancelar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTotalGastoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(JTFCusto))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(231, 231, 231))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(JBAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JBApagar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JBCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTotalFerramentasTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTotalFerramentasTitulo)
+                .addGap(2, 2, 2)
+                .addComponent(jTotalGastoTitulo)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTotalFerramentasTitulo)
-                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(133, 133, 133))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -219,7 +226,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
                     .addComponent(JBCancelar)
                     .addComponent(JBAlterar)
                     .addComponent(JBApagar))
-                .addGap(34, 34, 34))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
@@ -258,8 +265,8 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
 
     private void jTabelaFerramentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaFerramentasMouseClicked
         // TODO add your handling code here:
-        
-         if (this.jTabelaFerramentas.getSelectedRow() != -1) {
+
+        if (this.jTabelaFerramentas.getSelectedRow() != -1) {
             String nome = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 1).toString();
             String marca = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 2).toString();
             String custo = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 3).toString();
@@ -273,7 +280,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
 
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
         // TODO add your handling code here:
-        
+
         try {
             // validando dados da interface gráfica.
             int id = 0;
@@ -360,8 +367,13 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JBAlterarActionPerformed
 
-    
-    
+    private void imprimirGastoTotal(int totalGasto) {
+
+        NumberFormat formatadorReal = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        String reais = formatadorReal.format(totalGasto);
+        jTotalGastoTitulo.setText("Total gasto: " + reais);
+    }
+
     public void clearFields() {
         this.JTFNome.setText("");
         this.JTFMarca.setText("");
@@ -374,14 +386,17 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
         //Carrega a lista de objetos aluno
         ArrayList<Ferramenta> minhalista = this.objetoFerramenta.getListaFerramentas();
         jTotalFerramentasTitulo.setText(minhalista.size() + " ferramentas");
+        int totalGasto = 0;
         for (Ferramenta a : minhalista) {
-            System.out.println("NOME " + a.getNome());
+            totalGasto += a.getCusto();
             modelo.addRow(new Object[]{
                 a.getId(),
                 a.getNome(),
                 a.getMarca(),
                 a.getCusto(),});
         }
+
+        this.imprimirGastoTotal(totalGasto);
     }
 
     /**
@@ -435,5 +450,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabelaFerramentas;
     private javax.swing.JLabel jTotalFerramentasTitulo;
+    private javax.swing.JLabel jTotalGastoTitulo;
     // End of variables declaration//GEN-END:variables
+
 }

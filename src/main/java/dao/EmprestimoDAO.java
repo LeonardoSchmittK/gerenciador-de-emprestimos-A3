@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model.Emprestimo;
@@ -102,6 +104,11 @@ public class EmprestimoDAO {
     }
 
     public boolean insertEmprestimoDb(Emprestimo objeto) {
+
+        
+        
+        
+        
         String sql = "INSERT INTO tb_emprestimo(id,nomeFerramenta,ferramentaId,nomeAmigo,amigoId,estaAtivo) VALUES(?,?,?,?,?,?)";
 
         try {
@@ -112,6 +119,7 @@ public class EmprestimoDAO {
             stmt.setString(4, objeto.getNomeAmigo());
             stmt.setInt(5, objeto.getAmigoId());
             stmt.setBoolean(6, true);
+            
 
             stmt.execute();
             stmt.close();
