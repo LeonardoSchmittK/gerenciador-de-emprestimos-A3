@@ -1,11 +1,10 @@
 package model;
 
 import java.util.ArrayList;
-
 import javax.xml.crypto.Data;
-
 import dao.EmprestimoDAO;
 import java.time.LocalDate;
+import java.time.DayOfWeek;
 
 public class Emprestimo {
 
@@ -153,5 +152,9 @@ public class Emprestimo {
         this.setDataFinal(this.getDataAtual().plusDays(QuantidadeDias));
         return this.getDataFinal();
     }
-    
+
+    public DayOfWeek VerificarDiadaSemana(){
+        DayOfWeek VerificarDiadaSemana = getDataFinal().getDayOfWeek();
+        return VerificarDiadaSemana;
+    }
 }
