@@ -8,7 +8,7 @@ import model.Amigo;
 import model.Emprestimo;
 import model.Ferramenta;
 
-public class FrmCadastrarEmprestimoFrame extends javax.swing.JFrame {
+public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
 
     private Ferramenta objetoFerramenta;
     private Amigo objetoAmigo;
@@ -23,7 +23,7 @@ public class FrmCadastrarEmprestimoFrame extends javax.swing.JFrame {
     public ArrayList<Ferramenta> FerramentaLista = new ArrayList<>();
     public ArrayList<Amigo> AmigoLista = new ArrayList<>();
 
-    public FrmCadastrarEmprestimoFrame() {
+    public FrmNovoEmprestimoFrame() {
         initComponents();
         this.setTemAmigo(false);
         this.setTemFerramenta(false);
@@ -67,7 +67,7 @@ public class FrmCadastrarEmprestimoFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("CADASTRAR NOVO EMPRÉSTIMO");
+        jLabel1.setText("NOVO EMPRÉSTIMO");
 
         jLabel3.setText("para o amigo");
 
@@ -428,27 +428,28 @@ public class FrmCadastrarEmprestimoFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastrarEmprestimoFrame.class
+            java.util.logging.Logger.getLogger(FrmNovoEmprestimoFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastrarEmprestimoFrame.class
+            java.util.logging.Logger.getLogger(FrmNovoEmprestimoFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastrarEmprestimoFrame.class
+            java.util.logging.Logger.getLogger(FrmNovoEmprestimoFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastrarEmprestimoFrame.class
+            java.util.logging.Logger.getLogger(FrmNovoEmprestimoFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmCadastrarEmprestimoFrame().setVisible(true);
+                new FrmNovoEmprestimoFrame().setVisible(true);
             }
         });
     }
