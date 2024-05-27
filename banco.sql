@@ -9,17 +9,18 @@ CREATE TABLE IF NOT EXISTS tb_ferramenta (
 );
 
 # criar tabela tb_amigo
-CREATE TABLE IF NOT EXISTS tb_ferramenta (
+CREATE TABLE IF NOT EXISTS tb_amigo (
     id INT PRIMARY KEY,
     nome VARCHAR(255),
     telefone VARCHAR(255)
 );
 
 # criar tabela tb_emprestimo
-CREATE TABLE IF NOT EXISTS tb_ferramenta (
+CREATE TABLE IF NOT EXISTS tb_emprestimo (
     id INT PRIMARY KEY,
     amigoId INT,
-    ferramentaId INT
+    ferramentaId INT,
+    dataTempo DATE
 );
 
 
