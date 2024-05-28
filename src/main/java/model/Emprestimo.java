@@ -15,8 +15,8 @@ public class Emprestimo {
     String nomeFerramenta;
     int amigoId;
     String nomeAmigo;
-    String dataInicio;
-    String dataFinal;
+    LocalDate dataInicio;
+    LocalDate dataFinal;
     EmprestimoDAO dao;
 
     public Emprestimo() {
@@ -29,18 +29,18 @@ public class Emprestimo {
     }
 
     public Emprestimo(int id, int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal) {
+        
         this.setId(id);
         this.setFerramentaId(ferramentaId);
         this.setNomeFerramenta(nomeFerramenta);
         this.setAmigoId(amigoId);
         this.setNomeAmigo(nomeAmigo);
-        this.setDataAtual(DataAtual);
+        this.setDataInicio(DataAtual);
         this.setDataFinal(DataFinal);
     }
 
     public boolean insertEmprestimoDb(int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal) {
         int id = this.dao.maiorID() + 1;
-        
         
         Emprestimo objeto = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, DataAtual, DataFinal);
 
@@ -132,34 +132,33 @@ public class Emprestimo {
         this.dao = dao;
     }
 
-    public static LocalDate getDataAtual(){
+    public LocalDate getDataInicio() {
+        return this.dataInicio;
+    }
+
+    public void setDataInicio(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public LocalDate getDataFinal() {
+        return this.dataFinal;
+    }
+
+    public LocalDate getDataAtual() {
         LocalDate dataAtual = LocalDate.now();
         return dataAtual;
     }
 
-    public Date getData(LocalDate data){
+    public Date getData(LocalDate data) {
         return Date.valueOf(data);
     }
 
-    public void setDataAtual(LocalDate DataAtual){
+    public void setDataAtual(LocalDate DataAtual) {
         this.DataAtual = DataAtual;
     }
 
-    public static LocalDate getDataFinal(){
-        return Emprestimo.getDataFinal();
-    }
-
-    public void setDataFinal(LocalDate DataFinal){
+    public void setDataFinal(LocalDate DataFinal) {
         this.DataFinal = DataFinal;
     }
 
-    public LocalDate CalculoDataFInal(int QuantidadeDias){
-        this.setDataFinal(Emprestimo.getDataAtual().plusDays(QuantidadeDias));
-        return Emprestimo.getDataFinal();
-    }
-
-    public DayOfWeek VerificarDiadaSemana(){
-        DayOfWeek VerificarDiadaSemana = getDataFinal().getDayOfWeek();
-        return VerificarDiadaSemana;
-    }
 }

@@ -304,44 +304,45 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
 
-                
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // cadastrar emprestimo
- 
-        if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0 ) {
+
+        if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma ferramenta!");
-        }else{
-             if (jComboBoxSelecionarAmigo.getSelectedIndex() == 0 ) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um amigo!");
-
         } else {
+            if (jComboBoxSelecionarAmigo.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um amigo!");
 
-            int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
-            int idxEscolhidoAmigo = jComboBoxSelecionarAmigo.getSelectedIndex();
+            } else {
 
-            Ferramenta ferramentaEscolhida = this.FerramentaLista.get(idxEscolhidoFerramenta - 1);
-            Amigo amigoEscolhido = this.AmigoLista.get(idxEscolhidoAmigo - 1);
+                int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
+                int idxEscolhidoAmigo = jComboBoxSelecionarAmigo.getSelectedIndex();
 
-            int idFerramenta = ferramentaEscolhida.getId();
-            String nomeFerramenta = ferramentaEscolhida.getNome();
-            int idAmigo = amigoEscolhido.getId();
-            String nomeAmigo = amigoEscolhido.getNome();
+                Ferramenta ferramentaEscolhida = this.FerramentaLista.get(idxEscolhidoFerramenta - 1);
+                Amigo amigoEscolhido = this.AmigoLista.get(idxEscolhidoAmigo - 1);
 
-            if (this.objetoEmprestimo.estaAmigoDevendo(idAmigo)) {
-                JOptionPane.showMessageDialog(rootPane, nomeAmigo + " tem empréstimos não devolvidos!");
-            }
-            
-            String dataFinal = this.getDateEmprestimoFinal();
-            String dataInicial = this.getDateEmprestimoInicial();
+                int idFerramenta = ferramentaEscolhida.getId();
+                String nomeFerramenta = ferramentaEscolhida.getNome();
+                int idAmigo = amigoEscolhido.getId();
+                String nomeAmigo = amigoEscolhido.getNome();
 
-      if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo, )) {
-                JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
-                // limpa campos da interface
-                jComboBoxSelecionarFerramenta.setSelectedIndex(0);
-                jComboBoxSelecionarAmigo.setSelectedIndex(0);
-                jQuantidadeDiasEmprestimo.setText("15");
-                this.imprimirValidadeEmprestimo(15);
+                if (this.objetoEmprestimo.estaAmigoDevendo(idAmigo)) {
+                    JOptionPane.showMessageDialog(rootPane, nomeAmigo + " tem empréstimos não devolvidos!");
+                }
 
+                String dataFinal = this.getDateEmprestimoFinal();
+                LocalDate dataInicial = LocalDate.now();
+               
+                if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo, LocalDate.now(), LocalDate.now())) {
+                    JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
+                    // limpa campos da interface
+                    jComboBoxSelecionarFerramenta.setSelectedIndex(0);
+                    jComboBoxSelecionarAmigo.setSelectedIndex(0);
+                    jQuantidadeDiasEmprestimo.setText("15");
+                    this.imprimirValidadeEmprestimo(15);
+
+                }
             }
         }
 

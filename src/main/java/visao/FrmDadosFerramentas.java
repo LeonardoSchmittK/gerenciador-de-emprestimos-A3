@@ -394,7 +394,6 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
         for (Ferramenta a : minhalista) {
             totalGasto += a.getCusto();
             modelo.addRow(new Object[]{
-                a.getId(),
                 a.getNome(),
                 a.getMarca(),
                 a.getCusto(),});

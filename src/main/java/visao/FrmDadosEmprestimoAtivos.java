@@ -67,17 +67,17 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
 
         jTabelaEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Amigo", "telefone Amigo", "ferramenta", "Início", "Término Previsto"
+                "id", "Amigo", "idAmigo", "ferramenta", "idFerramenta", "Início"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -100,8 +100,9 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTabelaEmprestimo);
         if (jTabelaEmprestimo.getColumnModel().getColumnCount() > 0) {
-            jTabelaEmprestimo.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTabelaEmprestimo.getColumnModel().getColumn(3).setMaxWidth(60);
+            jTabelaEmprestimo.getColumnModel().getColumn(0).setMaxWidth(20);
+            jTabelaEmprestimo.getColumnModel().getColumn(1).setMaxWidth(50);
+            jTabelaEmprestimo.getColumnModel().getColumn(5).setMaxWidth(60);
         }
 
         JBRecebido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -158,8 +159,8 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jMaiorDevedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTotalEmprestimosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,6 +194,7 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
             int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
             if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false)) {
+
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído!");
                 this.imprimirTabela();
                 this.imprimirMaiorDevedor();
@@ -209,20 +211,17 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaEmprestimo.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         ArrayList<Emprestimo> minhalista = this.objetoEmprestimoAtivos.getEmprestimoQuery(true);
-       
-      
-       
-        
-        for (Emprestimo a : minhalista) {
-            
+
+        for (Emprestimo e : minhalista) {
+
             modelo.addRow(new Object[]{
-                a.getId(),
-                a.getAmigoId(),
-                a.getNomeAmigo(),
-                a.getNomeFerramenta(),
-                a.getFerramentaId(),
-                
-            });
+                e.getId(),
+                e.getNomeAmigo(),
+                e.getAmigoId(),
+                e.getNomeFerramenta(),
+                e.getFerramentaId(),
+                e.getDataInicio()});
+
         }
 
     }//GEN-LAST:event_JBRecebidoActionPerformed

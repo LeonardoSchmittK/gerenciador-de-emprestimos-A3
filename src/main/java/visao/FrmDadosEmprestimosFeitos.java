@@ -75,11 +75,11 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "amigo", "Telefone Amigo", "ferramenta", "data inicial", "Data final", "Tempo de emprestimo"
+                "id", "amigo", "amigoId", "ferramenta", "ferramentaId", "data devolução"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -102,8 +102,12 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTabelaEmprestimo);
         if (jTabelaEmprestimo.getColumnModel().getColumnCount() > 0) {
-            jTabelaEmprestimo.getColumnModel().getColumn(3).setMaxWidth(80);
-            jTabelaEmprestimo.getColumnModel().getColumn(4).setMaxWidth(70);
+            jTabelaEmprestimo.getColumnModel().getColumn(0).setMaxWidth(20);
+            jTabelaEmprestimo.getColumnModel().getColumn(1).setMaxWidth(60);
+            jTabelaEmprestimo.getColumnModel().getColumn(2).setMaxWidth(50);
+            jTabelaEmprestimo.getColumnModel().getColumn(3).setMaxWidth(100);
+            jTabelaEmprestimo.getColumnModel().getColumn(4).setMaxWidth(100);
+            jTabelaEmprestimo.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
         jMaiorDevedorRealizadoTitulo.setText("Maior devedor:");
@@ -126,23 +130,21 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jMaiorDevedorRealizadoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(278, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTotalEmprestimosRealizadosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(JBApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(102, 102, 102)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jMaiorDevedorRealizadoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTotalEmprestimosRealizadosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(JBApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(102, 102, 102))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,10 +248,13 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         for (Emprestimo e : listaEmprestimos) {
             modeloTabela.addRow(new Object[]{
                 e.getId(),
-                e.getAmigoId(),
                 e.getNomeAmigo(),
+                e.getAmigoId(),
                 e.getNomeFerramenta(),
-                e.getFerramentaId(),});
+                e.getFerramentaId(),
+                e.getDataInicio(),
+                e.getDataFinal()
+            });
         }
 
 
