@@ -278,11 +278,15 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
 
+                
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // cadastrar emprestimo
-
-        if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0 || jComboBoxSelecionarAmigo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Escolha as opções corretamente!");
+ 
+        if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0 ) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma ferramenta!");
+        }else{
+             if (jComboBoxSelecionarAmigo.getSelectedIndex() == 0 ) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um amigo!");
 
         } else {
 
@@ -304,7 +308,7 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
             String dataFinal = this.getDateEmprestimoFinal();
             String dataInicial = this.getDateEmprestimoInicial();
 
-            if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo)) {
+      if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo, )) {
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
                 // limpa campos da interface
                 jComboBoxSelecionarFerramenta.setSelectedIndex(0);
