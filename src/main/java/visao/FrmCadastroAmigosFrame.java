@@ -48,6 +48,12 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
         NomeText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NomeText.setText("Nome:");
 
+        JTFnomeInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFnomeInputActionPerformed(evt);
+            }
+        });
+
         Telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Telefone.setText("Telefone:");
 
@@ -163,6 +169,10 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_MenuSairActionPerformed
+
+    private void JTFnomeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFnomeInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFnomeInputActionPerformed
 
     /**
      * @param args the command line arguments

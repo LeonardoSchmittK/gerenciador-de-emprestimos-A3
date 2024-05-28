@@ -176,7 +176,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erronumb) {
-
+            
             JOptionPane.showMessageDialog(null, "Número inválido!");
         }
 

@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS tb_emprestimo (
     id INT PRIMARY KEY,
     amigoId INT,
     ferramentaId INT,
-    dataTempo DATE
+    dataInicio DATE,
+    dataFinal DATE
 );
 
 
