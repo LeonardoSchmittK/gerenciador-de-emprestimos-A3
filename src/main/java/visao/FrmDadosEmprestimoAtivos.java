@@ -67,17 +67,17 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
 
         jTabelaEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "id", "id amigo", "amigo", "ferramenta", "ferramentaId", "Início", "Término"
+                "Amigo", "telefone Amigo", "ferramenta", "Início", "Término Previsto"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -99,6 +99,10 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTabelaEmprestimo);
+        if (jTabelaEmprestimo.getColumnModel().getColumnCount() > 0) {
+            jTabelaEmprestimo.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTabelaEmprestimo.getColumnModel().getColumn(3).setMaxWidth(60);
+        }
 
         JBRecebido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JBRecebido.setText("Recebido");

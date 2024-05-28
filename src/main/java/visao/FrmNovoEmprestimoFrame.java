@@ -61,6 +61,8 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabelValidadeEmprestimo = new javax.swing.JLabel();
         jLabelAlertaEmprestimoCoibido = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -220,6 +222,14 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Lista de Emprestimos:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,24 +237,40 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAlertaEmprestimoCoibido)
                     .addComponent(jLabel1)
-                    .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(197, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel6)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelAlertaEmprestimoCoibido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,11 +304,15 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
 
+                
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // cadastrar emprestimo
-
-        if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0 || jComboBoxSelecionarAmigo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Escolha as opções corretamente!");
+ 
+        if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0 ) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma ferramenta!");
+        }else{
+             if (jComboBoxSelecionarAmigo.getSelectedIndex() == 0 ) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um amigo!");
 
         } else {
 
@@ -304,7 +334,7 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
             String dataFinal = this.getDateEmprestimoFinal();
             String dataInicial = this.getDateEmprestimoInicial();
 
-            if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo)) {
+      if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo, )) {
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
                 // limpa campos da interface
                 jComboBoxSelecionarFerramenta.setSelectedIndex(0);
@@ -359,6 +389,10 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         jQuantidadeDiasEmprestimo.setFocusable(true);
     }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseEntered
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     public void imprimirEmprestimoCoibido() {
         if (!this.isTemAmigo() || !this.isTemFerramenta()) {
@@ -513,12 +547,14 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelAlertaEmprestimoCoibido;
     private javax.swing.JLabel jLabelValidadeEmprestimo;
     private javax.swing.JPanel jPanelPainelBotoesEmprestimo;
     private javax.swing.JPanel jPanelPainelEmprestimo;
     private javax.swing.JTextField jQuantidadeDiasEmprestimo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
 }

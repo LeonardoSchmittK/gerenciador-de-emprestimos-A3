@@ -64,20 +64,20 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
 
         jTabelaAmigo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "id", "Nome", "Telefone"
+                "Nome", "Telefone"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -94,9 +94,6 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTabelaAmigo);
-        if (jTabelaAmigo.getColumnModel().getColumnCount() > 0) {
-            jTabelaAmigo.getColumnModel().getColumn(0).setMaxWidth(50);
-        }
 
         jLabel1.setText("Nome");
 
