@@ -1,3 +1,17 @@
+/*
+    AmigoDAO
+    
+    Esta classe representa o Objeto de Acesso a Dados (DAO) para manipular
+    operações relacionadas à entidade Amigo no banco de dados.
+
+    Atributos:
+        - AmigoLista: Um ArrayList para armazenar objetos Amigo.
+
+    Métodos:
+        - getAmigoLista(): Recupera uma lista de objetos Amigo do banco de dados.
+        - setAmigoLista(ArrayList<Amigo> AmigoLista): Define a lista de Amigo.
+
+*/
 package dao;
 
 import java.sql.PreparedStatement;
@@ -9,33 +23,48 @@ import java.util.ArrayList;
 import model.Amigo;
 
 public class AmigoDAO {
-
+    // ArrayList para armazenar objetos Amigo
     public ArrayList<Amigo> AmigoLista = new ArrayList<>();
-
+    /**
+     * Recupera uma lista de objetos Amigo do banco de dados.
+     * 
+     * @return ArrayList<Amigo> A lista de objetos Amigo recuperados do banco de dados.
+     */
     public ArrayList<Amigo> getAmigoLista(){
+        // Limpa a lista existente
         AmigoLista.clear();
 
         try{
+            // Estabelece a conexão com o banco de dados e cria uma declaração
             Statement stmt = ConexaoDao.getConexao().createStatement();
+            // Executa a consulta SQL para recuperar os dados
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_amigo");
+            // Itera pelo conjunto de resultados
             while (res.next()) {
-
+                // Obtém os dados do resultado
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
                 int telefone = res.getInt("telefone");
+                 // Cria um novo objeto Amigo com os dados obtidos
 
                 Amigo ObjetoAmigo = new Amigo(id, nome, telefone);
-
+                // Adiciona o objeto Amigo à lista
                 AmigoLista.add(ObjetoAmigo);
             }
+            // Fecha a declaração
             stmt.close();
 
         }catch(SQLException Erro){
             System.out.println("Erro: " + Erro);
         }
+        // Retorna a lista de objetos Amigo
         return AmigoLista;
     }
-    
+    /**
+     * Define a lista de Amigo.
+     * 
+     * @param AmigoLista A lista de objetos Amigo a ser definida.
+     */
     public void setAmigoLista(ArrayList<Amigo> AmigoLista){
         this.AmigoLista = AmigoLista;
     }
