@@ -79,18 +79,25 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
 
         jTabelaFerramentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "id", "Nome", "Marca", "Custo "
+                "Nome", "Marca", "Custo "
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -102,9 +109,6 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTabelaFerramentas);
-        if (jTabelaFerramentas.getColumnModel().getColumnCount() > 0) {
-            jTabelaFerramentas.getColumnModel().getColumn(0).setMaxWidth(40);
-        }
 
         JBAlterar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         JBAlterar.setText("alterar");
