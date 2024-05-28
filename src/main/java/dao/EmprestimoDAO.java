@@ -1,11 +1,10 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model.Emprestimo;
@@ -26,8 +25,10 @@ public class EmprestimoDAO {
                 String nomeFerramenta = res.getString("nomeFerramenta");
                 int amigoId = res.getInt("amigoId");
                 String nomeAmigo = res.getString("nomeAmigo");
+                Date dataInicio = res.getDate("dataInicio");
+                Date dataFinal = res.getDate("dataFinal");
 
-                Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo);
+                Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, dataInicio.toLocalDate(), dataFinal.toLocalDate());
 
                 EmprestimoLista.add(objetoEmprestimo);
             }
@@ -51,8 +52,10 @@ public class EmprestimoDAO {
                 String nomeFerramenta = res.getString("nomeFerramenta");
                 int amigoId = res.getInt("amigoId");
                 String nomeAmigo = res.getString("nomeAmigo");
+                Date dataInicio = res.getDate("dataInicio");
+                Date dataFinal = res.getDate("dataFinal");
 
-                Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo);
+                Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, dataInicio.toLocalDate(), dataFinal.toLocalDate());
 
                 EmprestimoLista.add(objetoEmprestimo);
             }
@@ -76,8 +79,10 @@ public class EmprestimoDAO {
                 String nomeFerramenta = res.getString("nomeFerramenta");
                 int amigoId = res.getInt("amigoId");
                 String nomeAmigo = res.getString("nomeAmigo");
+                Date dataInicio = res.getDate("dataInicio");
+                Date dataFinal = res.getDate("dataFinal");
 
-                Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo);
+                Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, dataInicio.toLocalDate(), dataFinal.toLocalDate());
 
                 EmprestimoLista.add(objetoEmprestimo);
                 if (!EmprestimoLista.isEmpty()) {
@@ -105,10 +110,6 @@ public class EmprestimoDAO {
 
     public boolean insertEmprestimoDb(Emprestimo objeto) {
 
-        
-        
-        
-        
         String sql = "INSERT INTO tb_emprestimo(id,nomeFerramenta,ferramentaId,nomeAmigo,amigoId,estaAtivo) VALUES(?,?,?,?,?,?)";
 
         try {
@@ -119,7 +120,8 @@ public class EmprestimoDAO {
             stmt.setString(4, objeto.getNomeAmigo());
             stmt.setInt(5, objeto.getAmigoId());
             stmt.setBoolean(6, true);
-            
+            stmt.setDate(7, objeto.getData(Emprestimo.getDataAtual()));
+            stmt.setDate(8, objeto.getData(Emprestimo.getDataFinal()));
 
             stmt.execute();
             stmt.close();
@@ -151,13 +153,16 @@ public class EmprestimoDAO {
     }
 
     public boolean updateEmprestimoBd(Emprestimo objeto) {
-        String sql = "UPDATE tb_emprestimo set nomeFerramenta = ? ,ferramentaId = ? ,nomeAmigo= ?,amigoId = ? WHERE id = ?";
+        String sql = "UPDATE tb_emprestimo set nomeFerramenta = ? ,ferramentaId = ? ,nomeAmigo= ?,amigoId = ?,dataInicio = ?,dataFinal = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
             stmt.setString(1, objeto.getNomeFerramenta());
             stmt.setInt(2, objeto.getFerramentaId());
             stmt.setString(3, objeto.getNomeAmigo());
             stmt.setInt(4, objeto.getAmigoId());
+            stmt.setDate(7, objeto.getData(Emprestimo.getDataAtual()));
+            stmt.setDate(8, objeto.getData(Emprestimo.getDataFinal()));
+
             stmt.execute();
             stmt.close();
             return true;
