@@ -1,5 +1,6 @@
 package visao;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class FrmMainFrame extends javax.swing.JFrame {
@@ -224,12 +225,15 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void JCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCreditosActionPerformed
+       ImageIcon x = new ImageIcon("./a3 logo.jpeg");
         JOptionPane.showMessageDialog(rootPane, "CRIADORES:\n"
+       
                 + "David Camargo Hech\n"
                 + "Gabriel Martins Meira\n"
                 + "Leonardo Schmitt Kreuch\n"
                 + "Leonardo Sousa Vargas\n"
-                + "Mateus Almeida Santos");        // TODO add your handling code here:
+                + "Mateus Almeida Santos\n","TESTE",0,x);     
+     
     }//GEN-LAST:event_JCreditosActionPerformed
 
     private void JSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JSairActionPerformed
