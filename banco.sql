@@ -1,3 +1,6 @@
+CREATE SCHEMA IF NOT EXISTS `db_ferramentas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `db_ferramentas` ;
+
 # criar as 3 tabelas do projeto
 
 # criar tabela tb_ferramenta
@@ -21,7 +24,10 @@ CREATE TABLE IF NOT EXISTS tb_emprestimo (
     amigoId INT,
     ferramentaId INT,
     dataInicio DATE,
-    dataFinal DATE
+    dataFinal DATE,
+    nomeFerramenta VARCHAR(255),
+    nomeAmigo VARCHAR(255),
+    estaAtivo TINYINT
 );
 
 
