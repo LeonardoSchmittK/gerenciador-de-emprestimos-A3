@@ -145,7 +145,7 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             
       
            if(this.objetoAmigo.insertAmigoDb(nome,telefone)){
-               JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+               JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!" , "Cadastro realizado com sucesso!" , JOptionPane.INFORMATION_MESSAGE);
                
                this.JTFnomeInput.setText("");
                this.JTFtelefoneInput.setText("");

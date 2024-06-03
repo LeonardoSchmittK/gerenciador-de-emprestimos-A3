@@ -356,7 +356,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             if (this.objetoFerramenta.updateFerramentaBd(id, nome, marca, custo)) {
                 // limpa os campos
                 this.clearFields();
-                JOptionPane.showMessageDialog(rootPane, "Ferramenta Alterado com Sucesso!");
+                JOptionPane.showConfirmDialog(rootPane, "Ferramenta Alterado com Sucesso!");
 
             }
             //Exibe no console a ferramenta cadastrado
