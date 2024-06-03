@@ -195,14 +195,14 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
 
             if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false)) {
 
-                JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído!");
+                JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído!", "Emprestimo concluído!" , JOptionPane.INFORMATION_MESSAGE);
                 this.imprimirTabela();
                 this.imprimirMaiorDevedor();
                 this.imprimirTotalEmprestimos();
 
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!");
+            JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "Selecione um emprestimo na tabela!" , JOptionPane.QUESTION_MESSAGE);
 
         }
     }
@@ -289,11 +289,11 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
 
                 if (this.objetoEmprestimoAtivos.deleteEmprestimoDb(id)) {
 
-                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!");
+                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!" , "Empréstimo removido!" , JOptionPane.INFORMATION_MESSAGE);
 
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!");
+                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "Selecione um emprestimo na tabela!" , JOptionPane.QUESTION_MESSAGE);
                 throw new Mensagem("Selecione um emprestimo na tabela!");
             }
 
