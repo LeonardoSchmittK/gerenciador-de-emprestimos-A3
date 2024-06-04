@@ -426,7 +426,7 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         if (!this.isTemAmigo() || !this.isTemFerramenta()) {
             this.remove(jPanelPainelEmprestimo);
             this.remove(jPanelPainelBotoesEmprestimo);
-            jLabelAlertaEmprestimoCoibido.setText("Adicione ao menos 1 ferramenta e 1 amigo! (clique aqui para voltar)");
+            jLabelAlertaEmprestimoCoibido.setText("Tenha ao menos 1 ferramenta e 1 amigo disponíveis! (clique aqui para voltar)");
         }
     }
 
