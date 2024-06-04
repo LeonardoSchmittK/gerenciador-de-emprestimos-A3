@@ -47,7 +47,7 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -270,9 +270,9 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void jComboBoxSelecionarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelecionarFerramentaActionPerformed
+    private void jComboBoxSelecionarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {                                                              
         // TODO add your handling code here:
 
         int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
@@ -301,31 +301,31 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jComboBoxSelecionarFerramentaActionPerformed
+    }                                                             
 
-    private void jComboBoxSelecionarFerramentaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxSelecionarFerramentaFocusGained
+    private void jComboBoxSelecionarFerramentaFocusGained(java.awt.event.FocusEvent evt) {                                                          
 
-    }//GEN-LAST:event_jComboBoxSelecionarFerramentaFocusGained
+    }                                                         
 
-    private void jComboBoxSelecionarAmigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxSelecionarAmigoFocusGained
-
-
-    }//GEN-LAST:event_jComboBoxSelecionarAmigoFocusGained
+    private void jComboBoxSelecionarAmigoFocusGained(java.awt.event.FocusEvent evt) {                                                     
 
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    }                                                    
+
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         this.dispose();
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }                                        
 
-    private void jLabelAlertaEmprestimoCoibidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
+    private void jLabelAlertaEmprestimoCoibidoMouseClicked(java.awt.event.MouseEvent evt) {                                                           
         // TODO add your handling code here:]
         this.dispose();
-    }//GEN-LAST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
+    }                                                          
 
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // cadastrar emprestimo
 
         if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0) {
@@ -355,45 +355,47 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
 
                 String dataFinal = this.getDateEmprestimoFinal();
                 LocalDate dataInicial = LocalDate.now();
+                String marca = ferramentaEscolhida.getMarca();
+                Double custo = ferramentaEscolhida.getCusto();
 
-                if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo, LocalDate.now(), LocalDate.now())) {
+                if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo, LocalDate.now(), LocalDate.now(), marca, custo)) {
                     JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
                     // limpa campos da interface
                     jComboBoxSelecionarFerramenta.setSelectedIndex(0);
                     jComboBoxSelecionarAmigo.setSelectedIndex(0);
                     jQuantidadeDiasEmprestimo.setText("15");
                     this.imprimirValidadeEmprestimo(15);
-
+                    
                 }
             }
         }
+        
+    }                                        
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jQuantidadeDiasEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoActionPerformed
+    private void jQuantidadeDiasEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {                                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoActionPerformed
+    }                                                         
 
-    private void jQuantidadeDiasEmprestimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyTyped
+    private void jQuantidadeDiasEmprestimoKeyTyped(java.awt.event.KeyEvent evt) {                                                   
 
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyTyped
+    }                                                  
 
-    private void jQuantidadeDiasEmprestimoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyPressed
-
-
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyPressed
-
-    private void jQuantidadeDiasEmprestimoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoFocusLost
+    private void jQuantidadeDiasEmprestimoKeyPressed(java.awt.event.KeyEvent evt) {                                                     
 
 
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoFocusLost
+    }                                                    
 
-    private void jQuantidadeDiasEmprestimoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
+    private void jQuantidadeDiasEmprestimoFocusLost(java.awt.event.FocusEvent evt) {                                                    
 
 
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
+    }                                                   
 
-    private void jQuantidadeDiasEmprestimoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseExited
+    private void jQuantidadeDiasEmprestimoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {                                                                 
+
+
+    }                                                                
+
+    private void jQuantidadeDiasEmprestimoMouseExited(java.awt.event.MouseEvent evt) {                                                      
         jQuantidadeDiasEmprestimo.setFocusable(false);
 
         try {
@@ -406,12 +408,12 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseExited
+    }                                                     
 
-    private void jQuantidadeDiasEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseEntered
+    private void jQuantidadeDiasEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {                                                       
         // TODO add your handling code here:
         jQuantidadeDiasEmprestimo.setFocusable(true);
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseEntered
+    }                                                      
 
     public void imprimirEmprestimoCoibido() {
         if (!this.isTemAmigo() || !this.isTemFerramenta()) {
@@ -555,7 +557,7 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
         this.dateEmprestimoInicial = dateEmprestimoInicial;
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBoxSelecionarAmigo;
@@ -573,6 +575,6 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelPainelEmprestimo;
     private javax.swing.JTextField jQuantidadeDiasEmprestimo;
     private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
 }
