@@ -16,11 +16,11 @@ public class ConexaoDao {
             Class.forName(driver);
 
             String server = "localhost";
-            String database = "emprestimoFerramentas";
-            String url = "jdbc:mysql://" + server + ":3306/"
+            String database = "db_ferramentas";
+            String url = "jdbc:mysql://" + server + ":330/"
                     + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "Dgllm2024!";
+            String password = "mgp.incs7";
 
             connection = DriverManager.getConnection(url, user, password);
 
