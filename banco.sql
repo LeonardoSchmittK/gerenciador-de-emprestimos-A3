@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS tb_emprestimo (
     dataFinal DATE,
     nomeFerramenta VARCHAR(255),
     nomeAmigo VARCHAR(255),
+    marca VARCHAR(255),
+    custo DOUBLE,
     estaAtivo TINYINT
 );
 
