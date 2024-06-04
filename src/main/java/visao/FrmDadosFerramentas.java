@@ -79,20 +79,20 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
 
         jTabelaFerramentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nome", "Marca", "Custo "
+                "id", "Nome", "Marca", "Custo "
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                true, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -394,9 +394,13 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
         for (Ferramenta a : minhalista) {
             totalGasto += a.getCusto();
             modelo.addRow(new Object[]{
+                a.getId(),
                 a.getNome(),
-                a.getMarca(),
-                a.getCusto(),});
+                a.getMarca(),                
+                a.getCusto(),
+
+            
+            });
         }
 
         this.imprimirGastoTotal(totalGasto);

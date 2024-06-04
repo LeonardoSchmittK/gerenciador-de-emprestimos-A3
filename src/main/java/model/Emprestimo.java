@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Date;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -17,10 +16,12 @@ public class Emprestimo {
     String nomeAmigo;
     LocalDate dataInicio;
     LocalDate dataFinal;
+    String marca;
+    Double custo;
     EmprestimoDAO dao;
 
     public Emprestimo() {
-        this(0, 0, "", 0, "", null, null);
+        this(0, 0, "", 0, "", null, null, "", 0.0);
         this.setDao(new EmprestimoDAO());
     }
 
@@ -28,8 +29,7 @@ public class Emprestimo {
         return dao.estaAmigoDevendo(amigoId);
     }
 
-    public Emprestimo(int id, int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal) {
-        
+    public Emprestimo(int id, int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal, String marca, Double custo) {
         this.setId(id);
         this.setFerramentaId(ferramentaId);
         this.setNomeFerramenta(nomeFerramenta);
@@ -37,12 +37,14 @@ public class Emprestimo {
         this.setNomeAmigo(nomeAmigo);
         this.setDataInicio(DataAtual);
         this.setDataFinal(DataFinal);
+        this.setMarca(marca);
+        this.setCusto(custo);
     }
 
-    public boolean insertEmprestimoDb(int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal) {
+    public boolean insertEmprestimoDb(int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal, String marca, Double custo) {
         int id = this.dao.maiorID() + 1;
         
-        Emprestimo objeto = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, DataAtual, DataFinal);
+        Emprestimo objeto = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, DataAtual, DataFinal, marca, custo);
 
         dao.insertEmprestimoDb(objeto);
 
@@ -50,7 +52,7 @@ public class Emprestimo {
     }
 
     public boolean updateEmprestimoBd(int id, int ferramentaId, String nomeFerramenta, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal) {
-        Emprestimo objeto = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, DataAtual, DataFinal);
+        Emprestimo objeto = new Emprestimo(id, ferramentaId, nomeFerramenta, amigoId, nomeAmigo, DataAtual, DataFinal, marca, custo);
         int indice = this.procuraIndice(id);
         dao.updateEmprestimoBd(objeto);
         return true;
@@ -159,6 +161,22 @@ public class Emprestimo {
 
     public void setDataFinal(LocalDate DataFinal) {
         this.DataFinal = DataFinal;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Double getCusto() {
+        return custo;
+    }
+
+    public void setCusto(Double custo) {
+        this.custo = custo;
     }
 
 }

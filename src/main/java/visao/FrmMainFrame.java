@@ -1,23 +1,58 @@
 package visao;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class FrmMainFrame extends javax.swing.JFrame {
-
-    
 
     public FrmMainFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+
+        this.setLayout(new BorderLayout());
+
+        JPanel fullScreenPanel = new JPanel();
+        fullScreenPanel.setLayout(new GridBagLayout());
+
+        JPanel centralPanel = new JPanel();
+        centralPanel.setPreferredSize(new Dimension(600, 600));
+        centralPanel.setBackground(Color.decode("#EEEEEE"));
+
+        ImageIcon icon = new ImageIcon("./icone-ferramenta.png");
+        JLabel label = new JLabel(icon);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setSize(new Dimension(50, 10));
+        centralPanel.add(label);
+
+        JLabel title = new JLabel("GERENCIADOR DE EMPRÉSTIMOS");
+        title.setFont(new Font("SansSerif", Font.BOLD, 24));
+        centralPanel.add(title);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        fullScreenPanel.add(centralPanel, gbc);
+
+        this.add(fullScreenPanel);
+        this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -35,15 +70,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciador de empréstimos");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("GERENCIADOR DE EMPRÉSTIMOS");
-        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("V1.0");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jMenu2.setText("empréstimos");
 
@@ -151,23 +178,11 @@ public class FrmMainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(414, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(130, 130, 130)))
-                .addGap(349, 349, 349))
+            .addGap(0, 545, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(414, Short.MAX_VALUE))
+            .addGap(0, 229, Short.MAX_VALUE)
         );
 
         pack();
@@ -175,23 +190,23 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMenuDadosFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuDadosFerramentaActionPerformed
-       FrmDadosFerramentas janelaFerramentas = new FrmDadosFerramentas();
+        FrmDadosFerramentas janelaFerramentas = new FrmDadosFerramentas();
         janelaFerramentas.setVisible(true);
-        
+
     }//GEN-LAST:event_JMenuDadosFerramentaActionPerformed
 
     private void JMenuCadFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadFerramentaActionPerformed
-         FrmCadastroFerramentaFrame JanelaCadastro = new FrmCadastroFerramentaFrame();
+        FrmCadastroFerramentaFrame JanelaCadastro = new FrmCadastroFerramentaFrame();
         JanelaCadastro.setVisible(true);
     }//GEN-LAST:event_JMenuCadFerramentaActionPerformed
 
     private void JMenuCadastroAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadastroAmigoActionPerformed
-          FrmCadastroAmigosFrame JanelaCadastroAmigo = new FrmCadastroAmigosFrame();
+        FrmCadastroAmigosFrame JanelaCadastroAmigo = new FrmCadastroAmigosFrame();
         JanelaCadastroAmigo.setVisible(true);
     }//GEN-LAST:event_JMenuCadastroAmigoActionPerformed
 
     private void MenuAcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAcoesActionPerformed
-      //  janelaFerramentas.setVisible(true);
+        //  janelaFerramentas.setVisible(true);
     }//GEN-LAST:event_MenuAcoesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -205,7 +220,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmDadosAmigos janelaAmigos = new FrmDadosAmigos();
         janelaAmigos.setVisible(true);
-        
+
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -223,24 +238,22 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
 
-                              
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void JCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCreditosActionPerformed
-       ImageIcon x = new ImageIcon("./a3 logo.jpeg");
+        ImageIcon x = new ImageIcon("./a3 logo.jpeg");
         JOptionPane.showMessageDialog(rootPane, "CRIADORES:\n"
-       
                 + "David Camargo Hech\n"
                 + "Gabriel Martins Meira\n"
                 + "Leonardo Schmitt Kreuch\n"
                 + "Leonardo Sousa Vargas\n"
-                + "Mateus Almeida Santos\n","CRÉDITOS",0,x);     
-     
+                + "Mateus Almeida Santos\n", "CRÉDITOS", 0, x);
+
     }//GEN-LAST:event_JCreditosActionPerformed
 
     private void JSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JSairActionPerformed
-this.dispose();        // TODO add your handling code here:
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_JSairActionPerformed
 
     /**
@@ -286,8 +299,6 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JMenuItem JMenuDadosFerramenta;
     private javax.swing.JMenuItem JSair;
     private javax.swing.JMenu MenuAcoes;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
