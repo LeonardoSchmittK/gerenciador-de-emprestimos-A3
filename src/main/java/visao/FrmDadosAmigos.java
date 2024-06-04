@@ -222,7 +222,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             if (this.objetoAmigo.updateAmigoBd(id, nome,telefone)) {
                 // limpa os campos
                 this.clearFields();
-                JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!" , "Amigo Alterado com Sucesso!" , JOptionPane.PLAIN_MESSAGE);
                 
             }
             //Exibe no console o amigo cadastrado
@@ -230,7 +230,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+            JOptionPane.showMessageDialog(null, "Informe um número válido." , "Informe um número válido." , JOptionPane.WARNING_MESSAGE);
         } finally {
             // atualiza a tabela.
             this.imprimirTabela();
@@ -291,7 +291,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             }
 
             // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este Amigo?");
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este Amigo?" , "Tem certeza que deseja remover este Amigo?" , JOptionPane.QUESTION_MESSAGE);
             
             if (respostaUsuario == 0) {// clicou em SIM
               

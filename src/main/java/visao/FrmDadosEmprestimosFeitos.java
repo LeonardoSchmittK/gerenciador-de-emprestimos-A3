@@ -183,11 +183,11 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
                 if (this.objetoEmprestimoFeito.deleteEmprestimoDb(id)) {
 
-                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!");
+                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!" , "Empréstimo removido!" , JOptionPane.PLAIN_MESSAGE);
 
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!");
+                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "Selecione um emprestimo na tabela!" , JOptionPane.QUESTION_MESSAGE);
                 throw new Mensagem("Selecione um emprestimo na tabela!");
             }
 

@@ -362,6 +362,11 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
                     if (objetoFerramenta.deleteFerramentaDb(idFerramenta)){
                     }
+                    
+                    FrmNovoEmprestimoFrame main = new FrmNovoEmprestimoFrame();    
+                    main.setVisible(true);
+                    this.dispose();
+                    
                     // limpa campos da interface
                     jComboBoxSelecionarFerramenta.setSelectedIndex(0);
                     jComboBoxSelecionarAmigo.setSelectedIndex(0);
