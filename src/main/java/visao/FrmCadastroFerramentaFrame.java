@@ -164,7 +164,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
             }
 
             if (this.objetoFerramenta.insertFerramentaDb(nomeferramenta, marca, custo)) {
-                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!", "Ferramenta Cadastrada com Sucesso!" , JOptionPane.PLAIN_MESSAGE);
                 // limpa campos da interface
                 this.JTFNomeFerramenta.setText("");
                 this.JTFMarca.setText("");
@@ -177,7 +177,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erronumb) {
             
-            JOptionPane.showMessageDialog(null, "Número inválido!");
+            JOptionPane.showMessageDialog(null, "Número inválido!" , "Número inválido!" , JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_JBCadastrarActionPerformed
