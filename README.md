@@ -4,16 +4,15 @@
 [![NPM License](https://img.shields.io/npm/l/license)](https://github.com/LeonardoSchmittK/a3prog-crud-ferramentas/blob/main/LICENSE)
 # Integrantes
 
-David Camargo Rech;
+David Camargo Rech / anemoculus /
 
-Gabriel Martins Meira;
+Gabriel Martins Meira / GabrielMartinMeira / 10724113373;
 
-Leonardo Schmitt Kreuch;
+Leonardo Schmitt Kreuch / Leonardo schmittk /
 
-Leonardo Sousa Vargas;
+Leonardo Sousa Vargas / leo150406 /
 
-Mateus Almeida Santos;
-
+Mateus Almeida Santos / mtgjbr /
 
 
 
