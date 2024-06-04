@@ -234,6 +234,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JTFCustoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFCustoActionPerformed
@@ -356,7 +357,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             if (this.objetoFerramenta.updateFerramentaBd(id, nome, marca, custo)) {
                 // limpa os campos
                 this.clearFields();
-                JOptionPane.showConfirmDialog(rootPane, "Ferramenta Alterado com Sucesso!");
+                JOptionPane.showConfirmDialog(rootPane, "Ferramenta Alterado com Sucesso!" , "Ferramenta Alterado com Sucesso!" , JOptionPane.PLAIN_MESSAGE);
 
             }
             //Exibe no console a ferramenta cadastrado

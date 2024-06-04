@@ -46,7 +46,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         fullScreenPanel.add(centralPanel, gbc);
 
         this.add(fullScreenPanel);
-        this.setResizable(false);
+     //   this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")

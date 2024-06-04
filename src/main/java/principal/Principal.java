@@ -12,7 +12,12 @@ public class Principal {/**
      * @param args argumentos da linha de comando (não utilizado neste caso)
      */
     public static void main(String[]args){
+     
        FrmMainFrame objetotela = new FrmMainFrame();
         objetotela.setVisible(true);
     }
+
+    
 }
+
+   
