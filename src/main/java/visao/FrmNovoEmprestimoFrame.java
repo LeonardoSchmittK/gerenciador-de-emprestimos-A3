@@ -361,7 +361,6 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
                 if (this.objetoEmprestimo.insertEmprestimoDb(idFerramenta, nomeFerramenta, idAmigo, nomeAmigo, LocalDate.now(), LocalDate.now(), marca, custo)) {
                     JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
                     if (objetoFerramenta.deleteFerramentaDb(idFerramenta)){
-                    JOptionPane.showMessageDialog(rootPane, "Ferramenta Apagada!");
                     }
                     // limpa campos da interface
                     jComboBoxSelecionarFerramenta.setSelectedIndex(0);
