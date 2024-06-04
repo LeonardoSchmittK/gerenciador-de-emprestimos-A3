@@ -165,6 +165,7 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTotalEmprestimosRealizadosTituloAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTotalEmprestimosRealizadosTituloAncestorAdded
