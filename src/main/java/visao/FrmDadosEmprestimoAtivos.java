@@ -210,14 +210,14 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
             
             if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false)) {
 
-                JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído!", "Emprestimo concluído!" , JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído", "Emprestimo concluído!" , JOptionPane.INFORMATION_MESSAGE);
                 this.imprimirTabela();
                 this.imprimirMaiorDevedor();
                 this.imprimirTotalEmprestimos();
 
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "Selecione um emprestimo na tabela!" , JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "error" , JOptionPane.ERROR_MESSAGE);
 
         }
     }
@@ -308,12 +308,12 @@ public class FrmDadosEmprestimoAtivos extends javax.swing.JFrame {
 
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "Selecione um emprestimo na tabela!" , JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "Selecione um emprestimo na tabela!" , JOptionPane.ERROR_MESSAGE);
                 throw new Mensagem("Selecione um emprestimo na tabela!");
             }
 
         } catch (Mensagem erro) {
-            JOptionPane.showMessageDialog(rootPane, erro.getMessage());
+          
         } finally {
             this.imprimirTabela();
             this.imprimirMaiorDevedor();

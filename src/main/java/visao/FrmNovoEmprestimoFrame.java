@@ -410,7 +410,7 @@ public class FrmNovoEmprestimoFrame extends javax.swing.JFrame {
             this.imprimirValidadeEmprestimo(labelDate);
 
         } catch (NumberFormatException exception) {
-            JOptionPane.showConfirmDialog(rootPane, "Digite um número");
+            JOptionPane.showMessageDialog(rootPane,"Digite um número");
             jQuantidadeDiasEmprestimo.setText("15");
         }
 

@@ -66,7 +66,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         JCreditos = new javax.swing.JMenuItem();
-        JSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciador de empréstimos");
@@ -162,14 +161,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
         });
         jMenu3.add(JCreditos);
 
-        JSair.setText("Sair");
-        JSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JSairActionPerformed(evt);
-            }
-        });
-        jMenu3.add(JSair);
-
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -252,10 +243,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JCreditosActionPerformed
 
-    private void JSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JSairActionPerformed
-        this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_JSairActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -297,7 +284,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuCadFerramenta;
     private javax.swing.JMenuItem JMenuCadastroAmigo;
     private javax.swing.JMenuItem JMenuDadosFerramenta;
-    private javax.swing.JMenuItem JSair;
     private javax.swing.JMenu MenuAcoes;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
