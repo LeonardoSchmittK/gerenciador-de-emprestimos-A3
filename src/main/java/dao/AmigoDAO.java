@@ -44,7 +44,7 @@ public class AmigoDAO {
                 // Obtém os dados do resultado
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
-                int telefone = res.getInt("telefone");
+                String telefone = res.getString("telefone");
                  // Cria um novo objeto Amigo com os dados obtidos
 
                 Amigo ObjetoAmigo = new Amigo(id, nome, telefone);
@@ -75,7 +75,7 @@ public class AmigoDAO {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
             stmt.setInt(1, objeto.getId());
             stmt.setString(2, objeto.getNome());
-            stmt.setInt(3, objeto.getTelefone());
+            stmt.setString(3, objeto.getTelefone());
 
             stmt.execute();
             stmt.close();
@@ -118,7 +118,7 @@ public class AmigoDAO {
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
              stmt.setString(1, objeto.getNome());
-            stmt.setInt(2, objeto.getTelefone());
+            stmt.setString(2, objeto.getTelefone());
             stmt.setInt(3, objeto.getId());
             stmt.execute();
             stmt.close();

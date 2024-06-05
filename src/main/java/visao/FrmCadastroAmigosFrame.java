@@ -1,11 +1,15 @@
 package visao;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import static jdk.internal.joptsimple.util.RegexMatcher.regex;
 import model.Amigo;
 
 public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
+
     private Amigo objetoAmigo;
-    
+
     public FrmCadastroAmigosFrame() {
         initComponents();
         this.objetoAmigo = new Amigo();
@@ -128,38 +132,40 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
-       try{
+        try {
+            String regex = "^\\d{8,12}$";
+            Pattern pattern = Pattern.compile(regex);
             String nome = "";
-            int telefone = 0;
-            
-            if(this.JTFnomeInput.getText().length() <= 2){
-                throw new Mensagem("O nome deve ter mais de 2 caracteres!");
-            }else{
+            String telefone = this.JTFtelefoneInput.getText();
+
+            if (this.JTFnomeInput.getText().length() <= 2 || this.JTFnomeInput.getText().length() > 20) {
+                throw new Mensagem("O nome deve ter mais de 2 caracteres e menos de 20 caracteres!");
+            } else {
                 nome = this.JTFnomeInput.getText();
             }
-            
-            if(this.JTFtelefoneInput.getText().length() < 8){
-                throw new Mensagem("Seu telefone deve ter mais de 7 número");
-            }else{
-                telefone = Integer.parseInt(this.JTFtelefoneInput.getText());
+
+            System.out.println(telefone);
+            Matcher matcher = pattern.matcher(telefone);
+            if (matcher.matches()) {
+                System.out.println("TRUE");
+            } else {
+                throw new Mensagem("Digite corretamente seu telefone (apenas números)");
             }
-            
-      
-           if(this.objetoAmigo.insertAmigoDb(nome,telefone)){
-               JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!" , "Cadastro realizado com sucesso!" , JOptionPane.INFORMATION_MESSAGE);
-               
-               this.JTFnomeInput.setText("");
-               this.JTFtelefoneInput.setText("");
-            
-           }
-           
-            System.out.println(this.objetoAmigo.getListaAmigo().toString());
-            
-        }catch(Mensagem erro){
-            
+
+            if (this.objetoAmigo.insertAmigoDb(nome, telefone)) {
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Cadastro realizado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
+
+                this.JTFnomeInput.setText("");
+                this.JTFtelefoneInput.setText("");
+
+            }
+
+        } catch (Mensagem erro) {
+
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-                                               
+
+
     }//GEN-LAST:event_JBCadastrarActionPerformed
 
     private void JTFtelefoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFtelefoneInputActionPerformed

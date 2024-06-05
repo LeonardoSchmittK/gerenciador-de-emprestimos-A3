@@ -25,28 +25,28 @@ public class FerramentaDAO {
      *
      * @return ArrayList contendo objetos Ferramenta
      */
-    public ArrayList<Ferramenta> getFerramentaLista(){
+    public ArrayList<Ferramenta> getFerramentaLista() {
         FerramentaLista.clear();
-        
-            try{
+
+        try {
             Statement stmt = ConexaoDao.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_ferramenta");
             while (res.next()) {
-            int id = res.getInt("id");
-            String nome = res.getString("nome");
-            String marca = res.getString("marca");
-            int custo = res.getInt("custo");
+                int id = res.getInt("id");
+                String nome = res.getString("nome");
+                String marca = res.getString("marca");
+                int custo = res.getInt("custo");
 
-            Ferramenta ObjetoFerramenta = new Ferramenta(id,nome, marca, custo);
+                Ferramenta ObjetoFerramenta = new Ferramenta(id, nome, marca, custo);
 
-            FerramentaLista.add(ObjetoFerramenta);
-        }
+                FerramentaLista.add(ObjetoFerramenta);
+            }
             stmt.close();
 
-        }catch(SQLException Erro){
+        } catch (SQLException Erro) {
             System.out.println("Erro ao carregar lista de ferramentas: " + Erro);
         }
-            
+
         return FerramentaLista;
     }
 
@@ -58,7 +58,7 @@ public class FerramentaDAO {
     public void setFerramentaLista(ArrayList<Ferramenta> FerramentaLista) {
         this.FerramentaLista = FerramentaLista;
     }
-    
+
     public boolean deleteFerramentaBd(int id) {
         try {
             Statement stmt = ConexaoDao.getConexao().createStatement();
@@ -68,6 +68,31 @@ public class FerramentaDAO {
             System.out.println("Erro ao remover ferramenta: " + erro);
         }
         return true;
+    }
+
+    public Ferramenta getFerramentaById(int id) {
+        Ferramenta fer = new Ferramenta();
+        try {
+            Statement stmt = ConexaoDao.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM tb_ferramenta WHERE id = " + id);
+            while (res.next()) {
+
+                String nome = res.getString("nome");
+                String marca = res.getString("marca");
+                int custo = res.getInt("custo");
+
+                Ferramenta ObjetoFerramenta = new Ferramenta(id, nome, marca, custo);
+
+                return ObjetoFerramenta;
+            }
+            stmt.close();
+
+        } catch (SQLException Erro) {
+            System.out.println("Erro ao carregar lista de ferramentas: " + Erro);
+        }
+
+        return fer;
+
     }
 
     public boolean insertFerramentaDb(Ferramenta objeto) {
@@ -103,8 +128,8 @@ public class FerramentaDAO {
 
         return maiorID;
     }
-    
-     public boolean updateFerramentaBd(Ferramenta objeto) {
+
+    public boolean updateFerramentaBd(Ferramenta objeto) {
         String sql = "UPDATE tb_ferramenta set nome = ? ,marca = ? ,custo= ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);

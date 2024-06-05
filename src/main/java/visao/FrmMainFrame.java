@@ -46,7 +46,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         fullScreenPanel.add(centralPanel, gbc);
 
         this.add(fullScreenPanel);
-     //   this.setResizable(false);
+        //   this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -71,7 +71,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         setTitle("Gerenciador de empréstimos");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenu2.setText("empréstimos");
+        jMenu2.setText("Empréstimos");
 
         jMenuItem1.setText("Novo empréstimo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(MenuAcoes);
 
-        jMenu1.setText("dados");
+        jMenu1.setText("Dados");
 
         JMenuDadosFerramenta.setText("Relatório ferramentas");
         JMenuDadosFerramenta.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +146,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setText("sobre");
+        jMenu3.setText("Sobre");
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu3ActionPerformed(evt);
@@ -202,7 +202,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        FrmNovoEmprestimoFrame janelaCadastroEmprestimo = new FrmNovoEmprestimoFrame();
+        FrmCadastroEmprestimo janelaCadastroEmprestimo = new FrmCadastroEmprestimo();
         janelaCadastroEmprestimo.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -217,7 +217,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jRelatorioEmprestimosAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioEmprestimosAtivosActionPerformed
         // TODO add your handling code here:
-        FrmDadosEmprestimoAtivos janelaEmprestimosAtivos = new FrmDadosEmprestimoAtivos();
+        FrmRelatorioEmprestimosAtivos janelaEmprestimosAtivos = new FrmRelatorioEmprestimosAtivos();
         janelaEmprestimosAtivos.setVisible(true);
     }//GEN-LAST:event_jRelatorioEmprestimosAtivosActionPerformed
 

@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="empr&#xe9;stimos"/>
+            <Property name="text" type="java.lang.String" value="Empr&#xe9;stimos"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
@@ -65,7 +65,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dados"/>
+            <Property name="text" type="java.lang.String" value="Dados"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuDadosFerramenta">
@@ -88,7 +88,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="sobre"/>
+            <Property name="text" type="java.lang.String" value="Sobre"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu3ActionPerformed"/>

@@ -5,14 +5,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Amigo;
 import model.Emprestimo;
+import model.Ferramenta;
 
 public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
     private Emprestimo objetoEmprestimoFeito;
+    private Ferramenta objetoFerramenta;
 
     public FrmDadosEmprestimosFeitos() {
         initComponents();
         this.objetoEmprestimoFeito = new Emprestimo();
+        this.objetoFerramenta = new Ferramenta();
         this.imprimirTabela();
         this.imprimirTotalEmprestimos();
         this.imprimirMaiorDevedor();
@@ -183,11 +186,11 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
                 if (this.objetoEmprestimoFeito.deleteEmprestimoDb(id)) {
 
-                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!" , "Empréstimo removido!" , JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.PLAIN_MESSAGE);
 
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!" , "Selecione um emprestimo na tabela!" , JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!", "Selecione um emprestimo na tabela!", JOptionPane.QUESTION_MESSAGE);
                 throw new Mensagem("Selecione um emprestimo na tabela!");
             }
 
@@ -247,12 +250,25 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         ArrayList<Emprestimo> listaEmprestimos = this.objetoEmprestimoFeito.getEmprestimoQuery(false);
 
         for (Emprestimo e : listaEmprestimos) {
+
+            ArrayList<Ferramenta> listaFerramentas = new ArrayList<Ferramenta>();
+            String[] indexesString = e.getFerramentasId().split(" ");
+            ArrayList<Integer> indexesInt = new ArrayList<Integer>();
+            String nomeFerramenta = "";
+            for (String index : indexesString) {
+                indexesInt.add(Integer.parseInt(index));
+
+            }
+
+            for (int index : indexesInt) {
+                nomeFerramenta += this.objetoFerramenta.getFerramentaById(index).getNome() + ",";
+            }
+
             modeloTabela.addRow(new Object[]{
                 e.getId(),
+                nomeFerramenta,
                 e.getNomeAmigo(),
                 e.getAmigoId(),
-                e.getNomeFerramenta(),
-                e.getFerramentaId(),
                 e.getDataInicio(),
                 e.getDataFinal()
             });
