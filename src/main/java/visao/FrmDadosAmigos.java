@@ -1,7 +1,9 @@
 package visao;
 
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Amigo;
 
@@ -246,6 +248,14 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
                 a.getTelefone()
             });
         }
+        
+         // centralizar valores das colunas
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+            for (int i = 0; i < jTabelaAmigo.getColumnCount(); i++) {
+                jTabelaAmigo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
     }
 
     private void jTabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaAmigoMouseClicked

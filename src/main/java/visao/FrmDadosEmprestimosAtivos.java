@@ -5,7 +5,9 @@
 package visao;
 
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Amigo;
 import model.Emprestimo;
@@ -15,7 +17,7 @@ import model.Ferramenta;
  *
  * @author Leonardo Schmitt
  */
-public class FrmRelatorioEmprestimosAtivos extends javax.swing.JFrame {
+public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
 
     private Emprestimo objetoEmprestimoAtivos;
     private Emprestimo objetoEmprestimo;
@@ -23,7 +25,7 @@ public class FrmRelatorioEmprestimosAtivos extends javax.swing.JFrame {
 
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
 
-    public FrmRelatorioEmprestimosAtivos() {
+    public FrmDadosEmprestimosAtivos() {
         initComponents();
         this.objetoEmprestimoAtivos = new Emprestimo();
         this.objetoEmprestimo = new Emprestimo();
@@ -292,6 +294,14 @@ public class FrmRelatorioEmprestimosAtivos extends javax.swing.JFrame {
 
         }
 
+        // centralizar valores das colunas
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        for (int i = 0; i < jTabelaEmprestimo.getColumnCount(); i++) {
+            jTabelaEmprestimo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
     }
 
     private void imprimirTotalEmprestimos() {
@@ -351,20 +361,21 @@ public class FrmRelatorioEmprestimosAtivos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmRelatorioEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDadosEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmRelatorioEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDadosEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmRelatorioEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDadosEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmRelatorioEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDadosEmprestimosAtivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmRelatorioEmprestimosAtivos().setVisible(true);
+                new FrmDadosEmprestimosAtivos().setVisible(true);
             }
         });
     }

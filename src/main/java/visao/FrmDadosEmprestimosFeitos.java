@@ -1,7 +1,9 @@
 package visao;
 
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Amigo;
 import model.Emprestimo;
@@ -19,6 +21,7 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         this.imprimirTabela();
         this.imprimirTotalEmprestimos();
         this.imprimirMaiorDevedor();
+
     }
 
     /**
@@ -72,21 +75,35 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
         jTabelaEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "id", "amigo", "amigoId", "ferramenta", "ferramentaId", "data devolução"
+                "id", "Ferramentas", "Amigo", "Data inicial", "Data final"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTabelaEmprestimo.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -106,11 +123,9 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTabelaEmprestimo);
         if (jTabelaEmprestimo.getColumnModel().getColumnCount() > 0) {
             jTabelaEmprestimo.getColumnModel().getColumn(0).setMaxWidth(20);
-            jTabelaEmprestimo.getColumnModel().getColumn(1).setMaxWidth(60);
-            jTabelaEmprestimo.getColumnModel().getColumn(2).setMaxWidth(50);
-            jTabelaEmprestimo.getColumnModel().getColumn(3).setMaxWidth(100);
+            jTabelaEmprestimo.getColumnModel().getColumn(1).setMaxWidth(100);
+            jTabelaEmprestimo.getColumnModel().getColumn(2).setMaxWidth(60);
             jTabelaEmprestimo.getColumnModel().getColumn(4).setMaxWidth(100);
-            jTabelaEmprestimo.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
         jMaiorDevedorRealizadoTitulo.setText("Maior devedor:");
@@ -272,6 +287,14 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
                 e.getDataInicio(),
                 e.getDataFinal()
             });
+
+            // centralizar valores das colunas
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+            for (int i = 0; i < jTabelaEmprestimo.getColumnCount(); i++) {
+                jTabelaEmprestimo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
         }
 
 

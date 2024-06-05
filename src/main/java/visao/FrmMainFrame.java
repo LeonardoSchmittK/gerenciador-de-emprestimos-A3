@@ -217,7 +217,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jRelatorioEmprestimosAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioEmprestimosAtivosActionPerformed
         // TODO add your handling code here:
-        FrmRelatorioEmprestimosAtivos janelaEmprestimosAtivos = new FrmRelatorioEmprestimosAtivos();
+        FrmDadosEmprestimosAtivos janelaEmprestimosAtivos = new FrmDadosEmprestimosAtivos();
         janelaEmprestimosAtivos.setVisible(true);
     }//GEN-LAST:event_jRelatorioEmprestimosAtivosActionPerformed
 
