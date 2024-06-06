@@ -1,5 +1,6 @@
 package visao;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Ferramenta;
 
@@ -10,6 +11,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
     public FrmCadastroFerramentaFrame() {
         initComponents();
         this.objetoFerramenta = new Ferramenta();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -84,18 +86,18 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(JTFNomeFerramenta, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                             .addComponent(jLabel2)
                             .addComponent(JTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 50, Short.MAX_VALUE))))
+                        .addGap(0, 50, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JBCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +150,7 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
             }
 
             if (this.objetoFerramenta.insertFerramentaDb(nomeferramenta, marca, custo)) {
-                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!", "Ferramenta Cadastrada com Sucesso!" , JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!", "Ferramenta Cadastrada com Sucesso!", JOptionPane.PLAIN_MESSAGE);
                 // limpa campos da interface
                 this.JTFNomeFerramenta.setText("");
                 this.JTFMarca.setText("");
@@ -160,8 +162,8 @@ public class FrmCadastroFerramentaFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erronumb) {
-            
-            JOptionPane.showMessageDialog(null, "Número inválido!" , "Número inválido!" , JOptionPane.WARNING_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Número inválido!", "Número inválido!", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_JBCadastrarActionPerformed

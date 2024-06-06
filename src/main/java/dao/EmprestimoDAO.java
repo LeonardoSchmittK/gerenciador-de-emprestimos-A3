@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import model.Emprestimo;
 
 public class EmprestimoDAO {
- 
+
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
 
     public ArrayList<Emprestimo> getEmprestimoLista() {
@@ -29,12 +29,13 @@ public class EmprestimoDAO {
                 Date dataFinal = res.getDate("dataFinal");
                 String marca = res.getString("marca");
                 Double custo = res.getDouble("custo");
-
+                System.out.println(dataFinal + " <<<<<<");
                 if (dataFinal == null) {
                     Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentasId, amigoId, nomeAmigo, dataInicio.toLocalDate(), null, marca, custo);
                     EmprestimoLista.add(objetoEmprestimo);
 
                 } else {
+                    System.out.println(dataFinal);
                     Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentasId, amigoId, nomeAmigo, dataInicio.toLocalDate(), dataFinal.toLocalDate(), marca, custo);
                     EmprestimoLista.add(objetoEmprestimo);
 
@@ -63,13 +64,16 @@ public class EmprestimoDAO {
                 Date dataFinal = res.getDate("dataFinal");
                 String marca = res.getString("marca");
                 Double custo = res.getDouble("custo");
+                                                        
 
                 if (dataFinal == null) {
                     Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentasId, amigoId, nomeAmigo, dataInicio.toLocalDate(), null, marca, custo);
                     EmprestimoLista.add(objetoEmprestimo);
 
                 } else {
+                    System.out.println(dataFinal + "<<< >E>E>E>>");
                     Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentasId, amigoId, nomeAmigo, dataInicio.toLocalDate(), dataFinal.toLocalDate(), marca, custo);
+
                     EmprestimoLista.add(objetoEmprestimo);
 
                 }
@@ -138,7 +142,7 @@ public class EmprestimoDAO {
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
             stmt.setInt(1, objeto.getId());
-           
+
             stmt.setString(2, objeto.getNomeAmigo());
             stmt.setInt(3, objeto.getAmigoId());
             stmt.setBoolean(4, true);
@@ -191,7 +195,7 @@ public class EmprestimoDAO {
         String sql = "UPDATE tb_emprestimo set nomeFerramenta = ? ,ferramentaId = ? ,nomeAmigo= ?,amigoId = ?,estaAtivo = ?,dataInicio = ?,dataFinal = ?, marca = ?, custo = ? WHERE id = ?";
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
-        
+
             stmt.setString(3, objeto.getNomeAmigo());
             stmt.setInt(4, objeto.getAmigoId());
             stmt.setDate(7, Date.valueOf(objeto.getDataInicio()));
@@ -208,17 +212,19 @@ public class EmprestimoDAO {
         }
     }
 
-    public boolean updateEmprestimoAtivoBd(int id, boolean estaAtivo) {
-        String sql = "UPDATE tb_emprestimo set estaAtivo = ? WHERE id = " + id;
+    public boolean updateEmprestimoAtivoBd(int id, boolean estaAtivo, LocalDate dataFinal) {
+        String sql = "UPDATE tb_emprestimo SET estaAtivo = ?, dataFinal = ? WHERE id = " + id;
+
         try {
             PreparedStatement stmt = ConexaoDao.getConexao().prepareStatement(sql);
             stmt.setBoolean(1, estaAtivo);
+            stmt.setDate(2, Date.valueOf(dataFinal));
 
             stmt.execute();
             stmt.close();
             return true;
         } catch (SQLException erro) {
-            System.out.println("Erro ao dar update emprestimo:" + erro);
+            System.out.println("Erro ao devolver emprestimo:" + erro);
             throw new RuntimeException(erro);
         }
     }

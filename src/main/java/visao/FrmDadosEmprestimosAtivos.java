@@ -4,6 +4,7 @@
  */
 package visao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -212,14 +213,13 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
 
             Emprestimo emprestimoEscolhido = this.EmprestimoLista.get(id - 1);
 
-            String nomeFerramenta = "FERRAMENTA";
-            String marca = emprestimoEscolhido.getMarca();
-            Double custo = emprestimoEscolhido.getCusto();
-
-            Ferramenta ob = new Ferramenta();
-            ob.insertFerramentaDb(nomeFerramenta, marca, custo);
-
-            if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false)) {
+//            String nomeFerramenta = "";
+//            String marca = emprestimoEscolhido.getMarca();
+//            Double custo = emprestimoEscolhido.getCusto();
+//            Ferramenta ob = new Ferramenta();
+//            ob.insertFerramentaDb(nomeFerramenta, marca, custo);
+            LocalDate dataAtual = LocalDate.now();
+            if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false, dataAtual)) {
 
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído", "Emprestimo concluído!", JOptionPane.INFORMATION_MESSAGE);
                 this.imprimirTabela();
@@ -291,7 +291,6 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
                 e.getId(),
                 nomeFerramenta,
                 e.getNomeAmigo(),
-                e.getAmigoId(),
                 e.getDataInicio()});
 
         }

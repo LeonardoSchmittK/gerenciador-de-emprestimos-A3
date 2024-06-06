@@ -1,7 +1,9 @@
 package visao;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -43,8 +45,9 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
         this.imprimirFerramentas();
         this.imprimirAmigos();
-      //  this.imprimirValidadeEmprestimo(15);
+        //  this.imprimirValidadeEmprestimo(15);
         this.imprimirEmprestimoCoibido();
+
     }
 
     /**
@@ -408,7 +411,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                     jComboBoxSelecionarFerramenta.setSelectedIndex(0);
                     jComboBoxSelecionarAmigo.setSelectedIndex(0);
                     jQuantidadeDiasEmprestimo.setText("15");
-                  //  this.imprimirValidadeEmprestimo(15);
+                    //  this.imprimirValidadeEmprestimo(15);
 
                 }
             }
@@ -421,6 +424,8 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         if (!this.isTemAmigo() || !this.isTemFerramenta()) {
             this.remove(jPanelPainelEmprestimo);
             this.remove(jPanelPainelBotoesEmprestimo);
+            ImageIcon iconeAlerta = new ImageIcon("icone-erro.png");
+            jLabelAlertaEmprestimoCoibido.setIcon(iconeAlerta);
             jLabelAlertaEmprestimoCoibido.setText("Tenha ao menos 1 ferramenta e 1 amigo disponíveis! (clique aqui para voltar)");
         }
     }
@@ -458,6 +463,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabelAlertaEmprestimoCoibidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
@@ -723,9 +729,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     public void setjQuantidadeDiasEmprestimo(JTextField jQuantidadeDiasEmprestimo) {
         this.jQuantidadeDiasEmprestimo = jQuantidadeDiasEmprestimo;
     }
-    
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

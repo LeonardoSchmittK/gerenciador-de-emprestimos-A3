@@ -30,6 +30,7 @@ public class Emprestimo {
     }
 
     public Emprestimo(int id, String ferramentasId, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal, String marca, Double custo) {
+        System.out.println(dataFinal + " ESTA É A DATA FINAL");
         this.setId(id);
         this.setFerramentasId(ferramentasId);
         this.setAmigoId(amigoId);
@@ -57,8 +58,8 @@ public class Emprestimo {
         return true;
     }
 
-    public boolean updateEmprestimoAtivoBd(int id, boolean estaAtivo) {
-        dao.updateEmprestimoAtivoBd(id, estaAtivo);
+    public boolean updateEmprestimoAtivoBd(int id, boolean estaAtivo, LocalDate dataFinal) {
+        dao.updateEmprestimoAtivoBd(id, estaAtivo, dataFinal);
         return true;
     }
 
@@ -133,10 +134,6 @@ public class Emprestimo {
         this.dataInicio = dataInicio;
     }
 
-    public LocalDate getDataFinal() {
-        return this.dataFinal;
-    }
-
     public LocalDate getDataAtual() {
         LocalDate dataAtual = LocalDate.now();
         return dataAtual;
@@ -151,7 +148,11 @@ public class Emprestimo {
     }
 
     public void setDataFinal(LocalDate DataFinal) {
-        this.DataFinal = DataFinal;
+        this.dataFinal = DataFinal;
+    }
+
+    public LocalDate getDataFinal() {
+        return this.dataFinal;
     }
 
     public String getMarca() {

@@ -259,7 +259,7 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         ArrayList<Emprestimo> listaEmprestimos = this.objetoEmprestimoFeito.getEmprestimoQuery(false);
 
         for (Emprestimo e : listaEmprestimos) {
-
+            System.out.println(e.getDataFinal() + " <<< < << <");
             ArrayList<Ferramenta> listaFerramentas = new ArrayList<Ferramenta>();
             String[] indexesString = e.getFerramentasId().split(" ");
             ArrayList<Integer> indexesInt = new ArrayList<Integer>();
@@ -277,7 +277,6 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
                 e.getId(),
                 nomeFerramenta,
                 e.getNomeAmigo(),
-                e.getAmigoId(),
                 e.getDataInicio(),
                 e.getDataFinal()
             });
