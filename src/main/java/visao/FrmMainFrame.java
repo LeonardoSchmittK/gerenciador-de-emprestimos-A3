@@ -192,14 +192,14 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuDadosFerramentaActionPerformed
 
     private void JMenuCadFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadFerramentaActionPerformed
-        FrmCadastroFerramentaFrame JanelaCadastro = new FrmCadastroFerramentaFrame();
+        FrmCadastroFerramenta JanelaCadastro = new FrmCadastroFerramenta();
         ImageIcon icone = new ImageIcon("icone-cadastro.png");
         JanelaCadastro.setIconImage(icone.getImage());
         JanelaCadastro.setVisible(true);
     }//GEN-LAST:event_JMenuCadFerramentaActionPerformed
 
     private void JMenuCadastroAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadastroAmigoActionPerformed
-        FrmCadastroAmigosFrame JanelaCadastroAmigo = new FrmCadastroAmigosFrame();
+        FrmCadastroAmigos JanelaCadastroAmigo = new FrmCadastroAmigos();
         ImageIcon icone = new ImageIcon("icone-cadastro.png");
         JanelaCadastroAmigo.setIconImage(icone.getImage());
         JanelaCadastroAmigo.setVisible(true);

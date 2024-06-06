@@ -1,6 +1,5 @@
 package visao;
 
-import java.awt.Color;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -264,29 +263,29 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                         .addComponent(jLabelAlertaEmprestimoCoibido))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(228, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(78, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelAlertaEmprestimoCoibido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                 .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel1)
-                    .addGap(24, 24, 24)
+                    .addGap(55, 55, 55)
                     .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(138, Short.MAX_VALUE)))
         );
@@ -301,32 +300,38 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
     private void jComboBoxSelecionarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelecionarFerramentaActionPerformed
 
-        int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
-        if (idxEscolhidoFerramenta < 0) {
+        try {
 
-            return;
+            int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
+            if (idxEscolhidoFerramenta < 0) {
+
+                return;
+            }
+            Ferramenta ferramentaEscolhida = this.FerramentaLista.get(idxEscolhidoFerramenta - 1);
+
+            if (this.ferramentasEscolhidas.indexOf(ferramentaEscolhida) >= 0) {
+                return;
+            } else {
+                this.counterDown += 25;
+
+                this.ferramentasEscolhidas.add(ferramentaEscolhida);
+                int idFerramenta = ferramentaEscolhida.getId();
+                String nomeFerramenta = ferramentaEscolhida.getNome();
+                System.out.println("O ID EH " + idFerramenta + " E O NOME EH " + nomeFerramenta);
+
+                JTextField ferramentaEscolhidaElemento = new JTextField();
+                ferramentaEscolhidaElemento.setEditable(false);
+                ferramentaEscolhidaElemento.setText(ferramentaEscolhida.getNome());
+                ferramentaEscolhidaElemento.setSize(100, 20);
+                ferramentaEscolhidaElemento.setLocation(0, counterDown);
+                jPainelFerramentasEscolhidas.add(ferramentaEscolhidaElemento);
+                indexes += ferramentaEscolhida.getId() + " ";
+                System.out.println(indexes);
+            }
+        } catch (IndexOutOfBoundsException indiceErrado) {
+            // catch vazio limpa os erros dispensáveis do terminal
         }
-        Ferramenta ferramentaEscolhida = this.FerramentaLista.get(idxEscolhidoFerramenta - 1);
 
-        if (this.ferramentasEscolhidas.indexOf(ferramentaEscolhida) >= 0) {
-            return;
-        } else {
-            this.counterDown += 25;
-
-            this.ferramentasEscolhidas.add(ferramentaEscolhida);
-            int idFerramenta = ferramentaEscolhida.getId();
-            String nomeFerramenta = ferramentaEscolhida.getNome();
-            System.out.println("O ID EH " + idFerramenta + " E O NOME EH " + nomeFerramenta);
-
-            JTextField ferramentaEscolhidaElemento = new JTextField();
-            ferramentaEscolhidaElemento.setEditable(false);
-            ferramentaEscolhidaElemento.setText(ferramentaEscolhida.getNome());
-            ferramentaEscolhidaElemento.setSize(100, 20);
-            ferramentaEscolhidaElemento.setLocation(0, counterDown);
-            jPainelFerramentasEscolhidas.add(ferramentaEscolhidaElemento);
-            indexes += ferramentaEscolhida.getId() + " ";
-            System.out.println(indexes);
-        }
     }//GEN-LAST:event_jComboBoxSelecionarFerramentaActionPerformed
 
     private void jComboBoxSelecionarAmigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxSelecionarAmigoFocusGained

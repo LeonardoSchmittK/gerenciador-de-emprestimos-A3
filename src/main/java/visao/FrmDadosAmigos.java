@@ -197,12 +197,11 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             // envia os dados para o amigo processar
             if (this.objetoAmigo.updateAmigoBd(id, nome, telefone)) {
                 // limpa os campos
-                this.clearFields();
+                this.limparCaixasDeTexto();
                 JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!", "Amigo Alterado com Sucesso!", JOptionPane.PLAIN_MESSAGE);
 
             }
-            //Exibe no console o amigo cadastrado
-            System.out.println(this.objetoAmigo.getListaAmigo().toString());
+
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
@@ -212,7 +211,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             this.imprimirTabela();
         }
     }//GEN-LAST:event_JBAlterarActionPerformed
-    public void clearFields() {
+    public void limparCaixasDeTexto() {
         this.JTFNome.setText("");
         this.JTFTelefone.setText("");
 
@@ -222,25 +221,24 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaAmigo.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         //Carrega a lista de objetos aluno
-        ArrayList<Amigo> minhalista = this.objetoAmigo.getListaAmigo();
-        jTotalAmigosTitulo.setText(minhalista.size() + " amigos");
+        ArrayList<Amigo> amigosLista = this.objetoAmigo.getListaAmigo();
+        jTotalAmigosTitulo.setText(amigosLista.size() + " amigos");
 
-        for (Amigo a : minhalista) {
-            System.out.println("NOME " + a.getNome());
+        for (Amigo a : amigosLista) {
             modelo.addRow(new Object[]{
                 a.getId(),
                 a.getNome(),
                 a.getTelefone()
             });
         }
-        
-         // centralizar valores das colunas
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-            for (int i = 0; i < jTabelaAmigo.getColumnCount(); i++) {
-                jTabelaAmigo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-            }
+        // centralizar valores das colunas
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        for (int i = 0; i < jTabelaAmigo.getColumnCount(); i++) {
+            jTabelaAmigo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     private void jTabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaAmigoMouseClicked
@@ -279,8 +277,8 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
 
                 if (this.objetoAmigo.deleteAmigoDb(id)) {
                     // limpa os campos
-                    this.clearFields();
-                    JOptionPane.showMessageDialog(rootPane, "Amigo excluída com Sucesso!");
+                    this.limparCaixasDeTexto();
+                    JOptionPane.showMessageDialog(rootPane, "Amigo excluído com Sucesso!");
                 }
             }
 

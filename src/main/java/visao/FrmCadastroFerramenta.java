@@ -1,36 +1,46 @@
 package visao;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import static jdk.internal.joptsimple.util.RegexMatcher.regex;
-import model.Amigo;
+import model.Ferramenta;
 
-public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
+public class FrmCadastroFerramenta extends javax.swing.JFrame {
 
-    private Amigo objetoAmigo;
+    private Ferramenta objetoFerramenta;
 
-    public FrmCadastroAmigosFrame() {
+    public FrmCadastroFerramenta() {
         initComponents();
-        this.objetoAmigo = new Amigo();
+        this.objetoFerramenta = new Ferramenta();
+
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JTFNomeFerramenta = new javax.swing.JTextField();
+        JTFMarca = new javax.swing.JTextField();
+        JTFCustoAquisição = new javax.swing.JTextField();
         JBCancelar = new javax.swing.JButton();
         JBCadastrar = new javax.swing.JButton();
-        JTFnomeInput = new javax.swing.JTextField();
-        JTFtelefoneInput = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setName("Cadastro para Amigos"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(358, 411));
+        setName("Cadastro de Ferramentas"); // NOI18N
+
+        JTFNomeFerramenta.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
+
+        JTFMarca.setBorder(javax.swing.BorderFactory.createTitledBorder("Marca"));
+        JTFMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFMarcaActionPerformed(evt);
+            }
+        });
+
+        JTFCustoAquisição.setBorder(javax.swing.BorderFactory.createTitledBorder("Custo de aquisição"));
 
         JBCancelar.setBackground(new java.awt.Color(242, 242, 242));
         JBCancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -51,22 +61,8 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             }
         });
 
-        JTFnomeInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
-        JTFnomeInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFnomeInputActionPerformed(evt);
-            }
-        });
-
-        JTFtelefoneInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
-        JTFtelefoneInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFtelefoneInputActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("CADASTRAR NOVO AMIGO");
+        jLabel2.setText("CADASTRAR NOVA FERRAMENTA");
 
         jMenu1.setText("Ações");
 
@@ -87,28 +83,34 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(JTFNomeFerramenta, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                            .addComponent(jLabel2)
+                            .addComponent(JTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 50, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JBCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                        .addComponent(JTFnomeInput, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
                 .addGap(26, 26, 26)
-                .addComponent(JTFnomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
+                .addGap(32, 32, 32)
+                .addComponent(JTFNomeFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addComponent(JTFMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(JTFCustoAquisição, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,59 +122,59 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
         try {
-            String regex = "^\\d{8,12}$";
-            Pattern pattern = Pattern.compile(regex);
-            String nome = "";
-            String telefone = this.JTFtelefoneInput.getText();
+            String nomeferramenta = "";
+            String marca = "";
+            int custo = 0;
 
-            if (this.JTFnomeInput.getText().length() <= 2 || this.JTFnomeInput.getText().length() > 20) {
-                throw new Mensagem("O nome deve ter mais de 2 caracteres e menos de 20 caracteres!");
+            if (this.JTFNomeFerramenta.getText().length() <= 2) {
+                throw new Mensagem("O nome deve ter mais de 2 caracteres!");
             } else {
-                nome = this.JTFnomeInput.getText();
+                nomeferramenta = this.JTFNomeFerramenta.getText();
             }
 
-            System.out.println(telefone);
-            Matcher matcher = pattern.matcher(telefone);
-            if (matcher.matches()) {
-                System.out.println("TRUE");
+            if (this.JTFMarca.getText().length() <= 2) {
+                throw new Mensagem("A marca deve ter mais de 2 caracteres!");
             } else {
-                throw new Mensagem("Digite corretamente seu telefone (apenas números)");
+                marca = this.JTFMarca.getText();
             }
 
-            if (this.objetoAmigo.insertAmigoDb(nome, telefone)) {
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Cadastro realizado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            if (Integer.parseInt(this.JTFCustoAquisição.getText()) <= 0) {
+                throw new Mensagem("O valor de aquisição deve ser maior que 0!");
+            } else {
+                custo = Integer.parseInt(this.JTFCustoAquisição.getText());
+            }
 
-                this.JTFnomeInput.setText("");
-                this.JTFtelefoneInput.setText("");
+            if (this.objetoFerramenta.insertFerramentaDb(nomeferramenta, marca, custo)) {
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!", "Ferramenta Cadastrada com Sucesso!", JOptionPane.PLAIN_MESSAGE);
+                // limpa campos da interface
+                this.JTFNomeFerramenta.setText("");
+                this.JTFMarca.setText("");
+                this.JTFCustoAquisição.setText("");
 
             }
 
         } catch (Mensagem erro) {
 
             JOptionPane.showMessageDialog(null, erro.getMessage());
-        }
+        } catch (NumberFormatException erronumb) {
 
+            JOptionPane.showMessageDialog(null, "Número inválido!", "Número inválido!", JOptionPane.WARNING_MESSAGE);
+        }
 
     }//GEN-LAST:event_JBCadastrarActionPerformed
 
-    private void JTFtelefoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFtelefoneInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFtelefoneInputActionPerformed
-
     private void MenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSairActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_MenuSairActionPerformed
 
-    private void JTFnomeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFnomeInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFnomeInputActionPerformed
+    private void JTFMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFMarcaActionPerformed
+
+    }//GEN-LAST:event_JTFMarcaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,21 +193,27 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroAmigosFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroAmigosFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroAmigosFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroAmigosFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmCadastroAmigosFrame().setVisible(true);
+                new FrmCadastroFerramenta().setVisible(true);
             }
         });
     }
@@ -213,8 +221,9 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCadastrar;
     private javax.swing.JButton JBCancelar;
-    private javax.swing.JTextField JTFnomeInput;
-    private javax.swing.JTextField JTFtelefoneInput;
+    private javax.swing.JTextField JTFCustoAquisição;
+    private javax.swing.JTextField JTFMarca;
+    private javax.swing.JTextField JTFNomeFerramenta;
     private javax.swing.JMenuItem MenuSair;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
