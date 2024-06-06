@@ -1,5 +1,6 @@
 package visao;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -249,6 +250,9 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
         if (emprestimosNumero > 0) {
             jMaiorDevedorRealizadoTitulo.setText("Maior devedor: " + nomeMaiorDevedor + " (" + emprestimosNumero + " empréstimos realizados)");
+        } else {
+            jMaiorDevedorRealizadoTitulo.setText("Não há empréstimos ativos");
+            jMaiorDevedorRealizadoTitulo.setForeground(Color.red);
         }
 
     }

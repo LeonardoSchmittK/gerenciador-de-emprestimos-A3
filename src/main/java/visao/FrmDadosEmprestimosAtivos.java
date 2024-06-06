@@ -4,6 +4,7 @@
  */
 package visao;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -223,8 +224,8 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído", "Emprestimo concluído!", JOptionPane.INFORMATION_MESSAGE);
                 this.imprimirTabela();
-                this.imprimirMaiorDevedor();
                 this.imprimirTotalEmprestimos();
+                this.imprimirMaiorDevedor();
 
             }
         } else {
@@ -254,9 +255,9 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
         } catch (Mensagem erro) {
 
         } finally {
-            this.imprimirTabela();
             this.imprimirMaiorDevedor();
             this.imprimirTotalEmprestimos();
+            this.imprimirTabela();
 
         }
 
@@ -314,6 +315,7 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
     }
 
     private void imprimirMaiorDevedor() {
+        System.out.println("RODANDO");
         int emprestimosNumero = 0;
         int idMaiorDevedor = 0;
         ArrayList<Amigo> AmigoLista = new Amigo().getListaAmigo();
@@ -341,6 +343,9 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
 
         if (emprestimosNumero > 0) {
             jMaiorDevedorTitulo.setText("Maior devedor: " + nomeMaiorDevedor + " (" + emprestimosNumero + " empréstimos ativos)");
+        } else {
+            jMaiorDevedorTitulo.setText("Não há empréstimos ativos");
+            jMaiorDevedorTitulo.setForeground(Color.red);
         }
 
     }

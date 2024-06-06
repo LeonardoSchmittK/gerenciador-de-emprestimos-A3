@@ -7,7 +7,9 @@ package visao;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Ferramenta;
 
@@ -332,14 +334,13 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
                 id = Integer.parseInt(this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 0).toString());
             }
 
-            // envia os dados para o Aluno processar
             if (this.objetoFerramenta.updateFerramentaBd(id, nome, marca, custo)) {
                 // limpa os campos
                 this.clearFields();
-                JOptionPane.showConfirmDialog(rootPane, "Ferramenta Alterado com Sucesso!" , "Ferramenta Alterado com Sucesso!" , JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(rootPane, "Ferramenta Alterada com Sucesso!", "Ferramenta Alterada com Sucesso!", JOptionPane.PLAIN_MESSAGE);
 
             }
-            //Exibe no console a ferramenta cadastrado
+            //Exibe no console a ferramenta cadastrada
             System.out.println(this.objetoFerramenta.getListaFerramentas().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -352,7 +353,6 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
     }//GEN-LAST:event_JBAlterarActionPerformed
 
     private void imprimirGastoTotal(int totalGasto) {
-
         NumberFormat formatadorReal = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         String reais = formatadorReal.format(totalGasto);
         jTotalGastoTitulo.setText("Total gasto: " + reais);
@@ -367,7 +367,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
     public void imprimirTabela() {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaFerramentas.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
-        //Carrega a lista de objetos aluno
+        //Carrega a lista de ferramentas
         ArrayList<Ferramenta> minhalista = this.objetoFerramenta.getListaFerramentas();
         jTotalFerramentasTitulo.setText(minhalista.size() + " ferramentas");
         int totalGasto = 0;
@@ -376,14 +376,19 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 a.getId(),
                 a.getNome(),
-                a.getMarca(),                
-                a.getCusto(),
-
-            
-            });
+                a.getMarca(),
+                a.getCusto(),});
         }
 
         this.imprimirGastoTotal(totalGasto);
+
+        // centralizar valores das colunas
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+        for (int i = 0; i < jTabelaFerramentas.getColumnCount(); i++) {
+            jTabelaFerramentas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     /**
