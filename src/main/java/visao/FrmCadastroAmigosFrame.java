@@ -21,9 +21,7 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
 
         JBCancelar = new javax.swing.JButton();
         JBCadastrar = new javax.swing.JButton();
-        NomeText = new javax.swing.JLabel();
         JTFnomeInput = new javax.swing.JTextField();
-        Telefone = new javax.swing.JLabel();
         JTFtelefoneInput = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -32,35 +30,35 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Cadastro para Amigos"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(358, 411));
 
-        JBCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        JBCancelar.setBackground(new java.awt.Color(242, 242, 242));
+        JBCancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JBCancelar.setText("Cancelar");
+        JBCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBCancelarActionPerformed(evt);
             }
         });
 
-        JBCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        JBCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JBCadastrar.setText("Cadastrar");
+        JBCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBCadastrarActionPerformed(evt);
             }
         });
 
-        NomeText.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        NomeText.setText("Nome:");
-
+        JTFnomeInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome"));
         JTFnomeInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFnomeInputActionPerformed(evt);
             }
         });
 
-        Telefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Telefone.setText("Telefone:");
-
+        JTFtelefoneInput.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
         JTFtelefoneInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFtelefoneInputActionPerformed(evt);
@@ -91,15 +89,14 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Telefone)
-                    .addComponent(JTFnomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomeText)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                        .addComponent(JTFnomeInput, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,19 +104,15 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
+                .addGap(26, 26, 26)
+                .addComponent(JTFnomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(NomeText)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFnomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Telefone)
-                .addGap(12, 12, 12)
-                .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(JTFtelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,8 +216,6 @@ public class FrmCadastroAmigosFrame extends javax.swing.JFrame {
     private javax.swing.JTextField JTFnomeInput;
     private javax.swing.JTextField JTFtelefoneInput;
     private javax.swing.JMenuItem MenuSair;
-    private javax.swing.JLabel NomeText;
-    private javax.swing.JLabel Telefone;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
