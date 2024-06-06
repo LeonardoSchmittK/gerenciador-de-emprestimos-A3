@@ -13,11 +13,11 @@ import dao.FerramentaDAO;
  */
 public class Ferramenta {
 
-    int id;
-    String nome;
-    String marca;
-    double custo;
-    FerramentaDAO dao;
+    private int id;
+    private String nome;
+    private String marca;
+    private double custo;
+    private FerramentaDAO dao;
 
     public Ferramenta() {
         this(0, "", "", 0.0);

@@ -280,7 +280,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelAlertaEmprestimoCoibido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                 .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,34 +338,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSelecionarAmigoFocusGained
 
-    private void jQuantidadeDiasEmprestimoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoFocusLost
-
-    private void jQuantidadeDiasEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseEntered
-
-    private void jQuantidadeDiasEmprestimoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseExited
-
-    private void jQuantidadeDiasEmprestimoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
-
-    private void jQuantidadeDiasEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoActionPerformed
-
-    private void jQuantidadeDiasEmprestimoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyPressed
-
-    private void jQuantidadeDiasEmprestimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyTyped
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         if (jComboBoxSelecionarFerramenta.getSelectedIndex() == 0) {
@@ -385,7 +357,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
                 int idFerramenta = ferramentaEscolhida.getId();
                 String nomeFerramenta = ferramentaEscolhida.getNome();
-                System.out.println("O ID É " + idFerramenta + " E O NOME É " + nomeFerramenta);
                 int idAmigo = amigoEscolhido.getId();
                 String nomeAmigo = amigoEscolhido.getNome();
 
@@ -413,11 +384,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                     // main.setVisible(true);
                     // this.dispose();
                     // limpa campos da interface
-                    jComboBoxSelecionarFerramenta.setSelectedIndex(0);
-                    jComboBoxSelecionarAmigo.setSelectedIndex(0);
-                    jQuantidadeDiasEmprestimo.setText("15");
                     //  this.imprimirValidadeEmprestimo(15);
-
                 }
             }
         }
@@ -475,6 +442,34 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
+
+    private void jQuantidadeDiasEmprestimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyTyped
+
+    private void jQuantidadeDiasEmprestimoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyPressed
+
+    private void jQuantidadeDiasEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jQuantidadeDiasEmprestimoActionPerformed
+
+    private void jQuantidadeDiasEmprestimoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
+
+    private void jQuantidadeDiasEmprestimoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseExited
+
+    private void jQuantidadeDiasEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseEntered
+
+    private void jQuantidadeDiasEmprestimoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jQuantidadeDiasEmprestimoFocusLost
 
     /**
      * @param args the command line arguments
@@ -679,30 +674,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         this.jLabel3 = jLabel3;
     }
 
-    public JLabel getjLabel4() {
-        return jLabel4;
-    }
-
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
-    }
-
-    public JLabel getjLabel5() {
-        return jLabel5;
-    }
-
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
-    }
-
-    public JLabel getjLabelValidadeEmprestimo() {
-        return jLabelValidadeEmprestimo;
-    }
-
-    public void setjLabelValidadeEmprestimo(JLabel jLabelValidadeEmprestimo) {
-        this.jLabelValidadeEmprestimo = jLabelValidadeEmprestimo;
-    }
-
     public JPanel getjPainelFerramentasEscolhidas() {
         return jPainelFerramentasEscolhidas;
     }
@@ -727,13 +698,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         this.jPanelPainelEmprestimo = jPanelPainelEmprestimo;
     }
 
-    public JTextField getjQuantidadeDiasEmprestimo() {
-        return jQuantidadeDiasEmprestimo;
-    }
-
-    public void setjQuantidadeDiasEmprestimo(JTextField jQuantidadeDiasEmprestimo) {
-        this.jQuantidadeDiasEmprestimo = jQuantidadeDiasEmprestimo;
-    }
+  
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

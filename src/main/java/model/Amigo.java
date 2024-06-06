@@ -8,15 +8,16 @@ import dao.AmigoDAO;
  */
 public class Amigo {
 
+    private int id;
+
     /**
      * O nome do amigo.
      */
-    String nome;
+    private String nome;
     /**
      * O número de telefone do amigo.
      */
-    String telefone;
-    int id;
+    private String telefone;
 
     AmigoDAO dao;
 

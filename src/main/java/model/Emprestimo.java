@@ -1,24 +1,20 @@
 package model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import dao.EmprestimoDAO;
 
 public class Emprestimo {
 
-    LocalDate DataAtual, DataFinal;
-    int id;
-    String ferramentasId;
-    int amigoId;
-    String nomeAmigo;
-    LocalDate dataInicio;
-    LocalDate dataFinal;
-    String marca;
-    Double custo;
-
-    EmprestimoDAO dao;
+    private int id;
+    private String ferramentasId;
+    private int amigoId;
+    private String nomeAmigo;
+    private LocalDate dataInicio;
+    private LocalDate dataFinal;
+    private String marca;
+    private Double custo;
+    private EmprestimoDAO dao;
 
     public Emprestimo() {
         this(0, "", 0, "", null, null, "", 0.0);
@@ -30,7 +26,6 @@ public class Emprestimo {
     }
 
     public Emprestimo(int id, String ferramentasId, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal, String marca, Double custo) {
-        System.out.println(dataFinal + " ESTA É A DATA FINAL");
         this.setId(id);
         this.setFerramentasId(ferramentasId);
         this.setAmigoId(amigoId);
@@ -132,19 +127,6 @@ public class Emprestimo {
 
     public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
-    }
-
-    public LocalDate getDataAtual() {
-        LocalDate dataAtual = LocalDate.now();
-        return dataAtual;
-    }
-
-    public Date getData(LocalDate data) {
-        return Date.valueOf(data);
-    }
-
-    public void setDataAtual(LocalDate DataAtual) {
-        this.DataAtual = DataAtual;
     }
 
     public void setDataFinal(LocalDate DataFinal) {
