@@ -1,3 +1,8 @@
+/*
+* Classe EmprestimoDAO
+* 
+* Essa classe é responsável por fornecer métodos para interação com o banco de dados relacionados às operações de empréstimos.
+*/
 package dao;
 
 import java.sql.Date;
@@ -11,9 +16,17 @@ import java.util.ArrayList;
 import model.Emprestimo;
 
 public class EmprestimoDAO {
-
+    // Lista para armazenar os empréstimos
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
-
+    /*
+     * Método getEmprestimoLista()
+     * 
+     * Descrição: Recupera uma lista de todos os empréstimos do banco de dados.
+     * 
+     * Retorna: Um ArrayList contendo objetos Emprestimo.
+     * 
+     * Comportamento: Limpa a EmprestimoLista antes de buscar dados do banco de dados. Constrói objetos Emprestimo a partir dos dados recuperados e os adiciona à lista.
+     */
     public ArrayList<Emprestimo> getEmprestimoLista() {
         EmprestimoLista.clear();
 
@@ -47,7 +60,17 @@ public class EmprestimoDAO {
         }
         return EmprestimoLista;
     }
-
+   /*
+    * Método getEmprestimoQueryBd(Boolean estaAtivo)
+    * 
+    * Descrição: Recupera uma lista de empréstimos com base no status ativo do banco de dados.     * 
+    * Parâmetros:
+    * - estaAtivo: Um booleano indicando se o empréstimo está ativo ou não.
+    * 
+    * Retorna: Um ArrayList contendo objetos Emprestimo que correspondem ao status ativo especificado.
+    * 
+    * Comportamento: Limpa a EmprestimoLista antes de buscar dados do banco de dados. Constrói objetos Emprestimo a partir dos dados recuperados e os adiciona à lista.
+    */
     public ArrayList<Emprestimo> getEmprestimoQueryBd(Boolean estaAtivo) {
         EmprestimoLista.clear();
 
@@ -84,7 +107,17 @@ public class EmprestimoDAO {
         }
         return EmprestimoLista;
     }
-
+    /*
+     * Método estaAmigoDevendo(int amigoIdParameter)
+     * 
+     * Descrição: Verifica se um amigo possui empréstimos ativos.
+     * 
+     * Parâmetros: amigoIdParameter: int representando o ID do amigo.
+     * 
+     * Retorno: true se o amigo tiver empréstimos ativos, caso contrário, false.
+     * 
+     * Comportamento: Limpa a EmprestimoLista antes de consultar o banco de dados. Verifica se existem empréstimos ativos para o amigo especificado.
+     */
     public boolean estaAmigoDevendo(int amigoIdParameter) {
         EmprestimoLista.clear();
 
@@ -122,7 +155,18 @@ public class EmprestimoDAO {
         }
         return false;
     }
-
+    /*
+     * Método deleteEmprestimoBd(int id)
+     * 
+     * Descrição: Exclui um empréstimo do banco de dados.
+     * 
+     * Parâmetros:
+     * id: Um int representando o ID do empréstimo a ser excluído.
+     * 
+     * Retorna: true se a exclusão for bem-sucedida, caso contrário, false.
+     * 
+     * Comportamento: Exclui o empréstimo com o ID especificado do banco de dados.
+     */
     public boolean deleteEmprestimoBd(int id) {
         try {
             Statement stmt = ConexaoDao.getConexao().createStatement();
@@ -133,7 +177,19 @@ public class EmprestimoDAO {
         }
         return true;
     }
-
+   
+    /*
+     * Método insertEmprestimoDb(Emprestimo objeto)
+     * 
+     * Descrição: Insere um novo empréstimo no banco de dados.
+     * 
+     * Parâmetros:
+     * objeto: Uma instância de Emprestimo representando o empréstimo a ser inserido.
+     * 
+     * Retorna: true se a inserção for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * 
+     * Comportamento: Constrói uma declaração SQL para inserir o empréstimo no banco de dados.
+     */
     public boolean insertEmprestimoDb(Emprestimo objeto) {
         String sql = "INSERT INTO tb_emprestimo(id, nomeAmigo, amigoId, estaAtivo, dataInicio, dataFinal, marca, custo, ferramentas) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -169,10 +225,28 @@ public class EmprestimoDAO {
         }
     }
 
+    /*
+     * Método setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista)
+     * 
+     * Descrição: Define a lista de empréstimos.
+     * 
+     * Parâmetros:
+     * EmprestimoLista: Um ArrayList contendo objetos Emprestimo.
+     * 
+     * Comportamento: Define o atributo EmprestimoLista para a lista fornecida.
+     */
     public void setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista) {
         this.EmprestimoLista = EmprestimoLista;
     }
-
+    /*
+     * Método maiorID()
+     * 
+     * Descrição: Recupera o maior ID de empréstimos do banco de dados.
+     * 
+     * Retorna: O maior ID de empréstimos.
+     * 
+     * Comportamento: Recupera o valor máximo de ID do banco de dados.
+     */
     public int maiorID() {
         int maiorID = 0;
         try {
@@ -188,7 +262,19 @@ public class EmprestimoDAO {
 
         return maiorID;
     }
-
+    
+    /*
+     * Método updateEmprestimoBd(Emprestimo objeto)
+     * 
+     * Descrição: Atualiza um empréstimo existente no banco de dados.
+     * 
+     * Parâmetros:
+     * objeto: Uma instância de Emprestimo representando as informações do empréstimo atualizado.
+     * 
+     * Retorna: true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * 
+     * Comportamento: Constrói uma declaração SQL para atualizar o empréstimo no banco de dados.
+     */
     public boolean updateEmprestimoBd(Emprestimo objeto) {
         String sql = "UPDATE tb_emprestimo set nomeFerramenta = ? ,ferramentaId = ? ,nomeAmigo= ?,amigoId = ?,estaAtivo = ?,dataInicio = ?,dataFinal = ?, marca = ?, custo = ? WHERE id = ?";
         try {
@@ -210,6 +296,20 @@ public class EmprestimoDAO {
         }
     }
 
+    /*
+     * Método updateEmprestimoAtivoBd(int id, boolean estaAtivo, LocalDate dataFinal)
+     * 
+     * Descrição: Atualiza o status ativo e a data final de um empréstimo no banco de dados.
+     * 
+     * Parâmetros:
+     * id: Um inteiro representando o ID do empréstimo a ser atualizado.
+     * estaAtivo: Um booleano indicando o status ativo do empréstimo.
+     * dataFinal: A data final do empréstimo.
+     * 
+     * Retorna: true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * 
+     * Comportamento: Constrói uma declaração SQL para atualizar o status ativo e a data final do empréstimo no banco de dados.
+     */
     public boolean updateEmprestimoAtivoBd(int id, boolean estaAtivo, LocalDate dataFinal) {
         String sql = "UPDATE tb_emprestimo SET estaAtivo = ?, dataFinal = ? WHERE id = " + id;
 
@@ -227,6 +327,19 @@ public class EmprestimoDAO {
         }
     }
 
+    /*
+     * Método updateEmprestimoRecebido(int id, LocalDate dataRecebimento)
+     * 
+     * Descrição: Atualiza a data de recebimento de um empréstimo devolvido no banco de dados.
+     * 
+     * Parâmetros:
+     * id: Um inteiro representando o ID do empréstimo a ser atualizado.
+     * dataRecebimento: A data em que o empréstimo foi recebido de volta.
+     * 
+     * Retorna: true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * 
+     * Comportamento: Constrói uma declaração SQL para atualizar a data de recebimento do empréstimo no banco de dados.
+     */
     public boolean updateEmprestimoRecebido(int id, LocalDate dataRecebimento) {
 
         String sql = "UPDATE tb_emprestimo set dataFinal = ? WHERE id = " + id;
