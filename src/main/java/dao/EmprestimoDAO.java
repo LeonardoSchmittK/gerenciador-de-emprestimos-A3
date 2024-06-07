@@ -23,7 +23,7 @@ public class EmprestimoDAO {
      * 
      * Descrição: Recupera uma lista de todos os empréstimos do banco de dados.
      * 
-     * Retorna: Um ArrayList contendo objetos Emprestimo.
+     * @return Um ArrayList contendo objetos Emprestimo.
      * 
      * Comportamento: Limpa a EmprestimoLista antes de buscar dados do banco de dados. Constrói objetos Emprestimo a partir dos dados recuperados e os adiciona à lista.
      */
@@ -64,10 +64,10 @@ public class EmprestimoDAO {
     * Método getEmprestimoQueryBd(Boolean estaAtivo)
     * 
     * Descrição: Recupera uma lista de empréstimos com base no status ativo do banco de dados.     * 
-    * Parâmetros:
-    * - estaAtivo: Um booleano indicando se o empréstimo está ativo ou não.
+    *
+    * @param estaAtivo um booleano indicando se o empréstimo está ativo ou não.
     * 
-    * Retorna: Um ArrayList contendo objetos Emprestimo que correspondem ao status ativo especificado.
+    * @return Um ArrayList contendo objetos Emprestimo que correspondem ao status ativo especificado.
     * 
     * Comportamento: Limpa a EmprestimoLista antes de buscar dados do banco de dados. Constrói objetos Emprestimo a partir dos dados recuperados e os adiciona à lista.
     */
@@ -112,9 +112,9 @@ public class EmprestimoDAO {
      * 
      * Descrição: Verifica se um amigo possui empréstimos ativos.
      * 
-     * Parâmetros: amigoIdParameter: int representando o ID do amigo.
+     * @param amigoIdParameter: int representando o ID do amigo.
      * 
-     * Retorno: true se o amigo tiver empréstimos ativos, caso contrário, false.
+     * @return true se o amigo tiver empréstimos ativos, caso contrário, false.
      * 
      * Comportamento: Limpa a EmprestimoLista antes de consultar o banco de dados. Verifica se existem empréstimos ativos para o amigo especificado.
      */
@@ -160,10 +160,9 @@ public class EmprestimoDAO {
      * 
      * Descrição: Exclui um empréstimo do banco de dados.
      * 
-     * Parâmetros:
-     * id: Um int representando o ID do empréstimo a ser excluído.
+     * @param Um int representando o ID do empréstimo a ser excluído.
      * 
-     * Retorna: true se a exclusão for bem-sucedida, caso contrário, false.
+     * @return true se a exclusão for bem-sucedida, caso contrário, false.
      * 
      * Comportamento: Exclui o empréstimo com o ID especificado do banco de dados.
      */
@@ -183,10 +182,9 @@ public class EmprestimoDAO {
      * 
      * Descrição: Insere um novo empréstimo no banco de dados.
      * 
-     * Parâmetros:
-     * objeto: Uma instância de Emprestimo representando o empréstimo a ser inserido.
+     * @param objeto uma instância de Emprestimo representando o empréstimo a ser inserido.
      * 
-     * Retorna: true se a inserção for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * @retun true se a inserção for bem-sucedida, caso contrário, lança uma RuntimeException.
      * 
      * Comportamento: Constrói uma declaração SQL para inserir o empréstimo no banco de dados.
      */
@@ -230,8 +228,7 @@ public class EmprestimoDAO {
      * 
      * Descrição: Define a lista de empréstimos.
      * 
-     * Parâmetros:
-     * EmprestimoLista: Um ArrayList contendo objetos Emprestimo.
+     * @param EmprestimoLista um ArrayList contendo objetos Emprestimo.
      * 
      * Comportamento: Define o atributo EmprestimoLista para a lista fornecida.
      */
@@ -243,7 +240,7 @@ public class EmprestimoDAO {
      * 
      * Descrição: Recupera o maior ID de empréstimos do banco de dados.
      * 
-     * Retorna: O maior ID de empréstimos.
+     * @return O maior ID de empréstimos.
      * 
      * Comportamento: Recupera o valor máximo de ID do banco de dados.
      */
@@ -268,10 +265,9 @@ public class EmprestimoDAO {
      * 
      * Descrição: Atualiza um empréstimo existente no banco de dados.
      * 
-     * Parâmetros:
-     * objeto: Uma instância de Emprestimo representando as informações do empréstimo atualizado.
+     * @param uma instância de Emprestimo representando as informações do empréstimo atualizado.
      * 
-     * Retorna: true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * @return true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
      * 
      * Comportamento: Constrói uma declaração SQL para atualizar o empréstimo no banco de dados.
      */
@@ -301,12 +297,11 @@ public class EmprestimoDAO {
      * 
      * Descrição: Atualiza o status ativo e a data final de um empréstimo no banco de dados.
      * 
-     * Parâmetros:
-     * id: Um inteiro representando o ID do empréstimo a ser atualizado.
+     * @param um int representando o ID do empréstimo a ser atualizado.
      * estaAtivo: Um booleano indicando o status ativo do empréstimo.
      * dataFinal: A data final do empréstimo.
      * 
-     * Retorna: true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * @return true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
      * 
      * Comportamento: Constrói uma declaração SQL para atualizar o status ativo e a data final do empréstimo no banco de dados.
      */
@@ -332,11 +327,10 @@ public class EmprestimoDAO {
      * 
      * Descrição: Atualiza a data de recebimento de um empréstimo devolvido no banco de dados.
      * 
-     * Parâmetros:
-     * id: Um inteiro representando o ID do empréstimo a ser atualizado.
+     *@param um inteiro representando o ID do empréstimo a ser atualizado.
      * dataRecebimento: A data em que o empréstimo foi recebido de volta.
      * 
-     * Retorna: true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
+     * @return true se a atualização for bem-sucedida, caso contrário, lança uma RuntimeException.
      * 
      * Comportamento: Constrói uma declaração SQL para atualizar a data de recebimento do empréstimo no banco de dados.
      */
