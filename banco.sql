@@ -21,15 +21,14 @@ CREATE TABLE IF NOT EXISTS tb_amigo (
 # criar tabela tb_emprestimo
 CREATE TABLE IF NOT EXISTS tb_emprestimo (
     id INT PRIMARY KEY,
+    nomeAmigo VARCHAR(255),
     amigoId INT,
-    ferramentaId INT,
+    estaAtivo BOOLEAN,
     dataInicio DATE,
     dataFinal DATE,
-    nomeFerramenta VARCHAR(255),
-    nomeAmigo VARCHAR(255),
     marca VARCHAR(255),
     custo DOUBLE,
-    estaAtivo TINYINT
+    ferramentas VARCHAR(255)
 );
 
 
