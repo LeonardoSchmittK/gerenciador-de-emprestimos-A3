@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 public class FrmMainFrame extends javax.swing.JFrame {
 
     public FrmMainFrame() {
-        ImageIcon icone = new ImageIcon("icone-ferramenta.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-ferramenta.png");
         this.setIconImage(icone.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,7 +29,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
         centralPanel.setPreferredSize(new Dimension(600, 600));
         centralPanel.setBackground(Color.decode("#EEEEEE"));
 
-        ImageIcon iconeTitulo = new ImageIcon("./icone-ferramenta.png");
+        ImageIcon iconeTitulo = new ImageIcon("imagens/icone-ferramenta.png");
         JLabel label = new JLabel(iconeTitulo);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setSize(new Dimension(50, 10));
@@ -184,7 +184,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void JMenuDadosFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuDadosFerramentaActionPerformed
         FrmDadosFerramentas janelaFerramentas = new FrmDadosFerramentas();
-        ImageIcon icone = new ImageIcon("icone-relatorio.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-relatorio.png");
         janelaFerramentas.setIconImage(icone.getImage());
         janelaFerramentas.setVisible(true);
 
@@ -192,14 +192,14 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void JMenuCadFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadFerramentaActionPerformed
         FrmCadastroFerramenta JanelaCadastro = new FrmCadastroFerramenta();
-        ImageIcon icone = new ImageIcon("icone-cadastro.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-cadastro.png");
         JanelaCadastro.setIconImage(icone.getImage());
         JanelaCadastro.setVisible(true);
     }//GEN-LAST:event_JMenuCadFerramentaActionPerformed
 
     private void JMenuCadastroAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuCadastroAmigoActionPerformed
         FrmCadastroAmigos JanelaCadastroAmigo = new FrmCadastroAmigos();
-        ImageIcon icone = new ImageIcon("icone-cadastro.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-cadastro.png");
         JanelaCadastroAmigo.setIconImage(icone.getImage());
         JanelaCadastroAmigo.setVisible(true);
     }//GEN-LAST:event_JMenuCadastroAmigoActionPerformed
@@ -210,7 +210,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         FrmCadastroEmprestimo janelaCadastroEmprestimo = new FrmCadastroEmprestimo();
-        ImageIcon icone = new ImageIcon("icone-cadastro.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-cadastro.png");
         janelaCadastroEmprestimo.setIconImage(icone.getImage());
         janelaCadastroEmprestimo.setVisible(true);
 
@@ -218,7 +218,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         FrmDadosAmigos janelaAmigos = new FrmDadosAmigos();
-        ImageIcon icone = new ImageIcon("icone-relatorio.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-relatorio.png");
         janelaAmigos.setIconImage(icone.getImage());
         janelaAmigos.setVisible(true);
 
@@ -227,14 +227,14 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jRelatorioEmprestimosAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioEmprestimosAtivosActionPerformed
         FrmDadosEmprestimosAtivos janelaEmprestimosAtivos = new FrmDadosEmprestimosAtivos();
-        ImageIcon icone = new ImageIcon("icone-relatorio.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-relatorio.png");
         janelaEmprestimosAtivos.setIconImage(icone.getImage());
         janelaEmprestimosAtivos.setVisible(true);
     }//GEN-LAST:event_jRelatorioEmprestimosAtivosActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         FrmDadosEmprestimosFeitos janelaEmprestimosFeitos = new FrmDadosEmprestimosFeitos();
-        ImageIcon icone = new ImageIcon("icone-relatorio.png");
+        ImageIcon icone = new ImageIcon("imagens/icone-relatorio.png");
         janelaEmprestimosFeitos.setIconImage(icone.getImage());
         janelaEmprestimosFeitos.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -244,7 +244,7 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void JCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCreditosActionPerformed
-        ImageIcon x = new ImageIcon("./a3 logo.jpeg");
+        ImageIcon x = new ImageIcon("imagens/a3 logo.jpeg");
         JOptionPane.showMessageDialog(rootPane, "CRIADORES:\n"
                 + "David Camargo Hech\n"
                 + "Gabriel Martins Meira\n"
