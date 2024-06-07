@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
 import java.awt.Color;
@@ -15,10 +11,6 @@ import model.Amigo;
 import model.Emprestimo;
 import model.Ferramenta;
 
-/**
- *
- * @author Leonardo Schmitt
- */
 public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
 
     private Emprestimo objetoEmprestimoAtivos;
@@ -163,10 +155,10 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMaiorDevedorTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTotalEmprestimosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jTotalEmprestimosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,48 +200,49 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabelaEmprestimoMouseClicked
 
     private void JBRecebidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRecebidoActionPerformed
+        try {
+            if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
+                int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
-        if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
-            int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
+                Emprestimo emprestimoEscolhido = this.EmprestimoLista.get(id - 1);
 
-            Emprestimo emprestimoEscolhido = this.EmprestimoLista.get(id - 1);
+                LocalDate dataAtual = LocalDate.now();
+                if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false, dataAtual)) {
 
-//            String nomeFerramenta = "";
-//            String marca = emprestimoEscolhido.getMarca();
-//            Double custo = emprestimoEscolhido.getCusto();
-//            Ferramenta ob = new Ferramenta();
-//            ob.insertFerramentaDb(nomeFerramenta, marca, custo);
-            LocalDate dataAtual = LocalDate.now();
-            if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false, dataAtual)) {
+                    JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído", "Emprestimo concluído!", JOptionPane.INFORMATION_MESSAGE);
+                    this.imprimirTabela();
+                    this.imprimirTotalEmprestimos();
+                    this.imprimirMaiorDevedor();
 
-                JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído", "Emprestimo concluído!", JOptionPane.INFORMATION_MESSAGE);
-                this.imprimirTabela();
-                this.imprimirTotalEmprestimos();
-                this.imprimirMaiorDevedor();
+                }
+            } else {
+                throw new Mensagem("Selecione um emprestimo na tabela!");
 
             }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!", "error", JOptionPane.ERROR_MESSAGE);
+        } catch (Mensagem erroSelecionarNaTabela) {
+            JOptionPane.showMessageDialog(rootPane, erroSelecionarNaTabela.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 
         }
     }//GEN-LAST:event_JBRecebidoActionPerformed
 
 
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
-        // TODO add your handling code here:
 
         try {
             if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
                 int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
-                if (this.objetoEmprestimoAtivos.deleteEmprestimoDb(id)) {
+                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?");
 
-                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.INFORMATION_MESSAGE);
-
+                if (respostaUsuario == 0) {// clicou em SIM
+                    if (this.objetoEmprestimoAtivos.deleteEmprestimoDb(id)) {
+                        JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
+
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!", "Selecione um emprestimo na tabela!", JOptionPane.ERROR_MESSAGE);
-                throw new Mensagem("Selecione um emprestimo na tabela!");
+                JOptionPane.showMessageDialog(rootPane, "Selecione um empréstimo na tabela!", "Selecione um empréstimo na tabela!", JOptionPane.ERROR_MESSAGE);
+                throw new Mensagem("Selecione um empréstimo na tabela!");
             }
 
         } catch (Mensagem erro) {
@@ -343,6 +336,8 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
 
         if (emprestimosNumero > 0) {
             jMaiorDevedorTitulo.setText("Maior devedor: " + nomeMaiorDevedor + " (" + emprestimosNumero + " empréstimos ativos)");
+            jMaiorDevedorTitulo.setForeground(Color.black);
+
         } else {
             jMaiorDevedorTitulo.setText("Não há empréstimos ativos");
             jMaiorDevedorTitulo.setForeground(Color.red);

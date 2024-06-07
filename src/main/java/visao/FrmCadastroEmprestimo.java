@@ -30,6 +30,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     public ArrayList<Ferramenta> ferramentasEscolhidas = new ArrayList<>();
     public String indexes = "";
     public int counterDown;
+    private ArrayList<Integer> idsFerramentasAEscolher = new ArrayList<Integer>();
 
     public FrmCadastroEmprestimo() {
         initComponents();
@@ -64,14 +65,10 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         jComboBoxSelecionarFerramenta = new javax.swing.JComboBox<>();
         jComboBoxSelecionarAmigo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jQuantidadeDiasEmprestimo = new javax.swing.JTextField();
         jPainelFerramentasEscolhidas = new javax.swing.JPanel();
         jPanelPainelBotoesEmprestimo = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabelValidadeEmprestimo = new javax.swing.JLabel();
         jLabelAlertaEmprestimoCoibido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,45 +101,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
         jLabel2.setText("Emprestar");
 
-        jLabel4.setText("por");
-
-        jLabel5.setText("dias");
-
-        jQuantidadeDiasEmprestimo.setText("15");
-        jQuantidadeDiasEmprestimo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jQuantidadeDiasEmprestimoFocusLost(evt);
-            }
-        });
-        jQuantidadeDiasEmprestimo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jQuantidadeDiasEmprestimoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jQuantidadeDiasEmprestimoMouseExited(evt);
-            }
-        });
-        jQuantidadeDiasEmprestimo.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jQuantidadeDiasEmprestimoInputMethodTextChanged(evt);
-            }
-        });
-        jQuantidadeDiasEmprestimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jQuantidadeDiasEmprestimoActionPerformed(evt);
-            }
-        });
-        jQuantidadeDiasEmprestimo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jQuantidadeDiasEmprestimoKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jQuantidadeDiasEmprestimoKeyTyped(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPainelFerramentasEscolhidasLayout = new javax.swing.GroupLayout(jPainelFerramentasEscolhidas);
         jPainelFerramentasEscolhidas.setLayout(jPainelFerramentasEscolhidasLayout);
         jPainelFerramentasEscolhidasLayout.setHorizontalGroup(
@@ -170,13 +128,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                     .addComponent(jPainelFerramentasEscolhidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBoxSelecionarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(13, 13, 13)
-                .addComponent(jQuantidadeDiasEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanelPainelEmprestimoLayout.setVerticalGroup(
             jPanelPainelEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,13 +138,10 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxSelecionarFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxSelecionarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jQuantidadeDiasEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSelecionarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPainelFerramentasEscolhidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -215,30 +164,21 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        jLabelValidadeEmprestimo.setText(" O empréstimo tem validade padrão de 15 dias ");
-
         javax.swing.GroupLayout jPanelPainelBotoesEmprestimoLayout = new javax.swing.GroupLayout(jPanelPainelBotoesEmprestimo);
         jPanelPainelBotoesEmprestimo.setLayout(jPanelPainelBotoesEmprestimoLayout);
         jPanelPainelBotoesEmprestimoLayout.setHorizontalGroup(
             jPanelPainelBotoesEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPainelBotoesEmprestimoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelPainelBotoesEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPainelBotoesEmprestimoLayout.createSequentialGroup()
-                        .addComponent(jLabelValidadeEmprestimo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanelPainelBotoesEmprestimoLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelPainelBotoesEmprestimoLayout.setVerticalGroup(
             jPanelPainelBotoesEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPainelBotoesEmprestimoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelValidadeEmprestimo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addGroup(jPanelPainelBotoesEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -257,21 +197,17 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelAlertaEmprestimoCoibido))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(228, Short.MAX_VALUE))
+                    .addComponent(jLabelAlertaEmprestimoCoibido)
+                    .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(169, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(78, Short.MAX_VALUE)))
+                    .addContainerGap(123, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,14 +216,14 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelAlertaEmprestimoCoibido)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                 .addComponent(jPanelPainelBotoesEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(33, 33, 33))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(55, 55, 55)
                     .addComponent(jPanelPainelEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(138, Short.MAX_VALUE)))
+                    .addContainerGap(149, Short.MAX_VALUE)))
         );
 
         pack();
@@ -307,8 +243,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
                 return;
             }
-            Ferramenta ferramentaEscolhida = this.FerramentaLista.get(idxEscolhidoFerramenta - 1);
-
+            Ferramenta ferramentaEscolhida = this.FerramentaLista.get(this.idsFerramentasAEscolher.get(idxEscolhidoFerramenta - 1) - 1);
             if (this.ferramentasEscolhidas.indexOf(ferramentaEscolhida) >= 0) {
                 return;
             } else {
@@ -378,13 +313,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                     jPainelFerramentasEscolhidas.repaint();
                     this.counterDown = 0;
 
-//                    if (objetoFerramenta.deleteFerramentaDb(idFerramenta)){
-//                    }
-                    //FrmNovoEmprestimoFrame main = new FrmNovoEmprestimoFrame();    
-                    // main.setVisible(true);
-                    // this.dispose();
-                    // limpa campos da interface
-                    //  this.imprimirValidadeEmprestimo(15);
                 }
             }
         }
@@ -393,13 +321,21 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void imprimirEmprestimoCoibido() {
-        if (!this.isTemAmigo() || !this.isTemFerramenta()) {
+        if ((!this.isTemAmigo() || !this.isTemFerramenta())) {
             this.remove(jPanelPainelEmprestimo);
             this.remove(jPanelPainelBotoesEmprestimo);
             ImageIcon iconeAlerta = new ImageIcon("icone-erro.png");
             jLabelAlertaEmprestimoCoibido.setIcon(iconeAlerta);
             jLabelAlertaEmprestimoCoibido.setText("Tenha ao menos 1 ferramenta e 1 amigo disponíveis! (clique aqui para voltar)");
         }
+    }
+
+    public void imprimirEmprestimoCoibidoForcado() {
+        this.remove(jPanelPainelEmprestimo);
+        this.remove(jPanelPainelBotoesEmprestimo);
+        ImageIcon iconeAlerta = new ImageIcon("icone-erro.png");
+        jLabelAlertaEmprestimoCoibido.setIcon(iconeAlerta);
+        jLabelAlertaEmprestimoCoibido.setText("Tenha ao menos 1 ferramenta e 1 amigo disponíveis! (clique aqui para voltar)");
     }
 
     public void imprimirAmigos() {
@@ -420,17 +356,41 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     public void imprimirFerramentas() {
         ArrayList<Ferramenta> minhalistaFerramentas = this.objetoFerramenta.getListaFerramentas();
         ArrayList<Emprestimo> minhalistaEmprestimos = this.objetoEmprestimo.getListaEmprestimos();
-
+        // caso a ferramenta já esteja emprestada, não poder emprestar mais
+        int counterFerramentaMostrar = 0;
         if (minhalistaFerramentas.size() > 0) {
             this.setTemFerramenta(true);
         }
 
-        for (Ferramenta ferramenta : minhalistaFerramentas) {
+        if (minhalistaEmprestimos.isEmpty()) {
 
-            jComboBoxSelecionarFerramenta.addItem(ferramenta.getNome());
+            for (Ferramenta ferramenta : minhalistaFerramentas) {
+                jComboBoxSelecionarFerramenta.addItem(ferramenta.getNome());
+            }
+        } else {
+            ArrayList<String> idsColhidos = new ArrayList<String>();
 
+            String idsString = "";
+
+            for (Emprestimo emprestimo : minhalistaEmprestimos) {
+                idsString += emprestimo.getFerramentasId();
+            }
+            for (Ferramenta ferramenta : minhalistaFerramentas) {
+                if (!idsString.contains(ferramenta.getId() + "")) {
+                    counterFerramentaMostrar++;
+                    this.idsFerramentasAEscolher.add(ferramenta.getId());
+                    jComboBoxSelecionarFerramenta.addItem(ferramenta.getNome());
+                }
+            }
+
+            if (counterFerramentaMostrar <= 0) {
+                this.remove(jPanelPainelEmprestimo);
+                this.remove(jPanelPainelBotoesEmprestimo);
+                ImageIcon iconeAlerta = new ImageIcon("icone-erro.png");
+                jLabelAlertaEmprestimoCoibido.setIcon(iconeAlerta);
+                jLabelAlertaEmprestimoCoibido.setText("Tenha ao menos 1 ferramenta e 1 amigo disponíveis! (clique aqui para voltar)");
+            }
         }
-
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -442,34 +402,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jLabelAlertaEmprestimoCoibidoMouseClicked
-
-    private void jQuantidadeDiasEmprestimoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyTyped
-
-    private void jQuantidadeDiasEmprestimoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoKeyPressed
-
-    private void jQuantidadeDiasEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoActionPerformed
-
-    private void jQuantidadeDiasEmprestimoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoInputMethodTextChanged
-
-    private void jQuantidadeDiasEmprestimoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseExited
-
-    private void jQuantidadeDiasEmprestimoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoMouseEntered
-
-    private void jQuantidadeDiasEmprestimoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jQuantidadeDiasEmprestimoFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jQuantidadeDiasEmprestimoFocusLost
 
     /**
      * @param args the command line arguments
@@ -485,16 +417,24 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmCadastroEmprestimo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -504,6 +444,14 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 new FrmCadastroEmprestimo().setVisible(true);
             }
         });
+    }
+
+    public ArrayList<Integer> getIdsFerramentasAEscolher() {
+        return idsFerramentasAEscolher;
+    }
+
+    public void setIdsFerramentasAEscolher(ArrayList<Integer> idsFerramentasAEscolher) {
+        this.idsFerramentasAEscolher = idsFerramentasAEscolher;
     }
 
     public Ferramenta getObjetoFerramenta() {
@@ -698,8 +646,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         this.jPanelPainelEmprestimo = jPanelPainelEmprestimo;
     }
 
-  
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -709,13 +655,9 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAlertaEmprestimoCoibido;
-    private javax.swing.JLabel jLabelValidadeEmprestimo;
     private javax.swing.JPanel jPainelFerramentasEscolhidas;
     private javax.swing.JPanel jPanelPainelBotoesEmprestimo;
     private javax.swing.JPanel jPanelPainelEmprestimo;
-    private javax.swing.JTextField jQuantidadeDiasEmprestimo;
     // End of variables declaration//GEN-END:variables
 }

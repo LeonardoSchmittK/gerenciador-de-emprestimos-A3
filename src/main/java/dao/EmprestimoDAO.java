@@ -29,7 +29,6 @@ public class EmprestimoDAO {
                 Date dataFinal = res.getDate("dataFinal");
                 String marca = res.getString("marca");
                 Double custo = res.getDouble("custo");
-                System.out.println(dataFinal + " <<<<<<");
                 if (dataFinal == null) {
                     Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentasId, amigoId, nomeAmigo, dataInicio.toLocalDate(), null, marca, custo);
                     EmprestimoLista.add(objetoEmprestimo);
@@ -64,7 +63,6 @@ public class EmprestimoDAO {
                 Date dataFinal = res.getDate("dataFinal");
                 String marca = res.getString("marca");
                 Double custo = res.getDouble("custo");
-                                                        
 
                 if (dataFinal == null) {
                     Emprestimo objetoEmprestimo = new Emprestimo(id, ferramentasId, amigoId, nomeAmigo, dataInicio.toLocalDate(), null, marca, custo);

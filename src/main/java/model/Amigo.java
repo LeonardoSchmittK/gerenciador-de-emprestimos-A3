@@ -19,7 +19,7 @@ public class Amigo {
      */
     private String telefone;
 
-    AmigoDAO dao;
+    private AmigoDAO dao;
 
     /**
      * Construtor padrão da classe Amigo. Inicializa o nome como uma string

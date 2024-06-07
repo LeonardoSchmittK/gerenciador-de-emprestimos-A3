@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -210,7 +209,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuAcoesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         FrmCadastroEmprestimo janelaCadastroEmprestimo = new FrmCadastroEmprestimo();
         ImageIcon icone = new ImageIcon("icone-cadastro.png");
         janelaCadastroEmprestimo.setIconImage(icone.getImage());
@@ -219,7 +217,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
         FrmDadosAmigos janelaAmigos = new FrmDadosAmigos();
         ImageIcon icone = new ImageIcon("icone-relatorio.png");
         janelaAmigos.setIconImage(icone.getImage());
@@ -229,7 +226,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jRelatorioEmprestimosAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioEmprestimosAtivosActionPerformed
-        // TODO add your handling code here:
         FrmDadosEmprestimosAtivos janelaEmprestimosAtivos = new FrmDadosEmprestimosAtivos();
         ImageIcon icone = new ImageIcon("icone-relatorio.png");
         janelaEmprestimosAtivos.setIconImage(icone.getImage());
@@ -237,7 +233,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jRelatorioEmprestimosAtivosActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
         FrmDadosEmprestimosFeitos janelaEmprestimosFeitos = new FrmDadosEmprestimosFeitos();
         ImageIcon icone = new ImageIcon("icone-relatorio.png");
         janelaEmprestimosFeitos.setIconImage(icone.getImage());
@@ -246,7 +241,6 @@ public class FrmMainFrame extends javax.swing.JFrame {
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void JCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCreditosActionPerformed

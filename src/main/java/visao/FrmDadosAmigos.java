@@ -220,7 +220,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
     public void imprimirTabela() {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaAmigo.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
-        //Carrega a lista de objetos aluno
+        //Carrega a lista de objetos amigo
         ArrayList<Amigo> amigosLista = this.objetoAmigo.getListaAmigo();
         jTotalAmigosTitulo.setText(amigosLista.size() + " amigos");
 
@@ -242,7 +242,6 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
     }
 
     private void jTabelaAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaAmigoMouseClicked
-        // TODO add your handling code here:
 
         if (this.jTabelaAmigo.getSelectedRow() != -1) {
             String nome = this.jTabelaAmigo.getValueAt(this.jTabelaAmigo.getSelectedRow(), 1).toString();
@@ -259,7 +258,6 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
     }//GEN-LAST:event_JTFTelefoneActionPerformed
 
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
-        // TODO add your handling code here:
 
         try {
             // validando dados da interface gráfica.
@@ -285,7 +283,6 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } finally {
-            // atualiza a tabela.
             this.imprimirTabela();
 
         }

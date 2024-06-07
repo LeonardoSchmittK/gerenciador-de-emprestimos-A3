@@ -3,7 +3,6 @@ package visao;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import static jdk.internal.joptsimple.util.RegexMatcher.regex;
 import model.Amigo;
 
 public class FrmCadastroAmigos extends javax.swing.JFrame {
@@ -136,25 +135,21 @@ public class FrmCadastroAmigos extends javax.swing.JFrame {
                 nome = this.JTFnomeInput.getText();
             }
 
-            System.out.println(telefone);
             Matcher matcher = pattern.matcher(telefone);
-            if (matcher.matches()) {
-                System.out.println("TRUE");
-            } else {
+
+            if (!matcher.matches()) {
                 throw new Mensagem("Digite corretamente seu telefone (apenas números)");
             }
 
             if (this.objetoAmigo.insertAmigoDb(nome, telefone)) {
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Cadastro realizado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
-
                 this.JTFnomeInput.setText("");
                 this.JTFtelefoneInput.setText("");
-
             }
 
         } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(rootPane, erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 
-            JOptionPane.showMessageDialog(null, erro.getMessage());
         }
 
 

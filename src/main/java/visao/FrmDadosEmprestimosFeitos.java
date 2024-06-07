@@ -126,9 +126,6 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTabelaEmprestimo);
         if (jTabelaEmprestimo.getColumnModel().getColumnCount() > 0) {
             jTabelaEmprestimo.getColumnModel().getColumn(0).setMaxWidth(30);
-            jTabelaEmprestimo.getColumnModel().getColumn(1).setMaxWidth(100);
-            jTabelaEmprestimo.getColumnModel().getColumn(2).setMaxWidth(60);
-            jTabelaEmprestimo.getColumnModel().getColumn(4).setMaxWidth(100);
         }
 
         jMaiorDevedorRealizadoTitulo.setText("Maior devedor:");
@@ -146,18 +143,18 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JBApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jMaiorDevedorRealizadoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTotalEmprestimosRealizadosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                    .addComponent(jTotalEmprestimosRealizadosTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,13 +191,15 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
             if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
                 int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
-                if (this.objetoEmprestimoFeito.deleteEmprestimoDb(id)) {
+                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?");
 
-                    JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.PLAIN_MESSAGE);
-
+                if (respostaUsuario == 0) {// clicou em SIM
+                    if (this.objetoEmprestimoFeito.deleteEmprestimoDb(id)) {
+                        JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.PLAIN_MESSAGE);
+                    }
                 }
+
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um emprestimo na tabela!", "Selecione um emprestimo na tabela!", JOptionPane.QUESTION_MESSAGE);
                 throw new Mensagem("Selecione um emprestimo na tabela!");
             }
 
@@ -250,8 +249,10 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
         if (emprestimosNumero > 0) {
             jMaiorDevedorRealizadoTitulo.setText("Maior devedor: " + nomeMaiorDevedor + " (" + emprestimosNumero + " empréstimos realizados)");
+            jMaiorDevedorRealizadoTitulo.setForeground(Color.black);
+
         } else {
-            jMaiorDevedorRealizadoTitulo.setText("Não há empréstimos ativos");
+            jMaiorDevedorRealizadoTitulo.setText("Não há empréstimos realizados");
             jMaiorDevedorRealizadoTitulo.setForeground(Color.red);
         }
 
@@ -263,11 +264,11 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         ArrayList<Emprestimo> listaEmprestimos = this.objetoEmprestimoFeito.getEmprestimoQuery(false);
 
         for (Emprestimo e : listaEmprestimos) {
-            System.out.println(e.getDataFinal() + " <<< < << <");
             ArrayList<Ferramenta> listaFerramentas = new ArrayList<Ferramenta>();
             String[] indexesString = e.getFerramentasId().split(" ");
             ArrayList<Integer> indexesInt = new ArrayList<Integer>();
             String nomeFerramenta = "";
+
             for (String index : indexesString) {
                 indexesInt.add(Integer.parseInt(index));
 
