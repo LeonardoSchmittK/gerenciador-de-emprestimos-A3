@@ -132,13 +132,13 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
             int custo = 0;
 
             if (this.JTFNomeFerramenta.getText().length() <= 2) {
-                throw new Mensagem("O nome deve ter mais de 2 caracteres!");
+                JOptionPane.showMessageDialog(rootPane, "O nome da ferramenta deve ter mais de 2 caracteres!", "Insira um nome válido", JOptionPane.WARNING_MESSAGE);
             } else {
                 nomeferramenta = this.JTFNomeFerramenta.getText();
             }
 
             if (this.JTFMarca.getText().length() <= 2) {
-                throw new Mensagem("A marca deve ter mais de 2 caracteres!");
+                JOptionPane.showMessageDialog(rootPane, "A marca da ferramenta deve ter mais de 2 caracteres!", "Insira uma marca válida", JOptionPane.WARNING_MESSAGE);
             } else {
                 marca = this.JTFMarca.getText();
             }
@@ -150,7 +150,7 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
             }
 
             if (this.objetoFerramenta.insertFerramentaDb(nomeferramenta, marca, custo)) {
-                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!", "Ferramenta Cadastrada com Sucesso!", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!", " Sucesso!", JOptionPane.PLAIN_MESSAGE);
                 // limpa campos da interface
                 this.JTFNomeFerramenta.setText("");
                 this.JTFMarca.setText("");
@@ -163,7 +163,7 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erronumb) {
 
-            JOptionPane.showMessageDialog(null, "Número inválido!", "Número inválido!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Número inválido!", "O número inserido está invalido", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_JBCadastrarActionPerformed
