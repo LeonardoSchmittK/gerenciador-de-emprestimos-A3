@@ -198,7 +198,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             if (this.objetoAmigo.updateAmigoBd(id, nome, telefone)) {
                 // limpa os campos
                 this.limparCaixasDeTexto();
-                JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!", "Amigo Alterado com Sucesso!", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!", "", JOptionPane.PLAIN_MESSAGE);
 
             }
 
