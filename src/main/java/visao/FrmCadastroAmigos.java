@@ -1,3 +1,8 @@
+/**
+ * Classe FrmCadastroAmigos representa a interface de cadastro de amigos na aplicação.
+ * 
+ * Esta classe estende a classe javax.swing.JFrame para criar uma janela de cadastro.
+ */
 package visao;
 
 import java.util.regex.Matcher;
@@ -6,9 +11,13 @@ import javax.swing.JOptionPane;
 import model.Amigo;
 
 public class FrmCadastroAmigos extends javax.swing.JFrame {
-
+    // Variável para armazenar o objeto Amigo a ser cadastrado
     private Amigo objetoAmigo;
-
+    /**
+     * Construtor da classe FrmCadastroAmigos.
+     * 
+     * Este construtor inicializa os componentes da janela de cadastro e cria um novo objeto Amigo.
+     */
     public FrmCadastroAmigos() {
         initComponents();
         this.objetoAmigo = new Amigo();
@@ -123,24 +132,29 @@ public class FrmCadastroAmigos extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
+     /**
+     * Método para realizar o cadastro de um amigo.
+     * 
+     * Este método valida os dados inseridos pelo usuário e realiza o cadastro na base de dados.
+     */
         try {
             String regex = "^\\d{8,12}$";
             Pattern pattern = Pattern.compile(regex);
             String nome = "";
             String telefone = this.JTFtelefoneInput.getText();
-
+            // Validação do nome
             if (this.JTFnomeInput.getText().length() <= 2 || this.JTFnomeInput.getText().length() > 20) {
                 throw new Mensagem("O nome deve ter mais de 2 caracteres e menos de 20 caracteres!");
             } else {
                 nome = this.JTFnomeInput.getText();
             }
-
+            // Validação do telefone usando expressão regular
             Matcher matcher = pattern.matcher(telefone);
 
             if (!matcher.matches()) {
                 throw new Mensagem("Digite corretamente seu telefone (apenas números)");
             }
-
+            // Inserção do amigo na base de dados
             if (this.objetoAmigo.insertAmigoDb(nome, telefone)) {
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Cadastro realizado com sucesso!", JOptionPane.INFORMATION_MESSAGE);
                 this.JTFnomeInput.setText("");

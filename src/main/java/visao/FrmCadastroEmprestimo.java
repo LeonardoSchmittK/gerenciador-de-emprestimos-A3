@@ -1,3 +1,8 @@
+/**
+ * Classe FrmCadastroEmprestimo representa a interface de cadastro de empréstimos na aplicação.
+ * 
+ * Esta classe estende a classe javax.swing.JFrame para criar uma janela de cadastro.
+ */
 package visao;
 
 import java.time.LocalDate;
@@ -14,11 +19,11 @@ import model.Emprestimo;
 import model.Ferramenta;
 
 public class FrmCadastroEmprestimo extends javax.swing.JFrame {
-
+// Variáveis para armazenar objetos relacionados ao cadastro de empréstimo
     private Ferramenta objetoFerramenta;
     private Amigo objetoAmigo;
     private Emprestimo objetoEmprestimo;
-
+    // Variáveis para armazenar informações relacionadas ao empréstimo
     private String dateEmprestimoFinal;
     private String dateEmprestimoInicial;
     private boolean temAmigo;
@@ -31,7 +36,11 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     public String indexes = "";
     public int counterDown;
     private ArrayList<Integer> idsFerramentasAEscolher = new ArrayList<Integer>();
-
+    /**
+     * Construtor da classe FrmCadastroEmprestimo.
+     * 
+     * Este construtor inicializa os componentes da janela de cadastro e os objetos relacionados.
+     */
     public FrmCadastroEmprestimo() {
         initComponents();
         this.setTemAmigo(false);
@@ -235,7 +244,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxSelecionarFerramentaFocusGained
 
     private void jComboBoxSelecionarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelecionarFerramentaActionPerformed
-
+        // Código para seleção de ferramentas
         try {
 
             int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
