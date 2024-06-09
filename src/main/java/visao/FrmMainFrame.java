@@ -1,3 +1,8 @@
+/**
+ * Classe FrmMainFrame representa a janela principal da aplicação.
+ * 
+ * Esta classe estende a classe javax.swing.JFrame para criar uma janela de aplicativo.
+ */
 package visao;
 
 import java.awt.BorderLayout;
@@ -13,38 +18,46 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class FrmMainFrame extends javax.swing.JFrame {
-
+    /**
+     * Construtor da classe FrmMainFrame.
+     * 
+     * Este construtor configura a janela principal da aplicação.
+     */
     public FrmMainFrame() {
+        // Define o ícone da janela
         ImageIcon icone = new ImageIcon("imagens/icone-ferramenta.png");
         this.setIconImage(icone.getImage());
+        // Inicializa os componentes da janela
         initComponents();
+        // Define a posição da janela como centralizada na tela
         this.setLocationRelativeTo(null);
-
+        // Configuração do layout da janela
         this.setLayout(new BorderLayout());
-
+        // Cria um painel para ocupar toda a tela
         JPanel fullScreenPanel = new JPanel();
         fullScreenPanel.setLayout(new GridBagLayout());
-
+        // Cria um painel central com dimensões específicas e cor de fundo
         JPanel centralPanel = new JPanel();
         centralPanel.setPreferredSize(new Dimension(600, 600));
         centralPanel.setBackground(Color.decode("#EEEEEE"));
-
+        // Adiciona um ícone ao painel central
         ImageIcon iconeTitulo = new ImageIcon("imagens/icone-ferramenta.png");
         JLabel label = new JLabel(iconeTitulo);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setSize(new Dimension(50, 10));
         centralPanel.add(label);
-
+        // Adiciona um título ao painel central
         JLabel title = new JLabel("GERENCIADOR DE EMPRÉSTIMOS");
         title.setFont(new Font("SansSerif", Font.BOLD, 24));
         centralPanel.add(title);
-
+        // Configuração das restrições de layout para o painel central
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.CENTER;
+        // Adiciona o painel central ao painel de tela cheia
         fullScreenPanel.add(centralPanel, gbc);
 
         this.add(fullScreenPanel);

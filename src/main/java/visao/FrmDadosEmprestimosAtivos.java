@@ -1,3 +1,8 @@
+/**
+ * Classe FrmDadosEmprestimosAtivos
+ * 
+ * Esta classe representa a interface gráfica para exibir informações sobre empréstimos ativos.
+ */
 package visao;
 
 import java.awt.Color;
@@ -18,7 +23,11 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
     private Ferramenta objetoFerramenta;
 
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
-
+    /**
+     * Construtor FrmDadosEmprestimosAtivos
+     * 
+     * Cria uma nova instância da interface gráfica FrmDadosEmprestimosAtivos e inicializa os componentes da interface, além de imprimir a tabela de empréstimos, o maior devedor e o total de empréstimos.
+     */
     public FrmDadosEmprestimosAtivos() {
         initComponents();
         this.objetoEmprestimoAtivos = new Emprestimo();

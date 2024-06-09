@@ -1,3 +1,8 @@
+/**
+ * Classe FrmDadosEmprestimosFeitos
+ * 
+ * Esta classe representa a interface gráfica para exibir informações sobre empréstimos feitos.
+ */
 package visao;
 
 import java.awt.Color;
@@ -14,7 +19,11 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
     private Emprestimo objetoEmprestimoFeito;
     private Ferramenta objetoFerramenta;
-
+    /**
+     * Construtor FrmDadosEmprestimosFeitos
+     * 
+     * Cria uma nova instância da interface gráfica FrmDadosEmprestimosFeitos e inicializa os componentes da interface, além de imprimir a tabela de empréstimos, o total de empréstimos e o maior devedor.
+     */
     public FrmDadosEmprestimosFeitos() {
         initComponents();
         this.objetoEmprestimoFeito = new Emprestimo();
