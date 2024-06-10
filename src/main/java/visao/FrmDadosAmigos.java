@@ -276,7 +276,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
                 if (this.objetoAmigo.deleteAmigoDb(id)) {
                     // limpa os campos
                     this.limparCaixasDeTexto();
-                    JOptionPane.showMessageDialog(rootPane, "Amigo excluído com Sucesso!");
+                    JOptionPane.showMessageDialog(rootPane, "Amigo excluído com Sucesso!" , "Sucesso!" , JOptionPane.PLAIN_MESSAGE);
                 }
             }
 

@@ -132,13 +132,13 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
             int custo = 0;
 
             if (this.JTFNomeFerramenta.getText().length() <= 2) {
-                JOptionPane.showMessageDialog(rootPane, "O nome da ferramenta deve ter mais de 2 caracteres!", "Insira um nome válido", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "O nome da ferramenta deve ter mais de 2 caracteres!", "Insira um nome válido", JOptionPane.ERROR_MESSAGE);
             } else {
                 nomeferramenta = this.JTFNomeFerramenta.getText();
             }
 
             if (this.JTFMarca.getText().length() <= 2) {
-                JOptionPane.showMessageDialog(rootPane, "A marca da ferramenta deve ter mais de 2 caracteres!", "Insira uma marca válida", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "A marca da ferramenta deve ter mais de 2 caracteres!", "Insira uma marca válida", JOptionPane.ERROR_MESSAGE);
             } else {
                 marca = this.JTFMarca.getText();
             }
