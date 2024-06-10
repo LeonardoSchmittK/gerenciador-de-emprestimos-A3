@@ -277,13 +277,13 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             }
 
             // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta ferramenta?");
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta ferramenta?" , "" , JOptionPane.QUESTION_MESSAGE);
 
             if (respostaUsuario == 0) {// clicou em SIM
                 if (this.objetoFerramenta.deleteFerramentaDb(id)) {
                     // limpa os campos
                     this.clearFields();
-                    JOptionPane.showMessageDialog(rootPane, "Ferramenta excluída com Sucesso!");
+                    JOptionPane.showMessageDialog(rootPane, "Ferramenta excluída com Sucesso!" ,"Sucesso!" , JOptionPane.PLAIN_MESSAGE);
                 }
             }
 
@@ -305,14 +305,14 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             double custo = 0;
 
             if (this.JTFNome.getText().length() < 2) {
-                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
-
+                JOptionPane.showMessageDialog(rootPane, "Nome deve conter ao menos 2 caracteres." , "" , JOptionPane.WARNING_MESSAGE);
+                
             } else {
                 nome = this.JTFNome.getText();
             }
 
             if (this.JTFMarca.getText().length() < 2) {
-                throw new Mensagem("A marca deve conter ao menos 2 caracteres.");
+                JOptionPane.showMessageDialog(rootPane, "A marca deve conter ao menos 2 caracteres." , "" , JOptionPane.WARNING_MESSAGE);
 
             } else {
 
@@ -320,7 +320,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             }
 
             if (this.JTFCusto.getText().length() <= 0) {
-                throw new Mensagem("Custo deve ser número e maior que zero.");
+                JOptionPane.showMessageDialog(rootPane, "Custo deve ser número e maior que zero." , "" , JOptionPane.WARNING_MESSAGE);
 
             } else {
                 custo = Double.parseDouble(this.JTFCusto.getText());

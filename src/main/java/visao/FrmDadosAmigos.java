@@ -173,14 +173,14 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             String telefone = "";
 
             if (this.JTFNome.getText().length() < 2) {
-                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+                JOptionPane.showMessageDialog(rootPane, "O nome deve conter mais de 2 caracteres!", "" , JOptionPane.ERROR_MESSAGE);
 
             } else {
                 nome = this.JTFNome.getText();
             }
 
             if (this.JTFTelefone.getText().length() < 2) {
-                throw new Mensagem("O telefone deve conter ao menos 7 caracteres.");
+               JOptionPane.showMessageDialog(rootPane, "telefone deve conter ao menos 7 caracteres." , "" , JOptionPane.ERROR_MESSAGE);
 
             } else {
 
