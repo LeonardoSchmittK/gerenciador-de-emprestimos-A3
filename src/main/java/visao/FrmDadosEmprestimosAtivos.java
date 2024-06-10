@@ -218,7 +218,7 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
                 LocalDate dataAtual = LocalDate.now();
                 if (this.objetoEmprestimoAtivos.updateEmprestimoAtivoBd(id, false, dataAtual)) {
 
-                    JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído", "Emprestimo concluído!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Emprestimo concluído", "Concluído!", JOptionPane.PLAIN_MESSAGE);
                     this.imprimirTabela();
                     this.imprimirTotalEmprestimos();
                     this.imprimirMaiorDevedor();
@@ -241,16 +241,16 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
             if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
                 int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
-                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?");
+                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?" , "" , JOptionPane.QUESTION_MESSAGE);
 
                 if (respostaUsuario == 0) {// clicou em SIM
                     if (this.objetoEmprestimoAtivos.deleteEmprestimoDb(id)) {
-                        JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.PLAIN_MESSAGE);
                     }
                 }
 
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Selecione um empréstimo na tabela!", "Selecione um empréstimo na tabela!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Selecione um empréstimo na tabela!", "", JOptionPane.ERROR_MESSAGE);
                 throw new Mensagem("Selecione um empréstimo na tabela!");
             }
 
