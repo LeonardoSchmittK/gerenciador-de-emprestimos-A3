@@ -1,3 +1,11 @@
+/**
+ * A classe Emprestimo modela um objeto de empréstimo na aplicação.
+ * 
+ * Um empréstimo contém informações como ID, IDs das ferramentas emprestadas, ID do amigo, nome do amigo,
+ * datas de início e término do empréstimo, marca das ferramentas e custo total do empréstimo.
+ * 
+ * Esta classe se comunica com a camada de acesso a dados (DAO) para realizar operações no banco de dados.
+ */
 package model;
 
 import java.time.LocalDate;
@@ -5,7 +13,7 @@ import java.util.ArrayList;
 import dao.EmprestimoDAO;
 
 public class Emprestimo {
-
+    // Atributos da classe Emprestimo
     private int id;
     private String ferramentasId;
     private int amigoId;
@@ -15,12 +23,20 @@ public class Emprestimo {
     private String marca;
     private Double custo;
     private EmprestimoDAO dao;
-
+    /**
+     * Construtor padrão da classe Emprestimo.
+     * Inicializa um objeto Emprestimo com valores padrão e associa um DAO a ele.
+     */
     public Emprestimo() {
         this(0, "", 0, "", null, null, "", 0.0);
         this.setDao(new EmprestimoDAO());
     }
-
+    /**
+     * Método para verificar se um amigo está devendo.
+     * 
+     * @param amigoId O ID do amigo
+     * @return        true se o amigo está devendo, false caso contrário
+     */
     public boolean estaAmigoDevendo(int amigoId) {
         return dao.estaAmigoDevendo(amigoId);
     }
@@ -35,7 +51,7 @@ public class Emprestimo {
         this.setMarca(marca);
         this.setCusto(custo);
     }
-
+    
     public boolean insertEmprestimoDb(String ferramentasId, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal, String marca, Double custo) {
         int id = this.dao.maiorID() + 1;
 
@@ -45,7 +61,6 @@ public class Emprestimo {
 
         return true;
     }
-
     public boolean updateEmprestimoBd(int id, String ferramentasId, int amigoId, String nomeAmigo, LocalDate DataAtual, LocalDate DataFinal) {
         Emprestimo objeto = new Emprestimo(id, ferramentasId, amigoId, nomeAmigo, DataAtual, DataFinal, marca, custo);
         int indice = this.procuraIndice(id);
@@ -67,20 +82,34 @@ public class Emprestimo {
         }
         return indice;
     }
-
+    /**
+     * Método para obter a lista de empréstimos do banco de dados.
+     * 
+     * @return A lista de empréstimos
+     */
     public ArrayList getListaEmprestimos() {
         return dao.getEmprestimoLista();
     }
-
+    /**
+     * Método para obter a lista de empréstimos do banco de dados com base na ativação.
+     * 
+     * @param estaAtivo Indica se o empréstimo está ativo ou não
+     * @return          A lista de empréstimos
+     */
     public ArrayList getEmprestimoQuery(Boolean estaAtivo) {
         return dao.getEmprestimoQueryBd(estaAtivo);
     }
-
+    /**
+     * Método para deletar um empréstimo do banco de dados.
+     * 
+     * @param id O ID do empréstimo a ser deletado
+     * @return   true se o empréstimo foi deletado com sucesso, false caso contrário
+     */
     public boolean deleteEmprestimoDb(int id) {
         dao.deleteEmprestimoBd(id);
         return true;
     }
-
+    // Getters e Setters dos atributos da classe
     public String getFerramentasId() {
         return ferramentasId;
     }

@@ -1,3 +1,8 @@
+/**
+ * Classe FrmDadosAmigos representa a interface para exibição e alteração de dados de amigos na aplicação.
+ * 
+ * Esta classe estende a classe javax.swing.JFrame para criar uma janela de visualização e edição de dados.
+ */
 package visao;
 
 import java.util.ArrayList;
@@ -8,9 +13,13 @@ import javax.swing.table.DefaultTableModel;
 import model.Amigo;
 
 public class FrmDadosAmigos extends javax.swing.JFrame {
-
+    // Variável para armazenar o objeto Amigo
     private Amigo objetoAmigo;
-
+    /**
+     * Construtor da classe FrmDadosAmigos.
+     * 
+     * Este construtor inicializa os componentes da janela e o objeto Amigo, e imprime a tabela de amigos.
+     */
     public FrmDadosAmigos() {
         initComponents();
         this.objetoAmigo = new Amigo();
@@ -166,6 +175,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarActionPerformed
+        // Recebendo e validando dados da interface gráfica.
         try {
             // recebendo e validando dados da interface gráfica.
             int id = 0;

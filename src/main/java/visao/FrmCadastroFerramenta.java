@@ -1,3 +1,8 @@
+/**
+ * Classe FrmCadastroFerramenta representa a interface de cadastro de ferramentas na aplicação.
+ * 
+ * Esta classe estende a classe javax.swing.JFrame para criar uma janela de cadastro.
+ */
 package visao;
 
 import javax.swing.ImageIcon;
@@ -5,9 +10,14 @@ import javax.swing.JOptionPane;
 import model.Ferramenta;
 
 public class FrmCadastroFerramenta extends javax.swing.JFrame {
-
+    // Variável para armazenar o objeto Ferramenta
     private Ferramenta objetoFerramenta;
-
+    
+    /**
+     * Construtor da classe FrmCadastroFerramenta.
+     * 
+     * Este construtor inicializa os componentes da janela de cadastro e o objeto Ferramenta.
+     */
     public FrmCadastroFerramenta() {
         initComponents();
         this.objetoFerramenta = new Ferramenta();
@@ -125,30 +135,37 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBCancelarActionPerformed
 
+    /**
+ * Método executado quando o botão de cadastrar é clicado.
+ * 
+ * Este método tenta cadastrar uma ferramenta com os dados inseridos nos campos da interface gráfica.
+ * Em caso de erro nas validações ou no cadastro, exibe mensagens de erro.
+ */
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
         try {
             String nomeferramenta = "";
             String marca = "";
             int custo = 0;
 
+            // Validação do nome da ferramenta
             if (this.JTFNomeFerramenta.getText().length() <= 2) {
                 JOptionPane.showMessageDialog(rootPane, "O nome da ferramenta deve ter mais de 2 caracteres!", "Insira um nome válido", JOptionPane.ERROR_MESSAGE);
             } else {
                 nomeferramenta = this.JTFNomeFerramenta.getText();
             }
-
+            // Validação da marca da ferramenta
             if (this.JTFMarca.getText().length() <= 2) {
                 JOptionPane.showMessageDialog(rootPane, "A marca da ferramenta deve ter mais de 2 caracteres!", "Insira uma marca válida", JOptionPane.ERROR_MESSAGE);
             } else {
                 marca = this.JTFMarca.getText();
             }
-
+            // Validação do custo de aquisição da ferramenta
             if (Integer.parseInt(this.JTFCustoAquisição.getText()) <= 0) {
                 throw new Mensagem("O valor de aquisição deve ser maior que 0!");
             } else {
                 custo = Integer.parseInt(this.JTFCustoAquisição.getText());
             }
-
+            // Tentativa de inserir a ferramenta no banco de dados
             if (this.objetoFerramenta.insertFerramentaDb(nomeferramenta, marca, custo)) {
                 JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!", " Sucesso!", JOptionPane.PLAIN_MESSAGE);
                 // limpa campos da interface
