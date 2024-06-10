@@ -204,7 +204,7 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
 
                 if (respostaUsuario == 0) {// clicou em SIM
                     if (this.objetoEmprestimoFeito.deleteEmprestimoDb(id)) {
-                        JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido!", JOptionPane.PLAIN_MESSAGE);
+                        JOptionPane.showMessageDialog(rootPane, "Empréstimo removido!", "Empréstimo removido com sucesso!", JOptionPane.PLAIN_MESSAGE);
                     }
                 }
 
