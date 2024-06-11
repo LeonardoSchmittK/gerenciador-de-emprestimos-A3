@@ -24,7 +24,7 @@ public class ConexaoDao {
             Class.forName(driver);
             // Configurações de conexão
             String server = "localhost";
-            String database = "emprestimoFerramentas";
+            String database = "db_ferramentas";
             String url = "jdbc:mysql://" + server + ":3306/"
                     + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";

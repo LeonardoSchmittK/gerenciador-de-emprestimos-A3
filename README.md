@@ -8,19 +8,14 @@ David Camargo Rech / anemoculus / 10724112255;
 
 Gabriel Martins Meira / GabrielMartinMeira / 10724113373;
 
-Leonardo Schmitt Kreuch / Leonardo schmittk /10724112322;
+Leonardo Schmitt Kreuch / Leonardo schmittk / 10724112322;
 
 Leonardo Sousa Vargas / leo150406 / 10724111015;
 
 Mateus Almeida Santos / mtgjbr / 10724112341;
 
-
-
-
 # Sobre o projeto
 O projeto visa a criação de um software que cadaste nome, marca e os custos de aquisição de ferramentas e de cadastrar amigos do cliente (Tio-Avo), o software serve para registrar os empréstimos de uma ou mais ferramentas a um determinado amigo, marcando a data que ocorreu e também a data de devolução. 
-
-
 
 # Requisitos Funcionais
 ● RF001 - O sistema deve poder cadastrar ferramentas emprestadas;
