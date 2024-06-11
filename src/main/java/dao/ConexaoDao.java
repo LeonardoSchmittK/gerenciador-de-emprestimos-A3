@@ -1,3 +1,11 @@
+/*
+ ConexaoDao
+    
+ Esta classe fornece métodos para estabelecer conexão com o banco de dados MySQL.
+
+ Métodos:
+ - getConexao(): Retorna uma conexão com o banco de dados.
+*/
 package dao;
 
 import java.sql.Connection;
@@ -11,19 +19,19 @@ public class ConexaoDao {
     public static Connection getConexao() {
         Connection connection = null; //instância da conexão
         try {
-
+            // Carrega o driver JDBC do MySQL
             String driver = "com.mysql.cj.jdbc.Driver";
             Class.forName(driver);
-
+            // Configurações de conexão
             String server = "localhost";
             String database = "db_ferramentas";
             String url = "jdbc:mysql://" + server + ":3306/"
                     + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "260105Gab!";
-
+            String password = "Dgllm2024!";
+            // Estabelece a conexão
             connection = DriverManager.getConnection(url, user, password);
-
+            // Exibe o status da conexão
             if (connection != null) {
                 System.out.println("Status: DB CONECTADO!!");
             } else {
@@ -34,6 +42,7 @@ public class ConexaoDao {
             System.out.println("O driver SQL nao foi encontrado.");
             return null;
         } catch (SQLException e) {
+            // Erro ao conectar-se ao banco de dados
             System.out.println("Não foi possível conectar-se ao banco de dados...");
             return null;
         }

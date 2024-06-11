@@ -1,7 +1,21 @@
 /*
+
 * Classe EmprestimoDAO
 * 
 * Essa classe é responsável por fornecer métodos para interação com o banco de dados relacionados às operações de empréstimos.
+ EmprestimoDAO
+    
+ Esta classe representa o Objeto de Acesso a Dados (DAO) para lidar
+ com operações relacionadas à entidade Emprestimo no banco de dados.
+
+ Atributos:
+ - EmprestimoLista: Um ArrayList para armazenar objetos Emprestimo.
+
+ Métodos:
+  - getEmprestimoLista(): Recupera uma lista de objetos Emprestimo do banco de dados.
+  - setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista): Define a lista de Emprestimo.
+
+
 */
 package dao;
 
@@ -16,6 +30,7 @@ import java.util.ArrayList;
 import model.Emprestimo;
 
 public class EmprestimoDAO {
+
     // Lista para armazenar os empréstimos
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
     /*
@@ -72,6 +87,7 @@ public class EmprestimoDAO {
     * Comportamento: Limpa a EmprestimoLista antes de buscar dados do banco de dados. Constrói objetos Emprestimo a partir dos dados recuperados e os adiciona à lista.
     */
     public ArrayList<Emprestimo> getEmprestimoQueryBd(Boolean estaAtivo) {
+
         EmprestimoLista.clear();
 
         try {
@@ -107,6 +123,7 @@ public class EmprestimoDAO {
         }
         return EmprestimoLista;
     }
+
     /*
      * Método estaAmigoDevendo(int amigoIdParameter)
      * 
@@ -234,7 +251,14 @@ public class EmprestimoDAO {
      */
     public void setEmprestimoLista(ArrayList<Emprestimo> EmprestimoLista) {
         this.EmprestimoLista = EmprestimoLista;
+      
     }
+    /**
+     * Define a lista de Emprestimo.
+     * 
+     * @param EmprestimoLista A lista de objetos Emprestimo a ser definida.
+     */
+  
     /*
      * Método maiorID()
      * 
