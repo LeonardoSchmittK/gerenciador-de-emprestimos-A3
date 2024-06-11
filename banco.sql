@@ -1,3 +1,4 @@
+# criar o db que guardará nossos dados do sistema
 CREATE SCHEMA IF NOT EXISTS `db_ferramentas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 USE `db_ferramentas` ;
 

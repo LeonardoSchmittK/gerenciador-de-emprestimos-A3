@@ -1,6 +1,6 @@
 /**
  * Classe FrmDadosEmprestimosAtivos
- * 
+ *
  * Esta classe representa a interface gráfica para exibir informações sobre empréstimos ativos.
  */
 package visao;
@@ -23,10 +23,13 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
     private Ferramenta objetoFerramenta;
 
     public ArrayList<Emprestimo> EmprestimoLista = new ArrayList<>();
+
     /**
      * Construtor FrmDadosEmprestimosAtivos
-     * 
-     * Cria uma nova instância da interface gráfica FrmDadosEmprestimosAtivos e inicializa os componentes da interface, além de imprimir a tabela de empréstimos, o maior devedor e o total de empréstimos.
+     *
+     * Cria uma nova instância da interface gráfica FrmDadosEmprestimosAtivos e
+     * inicializa os componentes da interface, além de imprimir a tabela de
+     * empréstimos, o maior devedor e o total de empréstimos.
      */
     public FrmDadosEmprestimosAtivos() {
         initComponents();
@@ -241,7 +244,7 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
             if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
                 int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
-                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?" );
+                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?");
 
                 if (respostaUsuario == 0) {// clicou em SIM
                     if (this.objetoEmprestimoAtivos.deleteEmprestimoDb(id)) {
@@ -279,6 +282,13 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
         for (Emprestimo e : minhalista) {
             ArrayList<Ferramenta> listaFerramentas = new ArrayList<Ferramenta>();
             String[] indexesString = e.getFerramentasId().split(" ");
+
+            for (int i = 0; i < indexesString.length; ++i) {
+                if (indexesString[i].isBlank()) {
+                    return;
+                }
+
+            }
             ArrayList<Integer> indexesInt = new ArrayList<Integer>();
             String nomeFerramenta = "";
             for (String index : indexesString) {

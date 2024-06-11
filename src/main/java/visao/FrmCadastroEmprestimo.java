@@ -1,6 +1,6 @@
 /**
  * Classe FrmCadastroEmprestimo representa a interface de cadastro de empréstimos na aplicação.
- * 
+ *
  * Esta classe estende a classe javax.swing.JFrame para criar uma janela de cadastro.
  */
 package visao;
@@ -20,6 +20,7 @@ import model.Ferramenta;
 
 public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 // Variáveis para armazenar objetos relacionados ao cadastro de empréstimo
+
     private Ferramenta objetoFerramenta;
     private Amigo objetoAmigo;
     private Emprestimo objetoEmprestimo;
@@ -36,10 +37,12 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     public String indexes = "";
     public int counterDown;
     private ArrayList<Integer> idsFerramentasAEscolher = new ArrayList<Integer>();
+
     /**
      * Construtor da classe FrmCadastroEmprestimo.
-     * 
-     * Este construtor inicializa os componentes da janela de cadastro e os objetos relacionados.
+     *
+     * Este construtor inicializa os componentes da janela de cadastro e os
+     * objetos relacionados.
      */
     public FrmCadastroEmprestimo() {
         initComponents();
@@ -249,13 +252,17 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
             int idxEscolhidoFerramenta = jComboBoxSelecionarFerramenta.getSelectedIndex();
             if (idxEscolhidoFerramenta < 0) {
+                System.out.println("OL2222A");
 
                 return;
             }
             Ferramenta ferramentaEscolhida = this.FerramentaLista.get(this.idsFerramentasAEscolher.get(idxEscolhidoFerramenta - 1) - 1);
             if (this.ferramentasEscolhidas.indexOf(ferramentaEscolhida) >= 0) {
+                System.out.println("OLA");
+
                 return;
             } else {
+
                 this.counterDown += 25;
 
                 this.ferramentasEscolhidas.add(ferramentaEscolhida);
@@ -270,10 +277,12 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 ferramentaEscolhidaElemento.setLocation(0, counterDown);
                 jPainelFerramentasEscolhidas.add(ferramentaEscolhidaElemento);
                 indexes += ferramentaEscolhida.getId() + " ";
-                System.out.println(indexes);
+                System.out.println(indexes + "INDEXES");
             }
         } catch (IndexOutOfBoundsException indiceErrado) {
             // catch vazio limpa os erros dispensáveis do terminal
+
+            System.out.println("ESSE É O   " + jComboBoxSelecionarFerramenta.getSelectedIndex());
         }
 
     }//GEN-LAST:event_jComboBoxSelecionarFerramentaActionPerformed
@@ -311,16 +320,14 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 LocalDate dataInicial = LocalDate.now();
                 String marca = ferramentaEscolhida.getMarca();
                 Double custo = ferramentaEscolhida.getCusto();
+                System.out.println(indexes + "INDEXES");
 
                 if (this.objetoEmprestimo.insertEmprestimoDb(indexes, idAmigo, nomeAmigo, dataInicial, null, marca, custo)) {
                     JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
-                    this.indexes = "";
-                    this.ferramentasEscolhidas.clear();
-                    jPainelFerramentasEscolhidas.removeAll();
-
-                    jPainelFerramentasEscolhidas.revalidate();
-                    jPainelFerramentasEscolhidas.repaint();
-                    this.counterDown = 0;
+                    // ao cadastrar um empréstimo, recarregue a janela com dados atualizados
+                    this.dispose();
+                    FrmCadastroEmprestimo novaJanelaEmprestimo = new FrmCadastroEmprestimo();
+                    novaJanelaEmprestimo.setVisible(true);
 
                 }
             }
@@ -366,31 +373,16 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         ArrayList<Ferramenta> minhalistaFerramentas = this.objetoFerramenta.getListaFerramentas();
         ArrayList<Emprestimo> minhalistaEmprestimos = this.objetoEmprestimo.getListaEmprestimos();
         // caso a ferramenta já esteja emprestada, não poder emprestar mais
-        int counterFerramentaMostrar = 0;
         if (minhalistaFerramentas.size() > 0) {
             this.setTemFerramenta(true);
         }
 
         if (minhalistaEmprestimos.isEmpty()) {
 
-            for (Ferramenta ferramenta : minhalistaFerramentas) {
-                jComboBoxSelecionarFerramenta.addItem(ferramenta.getNome());
-            }
+            this.adicionarFerramentasNoDropDown(minhalistaEmprestimos, minhalistaFerramentas);
+
         } else {
-            ArrayList<String> idsColhidos = new ArrayList<String>();
-
-            String idsString = "";
-
-            for (Emprestimo emprestimo : minhalistaEmprestimos) {
-                idsString += emprestimo.getFerramentasId();
-            }
-            for (Ferramenta ferramenta : minhalistaFerramentas) {
-                if (!idsString.contains(ferramenta.getId() + "")) {
-                    counterFerramentaMostrar++;
-                    this.idsFerramentasAEscolher.add(ferramenta.getId());
-                    jComboBoxSelecionarFerramenta.addItem(ferramenta.getNome());
-                }
-            }
+            int counterFerramentaMostrar = this.adicionarFerramentasNoDropDown(minhalistaEmprestimos, minhalistaFerramentas);
 
             if (counterFerramentaMostrar <= 0) {
                 this.remove(jPanelPainelEmprestimo);
@@ -401,6 +393,28 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
             }
         }
     }
+
+    public int adicionarFerramentasNoDropDown(ArrayList<Emprestimo> minhalistaEmprestimos, ArrayList<Ferramenta> minhalistaFerramentas) {
+        ArrayList<String> idsColhidos = new ArrayList<String>();
+        int counterFerramentaMostrar = 0;
+
+        String idsString = "";
+
+        for (Emprestimo emprestimo : minhalistaEmprestimos) {
+            idsString += emprestimo.getFerramentasId();
+        }
+        for (Ferramenta ferramenta : minhalistaFerramentas) {
+            if (!idsString.contains(ferramenta.getId() + "")) {
+
+                counterFerramentaMostrar++;
+                this.idsFerramentasAEscolher.add(ferramenta.getId());
+                jComboBoxSelecionarFerramenta.addItem(ferramenta.getNome());
+            }
+        }
+
+        return counterFerramentaMostrar;
+    }
+
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
