@@ -272,15 +272,17 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     public void imprimirTabela() {
-        DefaultTableModel modelo = (DefaultTableModel) this.jTabelaEmprestimo.getModel();
-        modelo.setNumRows(0); //Posiciona na primeira linha da tabela
-        ArrayList<Emprestimo> minhalista = this.objetoEmprestimoAtivos.getEmprestimoQuery(true);
+        DefaultTableModel modeloTabela = (DefaultTableModel) this.jTabelaEmprestimo.getModel();
+        modeloTabela.setNumRows(0); //Posiciona na primeira linha da tabela
+        ArrayList<Emprestimo> listaEmprestimos = this.objetoEmprestimoAtivos.getEmprestimoQuery(false);
 
-        for (Emprestimo e : minhalista) {
+        for (Emprestimo e : listaEmprestimos) {
             ArrayList<Ferramenta> listaFerramentas = new ArrayList<Ferramenta>();
             String[] indexesString = e.getFerramentasId().split(" ");
             ArrayList<Integer> indexesInt = new ArrayList<Integer>();
-            String nomeFerramenta = "";
+            String nomeFerramenta = " ";
+            
+
             for (String index : indexesString) {
                 indexesInt.add(Integer.parseInt(index));
 
@@ -290,7 +292,7 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
                 nomeFerramenta += this.objetoFerramenta.getFerramentaById(index).getNome() + ",";
             }
 
-            modelo.addRow(new Object[]{
+            modeloTabela.addRow(new Object[]{
                 e.getId(),
                 nomeFerramenta,
                 e.getNomeAmigo(),

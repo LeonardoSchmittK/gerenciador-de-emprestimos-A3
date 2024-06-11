@@ -276,15 +276,12 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
             ArrayList<Ferramenta> listaFerramentas = new ArrayList<Ferramenta>();
             String[] indexesString = e.getFerramentasId().split(" ");
             ArrayList<Integer> indexesInt = new ArrayList<Integer>();
-            String nomeFerramenta = "";
+            String nomeFerramenta = " ";
+            
 
             for (String index : indexesString) {
                 indexesInt.add(Integer.parseInt(index));
 
-            }
-
-            for (int index : indexesInt) {
-                nomeFerramenta += this.objetoFerramenta.getFerramentaById(index).getNome() + ",";
             }
 
             modeloTabela.addRow(new Object[]{

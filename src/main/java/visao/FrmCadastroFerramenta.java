@@ -176,7 +176,6 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
             }
 
         } catch (Mensagem erro) {
-
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erronumb) {
 
