@@ -241,7 +241,7 @@ public class FrmDadosEmprestimosAtivos extends javax.swing.JFrame {
             if (this.jTabelaEmprestimo.getSelectedRow() != -1) {
                 int id = Integer.parseInt(this.jTabelaEmprestimo.getValueAt(this.jTabelaEmprestimo.getSelectedRow(), 0).toString());
 
-                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?" , "" , JOptionPane.QUESTION_MESSAGE);
+                int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este empréstimo para sempre?" );
 
                 if (respostaUsuario == 0) {// clicou em SIM
                     if (this.objetoEmprestimoAtivos.deleteEmprestimoDb(id)) {

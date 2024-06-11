@@ -273,14 +273,16 @@ public class FrmDadosEmprestimosFeitos extends javax.swing.JFrame {
         ArrayList<Emprestimo> listaEmprestimos = this.objetoEmprestimoFeito.getEmprestimoQuery(false);
 
         for (Emprestimo e : listaEmprestimos) {
+            System.out.println("ids");
             ArrayList<Ferramenta> listaFerramentas = new ArrayList<Ferramenta>();
             String[] indexesString = e.getFerramentasId().split(" ");
             ArrayList<Integer> indexesInt = new ArrayList<Integer>();
             String nomeFerramenta = "";
 
             for (String index : indexesString) {
-                indexesInt.add(Integer.parseInt(index));
-
+                if(index!=""){
+                    indexesInt.add(Integer.parseInt(index));
+                }
             }
 
             for (int index : indexesInt) {

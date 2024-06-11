@@ -279,7 +279,7 @@ public class FrmDadosAmigos extends javax.swing.JFrame {
             }
 
             // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este Amigo?", "", JOptionPane.QUESTION_MESSAGE);
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este Amigo?");
 
             if (respostaUsuario == 0) {// clicou em SIM
 

@@ -277,7 +277,7 @@ public class FrmDadosFerramentas extends javax.swing.JFrame {
             }
 
             // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta ferramenta?" , "" , JOptionPane.QUESTION_MESSAGE);
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta ferramenta?");
 
             if (respostaUsuario == 0) {// clicou em SIM
                 if (this.objetoFerramenta.deleteFerramentaDb(id)) {
